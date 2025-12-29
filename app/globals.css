@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* shadcn theme (neutral) + palette luxe médical */
+@layer base {
+  :root {
+    /* Background / text */
+    --background: 220 43% 97%;
+    /* ~ #F7F9FC */
+    --foreground: 215 28% 17%;
+    /* ~ #1F2937 */
+
+    /* Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    /* Brand primary (Navy) */
+    --primary: 214 63% 18%;
+    /* #112D4D */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary / muted */
+    --secondary: 220 25% 93%;
+    /* soft cool gray */
+    --secondary-foreground: 214 63% 18%;
+
+    --muted: 220 25% 94%;
+    --muted-foreground: 215 16% 45%;
+    /* ~ #6B7280 */
+
+    /* Accent (Champagne) */
+    --accent: 40 36% 64%;
+    /* #C9B37E */
+    --accent-foreground: 214 63% 18%;
+
+    /* Borders / inputs */
+    --border: 220 20% 90%;
+    /* ~ #E5E9F0 */
+    --input: 220 20% 90%;
+    --ring: 214 63% 18%;
+
+    /* Danger */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Radius premium */
+    --radius: 1.25rem;
+    /* 20px */
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    @apply font-sans;
+  }
+}
+
+/* Quelques classes premium (optionnel) */
+@layer components {
+  .card-premium {
+    @apply rounded-[24px] bg-card text-card-foreground ring-1 ring-border;
+    box-shadow: 0 18px 60px rgba(17, 45, 77, 0.08);
+  }
+  .nav-item {
+    @apply relative text-sm font-semibold text-white/90 transition-colors hover:text-white;
+  }
+
+  .nav-item::after {
+    content: "";
+    @apply absolute left-1/2 -bottom-1 h-[2px] w-full -translate-x-1/2 scale-x-0 rounded-full bg-current transition-transform duration-300 ease-out;
+    transform-origin: center;
+  }
+
+  .nav-item:hover::after {
+    @apply scale-x-100;
+  }
+
+  .nav-item-active {
+    @apply text-white;
+  }
+
+  .nav-item-active::after {
+    @apply scale-x-100;
+  }
+
+  /* TOP NAV links */
+  .nav-top-link {
+    @apply relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-brandChampagne/90 transition-colors hover:text-brandChampagne;
+  }
+
+  .nav-top-link-active {
+    @apply text-brandChampagne;
+  }
+
+  /* Cadre animé */
+  .nav-top-link::after {
+    content: "";
+    position: absolute;
+    inset: -6px -10px;
+    /* espace autour pour un cadre élégant */
+    border: 1px solid currentColor;
+    border-radius: 12px;
+    pointer-events: none;
+    opacity: 0;
+    /* on cache tout au départ (point au bas-centre) */
+    clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+  }
+
+  .nav-top-link:hover::after,
+  .nav-top-link:focus-visible::after {
+    opacity: 1;
+    animation: frameFromBottomCenter 520ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* un peu plus “présent” quand actif (optionnel) */
+  .nav-top-link-active::after {
+    opacity: 1;
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+  }
+
+  @keyframes frameFromBottomCenter {
+
+    /* point bas-centre */
+    0% {
+      clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+    }
+
+    /* on trace le bas de centre -> gauche/droite */
+    35% {
+      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    }
+
+    /* on monte sur les côtés et ça se rejoint en haut */
+    100% {
+      clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+    }
+  }
+  /* Ligne “signature” animée */
+  .signature-line {
+    height: 2px;
+    border-radius: 999px;
+    background: #C9B37E; /* brandChampagne */
+    transform-origin: left;
+    transform: scaleX(0);
+    opacity: 0.9;
+  }
+
+  .signature-line.is-inview {
+    animation: signature-line-reveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .signature-underline {
+    height: 2px;
+    border-radius: 999px;
+    background: #C9B37E; /* champagne */
+    transform: scaleX(0);
+    opacity: 0.9;
+    will-change: transform, opacity;
+  }
+
+  .signature-underline.from-right {
+    transform-origin: right;
+  }
+
+  .signature-underline.from-left {
+    transform-origin: left;
+  }
+
+  .signature-underline.is-inview {
+    animation: signature-underline-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+}
+
+@keyframes signature-line-reveal {
+  from {
+    transform: scaleX(0);
+    opacity: 0.85;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+/* Kicker avec ligne animée */
+.animate-kicker-line {
+  animation: kicker-line 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.kicker-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  /* équiv. à after:-bottom-2 */
+  height: 2px;
+  width: 100%;
+  background: #C9B37E;
+  /* brandChampagne */
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: kicker-line 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.kicker-wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kicker-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(17, 45, 77, 0.7);
+  /* brandNavy */
+}
+
+@keyframes kicker-line {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Ligne “champagne” animée */
+.kicker-line {
+  height: 2px;
+  background: #C9B37E;
+  /* brandChampagne */
+  border-radius: 999px;
+
+  /* ✅ Option 1 + 2 :
+     large par défaut, avec un max, et s’adapte à la place dispo */
+  width: min(520px, 100%);
+
+  /* animation reveal gauche -> droite */
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: kicker-line-reveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.kicker-line-center {
+  /* centré (look clean) */
+  margin-left: auto;
+  margin-right: auto;
+  /* option 1 : si tu veux une largeur “signature” plus courte :
+     width: clamp(140px, 22vw, 240px);
+     (décommente si tu préfères)
+  */
+}
+
+.kicker-line-left {
+  width: min(560px, calc(100% - 14px));
+}
+
+@keyframes kicker-line-reveal {
+  from {
+    transform: scaleX(0);
+    opacity: 0.85;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* --- Hover reveal (vertical split follow cursor) --- */
+.reveal-wrap {
+  --mx: 50%;
+}
+
+/* image hover cachée par défaut */
+.reveal-hover {
+  opacity: 0;
+  transform: scale(1.02);
+
+  /* cache tout (0% visible) */
+  clip-path: inset(0 100% 0 0);
+
+  transition:
+    clip-path 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* l’état hover active le split (full height) */
+.reveal-wrap.is-hovering .reveal-hover {
+  clip-path: inset(0 calc(100% - var(--mx)) 0 0);
+}
+
+/* 🎬 léger delay “Apple-like” sur l’apparition (split d’abord, opacity ensuite) */
+.reveal-wrap.is-reveal .reveal-hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* ✨ split line champagne 1px */
+.reveal-splitline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--mx);
+  width: 1px;
+  transform: translateX(-0.5px);
+  background: rgba(201, 179, 126, 0.9); /* champagne */
+
+  opacity: 0;
+  transition: opacity 240ms ease;
+  pointer-events: none;
+
+  /* micro glow très discret */
+  box-shadow: 0 0 0 1px rgba(201, 179, 126, 0.12);
+}
+
+.reveal-wrap.is-reveal .reveal-splitline {
+  opacity: 1;
+}
+
+/* Mobile / pas de hover :
+   on affiche l’image hover en plein écran (base -> hover -> base)
+*/
+@media (hover: none), (pointer: coarse) {
+  .reveal-hover {
+    clip-path: none !important;
+    transform: scale(1.02);
+  }
+
+  .reveal-splitline {
+    display: none;
+  }
+
+  .reveal-wrap[data-phase="hover"] .reveal-hover {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  .reveal-wrap[data-phase="base"] .reveal-hover {
+    opacity: 0;
+  }
+}
+
+.reveal-wrap.is-hovering .reveal-hover {
+  will-change: clip-path, opacity, transform;
+}
+
+@keyframes signature-underline-reveal {
+  from {
+    transform: scaleX(0);
+    opacity: 0.85;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-toolbar-underline {
+    animation: toolbar-underline-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}

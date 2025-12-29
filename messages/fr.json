@@ -1,0 +1,168 @@
+{
+  "nav": {
+    "products": "Produits",
+    "services": "Services",
+    "quote": "Devis",
+    "partners": "Partenaires",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "home": {
+    "heroTitle": "La radioprotection, conçue avec exigence.",
+    "heroSubtitle": "Équipements de radioprotection premium pour les environnements médicaux exigeants.",
+    "heroMadeInenFrance": "Fabriqué dans nos ateliers en France • RADIOPROTECTION"
+  },
+  "proof": {
+    "title": "Preuve de notre savoir-faire",
+    "subtitle": "Nos engagements envers la qualité et la conformité.",
+    "checkBadge": {
+      "title": "Fabriqué en France",
+      "desc": "Confection interne, finitions premium."
+    },
+    "shieldBadge": {
+      "title": "Conformité",
+      "desc": "Contrôles qualité & traçabilité."
+    },
+    "sparkleBadge": {
+      "title": "Entretien",
+      "desc": "Nettoyage et maintenance spécialisés."
+    },
+    "factoryBadge": {
+      "title": "Fabrication interne",
+      "desc": "Ateliers en France, savoir-faire maîtrisé."
+    }
+  },
+  "services": {
+    "title": "Une offre complète, pensée pour les établissements.",
+    "subtitle": "De l’acquisition à l’entretien, nous accompagnons vos équipes avec des équipements fiables, confortables et durables.",
+    "sales": {
+      "title": "Vente d’équipements",
+      "desc": "Tabliers et protections premium pour environnements radiologiques."
+    },
+    "rental": {
+      "title": "Location d’équipements",
+      "desc": "Solutions flexibles pour besoins temporaires ou spécifiques."
+    },
+    "qualityChecks": {
+      "title": "Contrôles qualité",
+      "desc": "Vérification rigoureuse pour garantir performance et sécurité."
+    },
+    "cleaning": {
+      "title": "Nettoyage spécialisé",
+      "desc": "Entretien professionnel pour une durabilité optimale."
+    }
+  },
+  "manufactureAndQuality": {
+    "label": "Fabrication & qualité",
+    "title": "Un savoir-faire français au service de la radioprotection.",
+    "description": "Chez Well With Waves, la radioprotection est envisagée comme un engagement durable. Nous concevons et fabriquons en France des équipements destinés aux environnements médicaux les plus exigeants.",
+    "features": [
+      "Fabrication et assemblage en France",
+      "Contrôles qualité et traçabilité",
+      "Vente, location et maintenance",
+      "Solutions adaptées aux établissements"
+    ],
+    "discover": "Découvrez notre savoir-faire"
+  },
+  "mainProducts": {
+    "label": "Catalogue",
+    "title": "Produits phares",
+    "subtitle": "Découvrez notre sélection d'équipements de radioprotection conçus pour répondre aux besoins des environnements médicaux exigeants."
+  },
+  "products": {
+    "kicker": "CATALOGUE",
+    "title": "Équipements de radioprotection",
+    "subtitle": "Une sélection pensée pour les environnements médicaux exigeants : confort, durabilité et finition premium.",
+    "filters": {
+      "kicker": "FILTRES",
+      "all": "Tous",
+      "reset": "Réinitialiser",
+      "results": "produits affichés",
+      "category": "Catégories",
+      "size": "Tailles",
+      "sizeHint": "Astuce : le filtre taille nécessite que tes produits déclarent un champ sizes.",
+      "tags": "Tags",
+      "sort": "Tri"
+    },
+    "sort": {
+      "featured": "Sélection",
+      "name": "Nom",
+      "category": "Catégorie"
+    },
+    "empty": "Aucun produit ne correspond à cette catégorie.",
+    "categories": {
+      "tabliers": "Tabliers",
+      "chasubles": "Chasubles",
+      "protegeThyroide": "Protège-thyroïde",
+      "vestes": "Vestes",
+      "jupes": "Jupes",
+      "autres": "Autres"
+    },
+    "backCatalogue": "Retour au catalogue",
+    "technicalFile": "Fiche technique",
+    "downloadPdf": "Télécharger le Pdf",
+    "openPdf": "Ouvrir le Pdf",
+    "technicalTitle": "Spécifications, entretien, options et recommandations d’usage.",
+    "relatedProducts": {
+      "title": "SÉLECTION",
+      "subtitle": "Produits similaires"
+    },
+    "specification" : "SPÉCIFICATIONS"
+  },
+  "partners": {
+    "kicker": "PARTENAIRES",
+    "title": "Un écosystème de confiance.",
+    "subtitle": "Ils soutiennent le projet et contribuent à son développement.",
+    "support": {
+      "kicker": "PARTENAIRES ACCOMPAGNEMENT",
+      "title": "Les partenaires qui accompagnent le projet.",
+      "subtitle": "Incubation, réseau, expertise et accompagnement stratégique."
+    },
+    "funding": {
+      "kicker": "PARTENAIRES FINANCIERS",
+      "title": "Les partenaires qui financent le projet.",
+      "subtitle": "Soutien financier, innovation et développement industriel."
+    }
+  },
+  "ctaFinal": {
+    "title": "Prêt à améliorer votre radioprotection ?",
+    "desc": "Contactez-nous dès aujourd'hui pour discuter de vos besoins en équipements de radioprotection et découvrir comment nous pouvons vous aider.",
+    "contactUs": "Contactez nous et recevez une proposition adaptée à vos usages et à votre établissement."
+  },
+  "team": {
+    "title": "Une équipe dédiée à votre service pour vous accompagner dans vos projets de radioprotection.",
+    "subtitle": "Conseil, confection, contrôle, maintenance : un accompagnement humain et rigoureux.",
+    "meetTheTeam": "Rencontrez l'équipe"
+  },
+  "quote": {
+    "title": "Devis en ligne"
+  },
+  "footer": {
+    "society": "Well With Waves",
+    "description": "Équipements premium de radioprotection. Confection en France, vente, location, contrôles qualité et maintenance.",
+    "allRightsReserved": "Well With Waves © Tous droits réservés.",
+    "navigation": {
+      "title": "Liens",
+      "products": "Produits",
+      "services": "Services",
+      "partners": "Partenaires",
+      "about": "À propos"
+    }
+  },
+  "global": {
+    "legal": {
+      "termsOfService": "Conditions d'utilisation",
+      "privacyPolicy": "Politique de confidentialité"
+    },
+    "legalNotice": "Mentions légales",
+    "viewProduct": "Voir le produit",
+    "discoverManufacture": "Découvrir notre savoir-faire",
+    "requestQuote": "Demander un devis",
+    "quote": "Devis",
+    "contactUs": "Contactez nous",
+    "discoverCatalog": "Découvrir le catalogue",
+    "download": "Télécharger",
+    "home": "Accueil",
+    "products": "Produits"
+  }
+}

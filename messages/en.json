@@ -1,0 +1,168 @@
+{
+  "nav": {
+    "products": "Products",
+    "services": "Services",
+    "quote": "Get a quote",
+    "partners": "Partners",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "heroTitle": "Reliable radiation protection.",
+    "heroSubtitle": "Premium radiation protection equipment for demanding medical environments.",
+    "heroMadeInenFrance": "Made in our workshops in France • RADIATION PROTECTION"
+  },
+  "proof": {
+    "title": "Proof of our expertise",
+    "subtitle": "Our commitments to quality and compliance.",
+    "checkBadge": {
+      "title": "Made in France",
+      "desc": "In-house manufacturing, premium finishes."
+    },
+    "shieldBadge": {
+      "title": "Compliance",
+      "desc": "Quality controls & traceability."
+    },
+    "sparkleBadge": {
+      "title": "Maintenance",
+      "desc": "Specialized cleaning and maintenance."
+    },
+    "factoryBadge": {
+      "title": "In-house manufacturing",
+      "desc": "Workshops in France, mastered expertise."
+    }
+  },
+  "services": {
+    "title": "A comprehensive offer, designed for institutions.",
+    "subtitle": "From acquisition to maintenance, we support your teams with reliable, comfortable, and durable equipment.",
+    "sales": {
+      "title": "Equipment sales",
+      "desc": "Premium aprons and protections for radiological environments."
+    },
+    "rental": {
+      "title": "Equipment rental",
+      "desc": "Flexible solutions for temporary or specific needs."
+    },
+    "qualityChecks": {
+      "title": "Quality checks",
+      "desc": "Rigorous verification to ensure performance and safety."
+    },
+    "cleaning": {
+      "title": "Specialized cleaning",
+      "desc": "Professional maintenance for optimal durability."
+    }
+  },
+  "manufactureAndQuality": {
+    "label": "CRAFTSMANSHIP & QUALITY",
+    "title": "A rigorous approach to radiation protection.",
+    "description": "Each piece of equipment is designed and controlled according to high standards, with particular attention paid to comfort, durability and the safety of healthcare professionals.",
+    "features": [
+      "Manufacturing and assembly in France",
+      "Quality control and traceability",
+      "Sales, rental and maintenance services",
+      "Solutions tailored to healthcare facilities"
+    ],
+    "discover": "Discover our expertise"
+  },
+  "mainProducts": {
+    "label": "Catalogue",
+    "title": "Featured Products",
+    "subtitle": "Discover our selection of radiation protection equipment designed to meet the demands of highly regulated medical environments."
+  },
+  "products": {
+    "kicker": "CATALOGUE",
+    "title": "Radiation Protection Equipment",
+    "subtitle": "A selection designed for demanding medical environments: comfort, durability and premium finish.",
+    "filters": {
+      "kicker": "FILTERS",
+      "all": "All",
+      "reset": "Reset",
+      "results": "products displayed",
+      "category": "Categories",
+      "size": "Sizes",
+      "sizeHint": "Hint: the size filter requires your products to declare a sizes field.",
+      "tags": "Tags",
+      "sort": "Sort"
+    },
+    "sort": {
+      "featured": "Featured",
+      "name": "Name",
+      "category": "Category"
+    },
+    "empty": "No products match this category.",
+    "categories": {
+      "tabliers": "Protective aprons",
+      "chasubles": "Protective chasubles",
+      "protege-thyroide": "Thyroid protectors",
+      "vestes": "Protective jackets",
+      "jupes": "Protective skirts",
+      "autres": "Other equipment"
+    },
+    "backCatalogue": "Back to catalogue",
+    "technicalFile": "Technical file",
+    "downloadPdf": "Download Pdf",
+    "openPdf": "Ouvrir le Pdf",
+    "technicalTitle": "Specifications, cleaning, options and usage recommandations.",
+    "relatedProducts": {
+      "title": "SELECTION",
+      "subtitle": "Similary products"
+    },
+    "specification" : "SPECIFICATIONS"
+  },
+  "partners": {
+    "kicker": "PARTNERS",
+    "title": "A trusted ecosystem.",
+    "subtitle": "They support the project and contribute to its growth.",
+    "support": {
+      "kicker": "SUPPORT PARTNERS",
+      "title": "Partners supporting the project.",
+      "subtitle": "Incubation, networking, expertise and strategic guidance."
+    },
+    "funding": {
+      "kicker": "FINANCIAL PARTNERS",
+      "title": "Partners funding the project.",
+      "subtitle": "Financial support, innovation and industrial development."
+    }
+  },
+  "ctaFinal": {
+    "title": "Ready to enhance your radiation protection?",
+    "desc": "Get in touch with us today to discuss your radiation protection needs and discover how we can support your organization.",
+    "contactUs": "Contact us and receive a tailored proposal for your use cases and your facility."
+  },
+  "team": {
+    "title": "A dedicated team at your service to support you in your radiation protection projects.",
+    "subtitle": "Our experts are available to advise and assist you in selecting the most suitable equipment for your needs.",
+    "meetTheTeam": "Meet the team"
+  },
+  "quote": {
+    "title": "Online quote"
+  },
+  "footer": {
+    "society": "Well With Waves",
+    "description": "Premium radiation protection equipment. Manufactured in France, sales, rental, quality controls and maintenance.",
+    "allRightsReserved": "Well With Waves © All rights reserved.",
+    "navigation": {
+      "title": "Links",
+      "products": "Products",
+      "services": "Services",
+      "partners": "Partners",
+      "about": "About"
+    }
+  },
+  "global": {
+    "legal": {
+      "termsOfService": "Terms of Service",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "viewProduct": "View the product",
+    "discoverManufacture": "Discover our expertise",
+    "quote": "Quote",
+    "legalNotice": "Legal Notice",
+    "requestQuote": "Request a quote",
+    "contactUs": "Contact us",
+    "discoverCatalog": "Discover the catalog",
+    "download": "Download",
+    "home": "Home",
+    "products": "Products"
+  }
+}
