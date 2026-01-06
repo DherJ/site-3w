@@ -33,23 +33,53 @@
     }
   },
   "services": {
-    "title": "Une offre complète, pensée pour les établissements.",
-    "subtitle": "De l’acquisition à l’entretien, nous accompagnons vos équipes avec des équipements fiables, confortables et durables.",
     "sales": {
       "title": "Vente d’équipements",
-      "desc": "Tabliers et protections premium pour environnements radiologiques."
+      "desc": "Tabliers et protections premium pour environnements radiologiques.",
+      "process": {
+        "title": "Process en 3 étapes",
+        "steps": [
+          "Analyse du besoin",
+          "Sélection des équipements",
+          "Livraison & accompagnement"
+        ]
+      }
     },
     "rental": {
       "title": "Location d’équipements",
-      "desc": "Solutions flexibles pour besoins temporaires ou spécifiques."
+      "desc": "Solutions flexibles pour besoins temporaires ou spécifiques.",
+      "process": {
+        "title": "Process en 3 étapes",
+        "steps": [
+          "Définition du besoin",
+          "Mise à disposition rapide",
+          "Retour & contrôle"
+        ]
+      }
     },
     "qualityChecks": {
       "title": "Contrôles qualité",
-      "desc": "Vérification rigoureuse pour garantir performance et sécurité."
+      "desc": "Vérification rigoureuse pour garantir performance et sécurité.",
+      "process": {
+        "title": "Process en 3 étapes",
+        "steps": [
+          "Inspection",
+          "Tests de performance",
+          "Rapport & recommandations"
+        ]
+      }
     },
     "cleaning": {
       "title": "Nettoyage spécialisé",
-      "desc": "Entretien professionnel pour une durabilité optimale."
+      "desc": "Entretien professionnel pour une durabilité optimale.",
+      "process": {
+        "title": "Process en 3 étapes",
+        "steps": [
+          "Collecte / réception",
+          "Nettoyage spécialisé",
+          "Contrôle final"
+        ]
+      }
     }
   },
   "manufactureAndQuality": {
@@ -107,7 +137,7 @@
       "title": "SÉLECTION",
       "subtitle": "Produits similaires"
     },
-    "specification" : "SPÉCIFICATIONS"
+    "specification": "SPÉCIFICATIONS"
   },
   "partners": {
     "kicker": "PARTENAIRES",
@@ -138,9 +168,9 @@
     "title": "Devis en ligne"
   },
   "footer": {
-    "society": "Well With Waves",
+    "society": "3W - Well With Waves",
     "description": "Équipements premium de radioprotection. Confection en France, vente, location, contrôles qualité et maintenance.",
-    "allRightsReserved": "Well With Waves © Tous droits réservés.",
+    "allRightsReserved": "3W - Well With Waves © Tous droits réservés.",
     "navigation": {
       "title": "Liens",
       "products": "Produits",
@@ -163,6 +193,7 @@
     "discoverCatalog": "Découvrir le catalogue",
     "download": "Télécharger",
     "home": "Accueil",
-    "products": "Produits"
+    "products": "Produits",
+    "siteName": "WellWithWaves"
   }
 }

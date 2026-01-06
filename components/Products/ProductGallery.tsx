@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import HoverRevealImage from "@/components/ui/HoverRevealImage";
+import CursorZoomImage from "../ui/CursorZoomImage";
 
 export type GalleryImage = {
   src: string;
@@ -162,30 +163,26 @@ export default function ProductGallery({
 
         {/* Desktop: big image with optional split */}
         <div className="hidden lg:block">
-          <div className="relative aspect-square w-full">
+          <div className="relative aspect-square w-full overflow-hidden">
             {enableHoverSplit && active.hoverSrc ? (
               <HoverRevealImage
                 baseSrc={active.src}
-                hoverSrc={active.hoverSrc}
                 alt={active.alt}
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                autoRotateOnMobile={false}
                 className="h-full w-full"
               />
-            ) : (
-              <>
-                <Image
-                  src={active.src}
-                  alt={active.alt}
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                />
-                <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
-              </>
-            )}
 
+            ) : (
+              <CursorZoomImage
+                src={active.src}
+                alt={active.alt}
+                zoom={1.9}
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="h-full w-full"
+              />
+            )}
+            {/* Glow brand */}
             <div className="pointer-events-none absolute inset-0">
               <div className="absolute -inset-24 opacity-[0.06] blur-3xl bg-brandChampagne" />
             </div>

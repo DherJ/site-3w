@@ -33,23 +33,53 @@
     }
   },
   "services": {
-    "title": "A comprehensive offer, designed for institutions.",
-    "subtitle": "From acquisition to maintenance, we support your teams with reliable, comfortable, and durable equipment.",
     "sales": {
-      "title": "Equipment sales",
-      "desc": "Premium aprons and protections for radiological environments."
+      "title": "Protective equipment sales",
+      "desc": "Lead aprons and premium radiation protection equipment for demanding environments.",
+      "process": {
+        "title": "3-step process",
+        "steps": [
+          "Needs assessment",
+          "Equipment selection",
+          "Delivery & support"
+        ]
+      }
     },
     "rental": {
       "title": "Equipment rental",
-      "desc": "Flexible solutions for temporary or specific needs."
+      "desc": "Flexible solutions for temporary needs, replacements or specific events.",
+      "process": {
+        "title": "3-step process",
+        "steps": [
+          "Define your needs",
+          "Fast deployment",
+          "Return & inspection"
+        ]
+      }
     },
     "qualityChecks": {
-      "title": "Quality checks",
-      "desc": "Rigorous verification to ensure performance and safety."
+      "title": "Quality control & compliance checks",
+      "desc": "Rigorous verification to ensure protection performance and safety over time.",
+      "process": {
+        "title": "3-step process",
+        "steps": [
+          "Inspection",
+          "Performance testing",
+          "Report & recommendations"
+        ]
+      }
     },
     "cleaning": {
       "title": "Specialized cleaning",
-      "desc": "Professional maintenance for optimal durability."
+      "desc": "Professional cleaning designed to preserve materials and extend equipment lifespan.",
+      "process": {
+        "title": "3-step process",
+        "steps": [
+          "Collection / intake",
+          "Specialized cleaning",
+          "Final control"
+        ]
+      }
     }
   },
   "manufactureAndQuality": {
@@ -107,7 +137,7 @@
       "title": "SELECTION",
       "subtitle": "Similary products"
     },
-    "specification" : "SPECIFICATIONS"
+    "specification": "SPECIFICATIONS"
   },
   "partners": {
     "kicker": "PARTNERS",
@@ -138,9 +168,9 @@
     "title": "Online quote"
   },
   "footer": {
-    "society": "Well With Waves",
+    "society": "3W - Well With Waves",
     "description": "Premium radiation protection equipment. Manufactured in France, sales, rental, quality controls and maintenance.",
-    "allRightsReserved": "Well With Waves © All rights reserved.",
+    "allRightsReserved": "3W - Well With Waves © All rights reserved.",
     "navigation": {
       "title": "Links",
       "products": "Products",
@@ -163,6 +193,7 @@
     "discoverCatalog": "Discover the catalog",
     "download": "Download",
     "home": "Home",
-    "products": "Products"
+    "products": "Products",
+    "siteName": "WellWithWaves"
   }
 }

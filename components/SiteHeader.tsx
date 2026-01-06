@@ -83,9 +83,8 @@ export function SiteHeader() {
 
   const links = [
     { key: "products", href: `/${locale}/products`, label: t("products") },
-    { key: "services", href: `/${locale}/services/sales`, label: t("services") },
-    { key: "partners", href: `/${locale}/partners`, label: t("partners") },
-    { key: "quote", href: `/${locale}/quote`, label: t("quote") },
+    { key: "services", href: `/${locale}/services`, label: t("services") },
+    { key: "about", href: `/${locale}/about`, label: t("about") },
     { key: "contact", href: `/${locale}/contact`, label: t("contact") },
   ];
 
