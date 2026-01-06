@@ -38,11 +38,9 @@
       "desc": "Tabliers et protections premium pour environnements radiologiques.",
       "process": {
         "title": "Process en 3 étapes",
-        "steps": [
-          "Analyse du besoin",
-          "Sélection des équipements",
-          "Livraison & accompagnement"
-        ]
+        "step1": "Analyse du besoin",
+        "step2": "Sélection des équipements",
+        "step3": "Livraison & accompagnement"
       }
     },
     "rental": {
@@ -50,11 +48,9 @@
       "desc": "Solutions flexibles pour besoins temporaires ou spécifiques.",
       "process": {
         "title": "Process en 3 étapes",
-        "steps": [
-          "Définition du besoin",
-          "Mise à disposition rapide",
-          "Retour & contrôle"
-        ]
+        "step1": "Définition du besoin",
+        "step2": "Mise à disposition rapide",
+        "step3": "Retour & contrôle"
       }
     },
     "qualityChecks": {
@@ -62,11 +58,9 @@
       "desc": "Vérification rigoureuse pour garantir performance et sécurité.",
       "process": {
         "title": "Process en 3 étapes",
-        "steps": [
-          "Inspection",
-          "Tests de performance",
-          "Rapport & recommandations"
-        ]
+          "step1": "Inspection",
+          "step2": "Tests de performance",
+          "step3": "Rapport & recommandations"
       }
     },
     "cleaning": {
@@ -74,11 +68,9 @@
       "desc": "Entretien professionnel pour une durabilité optimale.",
       "process": {
         "title": "Process en 3 étapes",
-        "steps": [
-          "Collecte / réception",
-          "Nettoyage spécialisé",
-          "Contrôle final"
-        ]
+        "step1": "Collecte / réception",
+        "ste2": "Nettoyage spécialisé",
+        "step3": "Contrôle final"
       }
     }
   },

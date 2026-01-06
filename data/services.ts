@@ -1,33 +1,12 @@
-type Service = {
-    slug: string;
-    title?: string;
-    desc?: string;
-    imageSrc: string;
+export type Service = {
+  slug: string;
+  i18nKey: "sales" | "rental" | "qualityChecks" | "cleaning";
+  imageSrc: string;
 };
 
 export const SERVICES: Service[] = [
-    {
-        slug: "sales",
-        title: "sales.title",
-        desc: "sales.desc",
-        imageSrc: "/services/sales.png"
-    },
-    {
-        slug: "rental",
-        title: "rental.title",
-        desc: "rental.desc",
-        imageSrc: "/services/rental.png"
-    },
-    {
-        slug: "quality",
-        title: "qualityChecks.title",
-        desc: "qualityChecks.desc",
-        imageSrc: "/services/quality.png"
-    },
-    {
-        slug: "cleaning",
-        title: "cleaning.title",
-        desc: "cleaning.desc",
-        imageSrc: "/services/cleaning.png"
-    },
+  { slug: "sales", i18nKey: "sales", imageSrc: "/services/sales.png" },
+  { slug: "rental", i18nKey: "rental", imageSrc: "/services/rental.png" },
+  { slug: "quality", i18nKey: "qualityChecks", imageSrc: "/services/quality.png" },
+  { slug: "cleaning", i18nKey: "cleaning", imageSrc: "/services/cleaning.png" },
 ];

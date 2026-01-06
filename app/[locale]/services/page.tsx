@@ -156,12 +156,7 @@ export default async function ServicesPage({ params }: Props) {
 
         {/* ✅ LIST (client, avec animations) */}
         <ServicesClient
-          services={SERVICES.map((s) => ({
-            slug: s.slug,
-            title: t(s.title!),
-            desc: t(s.desc!),
-            imageSrc: s.imageSrc,
-          }))}
+          services={SERVICES}
         />
 
         {/* SEO block optionnel */}
