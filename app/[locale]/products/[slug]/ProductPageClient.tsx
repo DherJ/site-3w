@@ -24,7 +24,7 @@ import {
 } from "@/components/products/hooks/getSelectedVariant";
 
 import type { LeadEquivalent, ProductSize } from "@/data/products";
-import { JsonLd } from "@/components/seo/JsonLd";
+
 
 type PageProps = { params: { locale: string; slug: string } };
 
@@ -83,43 +83,9 @@ export default function ProductPageClient({ params }: PageProps) {
   const specs = variant?.specs ?? product.specs;
   const datasheetPdf = variant?.datasheetPdf ?? product.datasheetPdf;
 
-  // ✅ JSON-LD (Product schema)
-  const productJsonLd = useMemo(() => {
-    const canonical = `https://wellwithwaves.com/${locale}/products/${product.slug}`;
-
-    const images = (product.images ?? [])
-      .map((i) => i?.src)
-      .filter(Boolean);
-
-    return {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: product.title,
-      description:
-        product.meta ??
-        `Découvrez ${product.title}. Caractéristiques techniques, variantes, et demande de devis en ligne.`,
-      image: images.length ? images : undefined,
-      sku: product.slug,
-      category: categoryLabel,
-      brand: {
-        "@type": "Brand",
-        name: "WellWithWaves",
-      },
-      offers: {
-        "@type": "Offer",
-        url: `https://wellwithwaves.com${quoteHref}`,
-        priceCurrency: "EUR",
-        availability: "https://schema.org/InStock",
-      },
-      url: canonical,
-    };
-  }, [locale, product, categoryLabel, quoteHref]);
 
   return (
     <div className="relative">
-      {/* JSON-LD */}
-      <JsonLd data={productJsonLd} />
-
       <div className="pointer-events-none absolute inset-0 bg-brandOffWhite" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-brandOffWhite to-white" />
 

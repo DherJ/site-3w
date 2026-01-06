@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import SignatureLine from "@/components/ui/SignatureLine";
 import { SERVICES } from "@/data/services";
 import ServicesClient from "./ServicesClient";
+import { getServicesJsonLd } from "./seo";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -65,33 +66,9 @@ export default async function ServicesPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "services" });
   const g = await getTranslations({ locale, namespace: "global" });
 
-  const canonicalPath = `/${locale}/services`;
   const quoteHref = `/${locale}/quote`;
 
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: g("siteName", { default: "NomDeTaMarque" }),
-      url: absoluteUrl(`/${locale}`),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: t("seo.serviceName", { default: "Services de protection & blindage radiologique" }),
-      description: t("seo.description", {
-        default:
-          "Audit, blindage, contrôle & conformité, maintenance. Solutions sur mesure et devis rapide.",
-      }),
-      provider: {
-        "@type": "Organization",
-        name: g("siteName", { default: "NomDeTaMarque" }),
-        url: absoluteUrl(`/${locale}`),
-      },
-      url: absoluteUrl(canonicalPath),
-      areaServed: "FR",
-    },
-  ];
+  const jsonLd = await getServicesJsonLd(locale);
 
   return (
     <div className="relative">

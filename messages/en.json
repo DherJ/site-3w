@@ -33,20 +33,22 @@
     }
   },
   "services": {
+    "kicker": "SERVICES",
+    "title": "Services – Protection & Radiology shield",
+    "subtitle": "Audit, shielding, control and maintenance: a comprehensive, field-oriented support.",
+    "seeServices": "See Services",
     "seo": {
-      "title": "Services – Protection & Radiology shield",
-      "description": "Services – Protective equipment"
+      "title": "Radiation protection services",
+      "description": "Discover our services of sales, rental, quality controls and maintenance of radiation protection equipment designed for demanding medical environments."
     },
     "sales": {
       "title": "Protective equipment sales",
       "desc": "Lead aprons and premium radiation protection equipment for demanding environments.",
       "process": {
         "title": "3-step process",
-        "steps": [
-          "Needs assessment",
-          "Equipment selection",
-          "Delivery & support"
-        ]
+        "step1": "Needs assessment",
+        "step2": "Equipment selection",
+        "step3": "Delivery & support"
       }
     },
     "rental": {
@@ -54,11 +56,9 @@
       "desc": "Flexible solutions for temporary needs, replacements or specific events.",
       "process": {
         "title": "3-step process",
-        "steps": [
-          "Define your needs",
-          "Fast deployment",
-          "Return & inspection"
-        ]
+        "step1": "Define your needs",
+        "step2": "Fast deployment",
+        "step3": "Return & inspection"
       }
     },
     "qualityChecks": {
@@ -66,11 +66,9 @@
       "desc": "Rigorous verification to ensure protection performance and safety over time.",
       "process": {
         "title": "3-step process",
-        "steps": [
-          "Inspection",
-          "Performance testing",
-          "Report & recommendations"
-        ]
+        "step1": "Inspection",
+        "step2": "Performance testing",
+        "step3": "Report & recommendations"
       }
     },
     "cleaning": {
@@ -78,11 +76,9 @@
       "desc": "Professional cleaning designed to preserve materials and extend equipment lifespan.",
       "process": {
         "title": "3-step process",
-        "steps": [
-          "Collection / intake",
-          "Specialized cleaning",
-          "Final control"
-        ]
+        "step1": "Collection / intake",
+        "step2": "Specialized cleaning",
+        "step3": "Final control"
       }
     }
   },

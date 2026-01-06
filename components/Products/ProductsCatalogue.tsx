@@ -265,7 +265,14 @@ export default function ProductsCatalogue({ locale }: { locale: string }) {
                                 </div>
 
                                 {/* GRID */}
-                                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                                <div
+                                    className={[
+                                        "grid gap-6",
+                                        "sm:grid-cols-2",
+                                        "lg:grid-cols-3",
+                                        "items-stretch",
+                                    ].join(" ")}
+                                >
                                     {filteredProducts.map((p) => (
                                         <ProductCard
                                             key={p.slug}
@@ -273,8 +280,8 @@ export default function ProductsCatalogue({ locale }: { locale: string }) {
                                             hrefProduct={productHref(p.slug)}
                                             title={p.title}
                                             meta={p.meta}
-                                            imageSrc={p.images[0]?.src ?? ""}
-                                            hoverImageSrc={p.images[0]?.hoverSrc}
+                                            imageSrc={p.images?.[0]?.src ?? "/placeholder.jpg"}
+                                            hoverImageSrc={p.images?.[0]?.hoverSrc}
                                         />
                                     ))}
                                 </div>

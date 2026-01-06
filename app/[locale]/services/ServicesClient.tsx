@@ -41,43 +41,61 @@ function ServiceRow({
     >
       <div
         className={[
-          "grid gap-0 lg:grid-cols-2",
+          "grid lg:grid-cols-[0.85fr_1.15fr]",
           reverse ? "lg:[&>*:first-child]:order-2" : "",
         ].join(" ")}
       >
-        {/* Image */}
-        <div className="relative aspect-[4/3] w-full bg-white">
-          <Image
-            src={imageSrc}
-            alt={title}
-            fill
-            className="object-contain p-8"
-            sizes="(min-width: 1024px) 520px, 100vw"
-          />
+        {/* IMAGE — Frame constant pour uniformiser */}
+        <div className="bg-white">
+          <div
+            className={[
+              "relative w-full",
+              "h-[360px] md:h-[420px] lg:h-[460px]",
+              "overflow-hidden",
+              "flex items-center justify-center",
+            ].join(" ")}
+          >
+            {/* ✅ “frame” intérieur pour calmer les images trop grandes */}
+            <div className="relative h-full w-full p-8 md:p-10 lg:p-12">
+              <div className="relative h-full w-full">
+                <Image
+                  src={imageSrc}
+                  alt={title}
+                  fill
+                  className="object-contain [transform:scale(0.92)]"
+                  sizes="(min-width: 1024px) 520px, 100vw"
+                />
+              </div>
+            </div>
+
+            {/* voile discret */}
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-          <div className="text-[11px] font-extrabold tracking-[0.28em] text-brandNavy/60">
-            SERVICE
+        {/* CONTENT */}
+        <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-extrabold tracking-[0.28em] text-brandNavy/60">
+              SERVICE
+            </div>
+
+            <h2 className="mt-3 font-serif text-2xl font-semibold tracking-tight text-brandNavy md:text-3xl">
+              {title}
+            </h2>
+
+            <div className="mt-2 h-[2px] w-10 rounded-full bg-brandChampagne/70" />
+
+            <div className="mt-4 w-[220px]">
+              <SignatureLine align="left" />
+            </div>
+
+            <p className="mt-4 text-sm leading-relaxed text-brandMuted md:text-base">
+              {desc}
+            </p>
           </div>
 
-          <h2 className="mt-3 font-serif text-2xl font-semibold tracking-tight text-brandNavy md:text-3xl">
-            {title}
-          </h2>
-
-          {/* ligne champagne */}
-          <div className="mt-2 h-[2px] w-10 rounded-full bg-brandChampagne/70" />
-
-          <div className="mt-4 w-[220px]">
-            <SignatureLine align="left" />
-          </div>
-
-          <p className="mt-4 text-sm leading-relaxed text-brandMuted md:text-base">
-            {desc}
-          </p>
-
-          {/* Process (premium) */}
+          {/* PROCESS */}
           <div className="mt-6 rounded-3xl bg-white/60 ring-1 ring-brandLine p-6">
             <div className="flex items-center justify-between gap-4">
               <div className="text-[11px] font-extrabold tracking-[0.22em] text-brandNavy/60">
@@ -86,55 +104,32 @@ function ServiceRow({
               <div className="hidden sm:block h-[2px] w-16 rounded-full bg-brandChampagne/60" />
             </div>
 
-            <div className="mt-5">
-              <div className="grid gap-3 sm:grid-cols-3">
-                {processSteps.slice(0, 3).map((step, i) => (
-                  <div key={`${title}-step-${i}`} className="group relative">
-                    {/* connector (desktop) */}
-                    {i < 2 && (
-                      <div className="hidden sm:block pointer-events-none absolute top-[18px] left-[calc(100%_-_6px)] w-[calc(100%_-_12px)]">
-                        <div className="h-[2px] w-full bg-brandLine" />
-                        <div className="absolute left-0 top-0 h-[2px] w-0 bg-brandChampagne/70 transition-all duration-300 group-hover:w-full" />
-                      </div>
-                    )}
+            <div className="mt-5 space-y-4">
+              {processSteps.slice(0, 3).map((step, i) => (
+                <div
+                  key={`${title}-step-${i}`}
+                  className="flex items-start gap-4"
+                >
+                  {/* Badge */}
+                  <span className="mt-[2px] inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-brandChampagne/25 text-sm font-extrabold text-brandNavy ring-1 ring-brandChampagne/30">
+                    {i + 1}
+                  </span>
 
-                    <div
-                      className={[
-                        "relative overflow-hidden rounded-2xl bg-white/70 ring-1 ring-brandLine",
-                        "px-4 py-4",
-                        "transition-all duration-300",
-                        "group-hover:-translate-y-0.5 group-hover:ring-brandChampagne/40",
-                      ].join(" ")}
-                    >
-                      {/* glow */}
-                      <div className="pointer-events-none absolute -inset-10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-[0.10] bg-brandChampagne" />
-
-                      <div className="flex items-start gap-3">
-                        <span
-                          className={[
-                            "inline-flex h-9 w-9 items-center justify-center rounded-2xl",
-                            "bg-brandChampagne/25 text-sm font-extrabold text-brandNavy",
-                            "ring-1 ring-brandChampagne/30",
-                            "transition-transform duration-300 group-hover:scale-[1.03]",
-                          ].join(" ")}
-                        >
-                          {i + 1}
-                        </span>
-
-                        <div className="min-w-0">
-                          <div className="text-sm font-semibold text-brandNavy leading-snug">
-                            {step}
-                          </div>
-                          {/* mini hint */}
-                          <div className="mt-1 text-xs text-brandMuted">
-                            {i === 0 ? "Cadrage" : i === 1 ? "Mise en œuvre" : "Validation"}
-                          </div>
-                        </div>
-                      </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold text-brandNavy leading-snug break-words">
+                      {step}
                     </div>
+                    <div className="mt-1 text-xs text-brandMuted">
+                      {i === 0 ? "Cadrage" : i === 1 ? "Mise en œuvre" : "Validation"}
+                    </div>
+
+                    {/* séparateur fin sauf dernier */}
+                    {i < 2 ? (
+                      <div className="mt-4 h-px w-full bg-brandLine/60" />
+                    ) : null}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -156,7 +151,7 @@ export default function ServicesClient({ services }: { services: Service[] }) {
         const processTitle = t(`${s.i18nKey}.process.title`);
         // const processSteps = t.raw(`${s.i18nKey}.process.steps`) as string[];
         const processSteps = [t(`${s.i18nKey}.process.step1`), t(`${s.i18nKey}.process.step2`), t(`${s.i18nKey}.process.step3`)]
-        
+
         return (
           <ServiceRow
             key={s.slug}

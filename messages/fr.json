@@ -33,12 +33,18 @@
     }
   },
   "services": {
+    "kicker": "SERVICES",
+    "title": "Services – Protection & Blindage Radiologique",
+    "subtitle": "Audit, blindage, contrôle et maintenance : un accompagnement complet, orienté terrain.",
+    "seeServices": "Voir les services",
     "seo": {
-      "title": "Services – Protection & Blindage Radiologique",
-      "description": "Services – Protection & Blindage Radiologique"
+      "title": "Services de radioprotection",
+      "description": "Découvrez nos services de vente, location, contrôles qualité et maintenance d'équipements de radioprotection conçus pour les environnements médicaux exigeants.",
+      "h1": "Services de radioprotection – Vente, location, contrôles qualité et maintenance",
+      "h2": "Accompagnement complet pour vos besoins en radioprotection"
     },
     "sales": {
-      "title": "Vente d’équipements",
+      "title": "Vente d’équipements de radioprotection",
       "desc": "Tabliers et protections premium pour environnements radiologiques.",
       "process": {
         "title": "Process en 3 étapes",
@@ -62,9 +68,9 @@
       "desc": "Vérification rigoureuse pour garantir performance et sécurité.",
       "process": {
         "title": "Process en 3 étapes",
-          "step1": "Inspection",
-          "step2": "Tests de performance",
-          "step3": "Rapport & recommandations"
+        "step1": "Inspection",
+        "step2": "Tests de performance",
+        "step3": "Rapport & recommandations"
       }
     },
     "cleaning": {
@@ -73,7 +79,7 @@
       "process": {
         "title": "Process en 3 étapes",
         "step1": "Collecte / réception",
-        "ste2": "Nettoyage spécialisé",
+        "step2": "Nettoyage spécialisé",
         "step3": "Contrôle final"
       }
     }
