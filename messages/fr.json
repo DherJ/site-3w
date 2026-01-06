@@ -33,6 +33,10 @@
     }
   },
   "services": {
+    "seo": {
+      "title": "Services – Protection & Blindage Radiologique",
+      "description": "Services – Protection & Blindage Radiologique"
+    },
     "sales": {
       "title": "Vente d’équipements",
       "desc": "Tabliers et protections premium pour environnements radiologiques.",

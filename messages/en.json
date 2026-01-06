@@ -33,6 +33,10 @@
     }
   },
   "services": {
+    "seo": {
+      "title": "Services – Protection & Radiology shield",
+      "description": "Services – Protective equipment"
+    },
     "sales": {
       "title": "Protective equipment sales",
       "desc": "Lead aprons and premium radiation protection equipment for demanding environments.",
