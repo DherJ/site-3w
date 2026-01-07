@@ -226,6 +226,20 @@
       "contact": "Contact"
     }
   },
+  "legal": {
+    "mentions": {
+      "title": "Mentions légales – WellWithWaves",
+      "description": "Mentions légales : éditeur, hébergeur, contact, propriété intellectuelle."
+    },
+    "privacy": {
+      "title": "Politique de confidentialité – WellWithWaves",
+      "description": "Politique de confidentialité : données, finalités, conservation, droits RGPD."
+    },
+    "terms": {
+      "title": "Conditions d’utilisation – WellWithWaves",
+      "description": "Conditions d’utilisation : accès, responsabilités, propriété intellectuelle."
+    }
+  },
   "global": {
     "legal": {
       "termsOfService": "Terms of Service",
