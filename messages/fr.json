@@ -166,6 +166,53 @@
     "subtitle": "Conseil, confection, contrôle, maintenance : un accompagnement humain et rigoureux.",
     "meetTheTeam": "Rencontrez l'équipe"
   },
+  "about": {
+    "kicker": "À PROPOS",
+    "title": "À propos",
+    "hero": {
+      "h1": "La radioprotection premium, conçue avec exigence — et prouvée.",
+      "p": "Well With Waves (3W) conçoit et fabrique des équipements de radioprotection à destination des environnements médicaux exigeants. De la sélection à la maintenance, notre promesse est simple : confort, durabilité, conformité.",
+      "cta2": "Découvrir nos services"
+    },
+    "company": {
+      "kicker": "L’ENTREPRISE",
+      "h2": "Un atelier intégré au siège, pour maîtriser la qualité.",
+      "p1": "Notre atelier est situé au siège de l’entreprise : cela nous permet de garder la main sur les finitions, les contrôles et la traçabilité, tout en restant réactifs pour les établissements.",
+      "p2": "Nous avançons avec une approche terrain : écouter les besoins des équipes, proposer les protections adaptées, et assurer un suivi clair sur la durée (contrôles, entretien, maintenance).",
+      "addressLabel": "Atelier & siège",
+      "address": "110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques",
+      "features": [
+        "Conception & fabrication intégrées",
+        "Contrôles qualité & traçabilité",
+        "Vente, location, contrôles et maintenance",
+        "Solutions adaptées aux services"
+      ]
+    },
+    "recognition": {
+      "kicker": "RECONNAISSANCE",
+      "h2": "Des distinctions qui valident la démarche.",
+      "intro": "Notre travail est soutenu et reconnu par des programmes et jurys de référence, au croisement de l’innovation, du soin et de l’impact terrain.",
+      "items": [
+        "Lauréat programme HIIT 2025",
+        "Lauréat du Fonds IMT Numérique de la Fondation Mines-Télécom",
+        "Finalistes du concours Mission Entreprendre 2025 – « Coup de cœur du jury »",
+        "Finale au Palmarès des Entreprises Innovantes",
+        "Lauréats des Trophées de l’innovation (FHF) – catégorie « Amélioration de l’expérience soignant »",
+        "3W labellisée Deeptech par Bpifrance"
+      ]
+    },
+    "team": {
+      "kicker": "L’ÉQUIPE",
+      "h2": "Une équipe orientée établissement : conseil, qualité, suivi.",
+      "intro": "Nous combinons exigence produit et accompagnement opérationnel : cadrage du besoin, recommandations, déploiement et support.",
+      "ctaTitle": "Parlons de votre besoin",
+      "ctaDesc": "On vous répond rapidement avec une proposition adaptée à vos contraintes et à vos équipes."
+    },
+    "seo": {
+      "title": "À propos – Well With Waves",
+      "description": "Découvrez Well With Waves (3W) : atelier au siège, engagements qualité, distinctions (HIIT 2025, Fonds IMT Numérique, FHF…), et label Deeptech Bpifrance."
+    }
+  },
   "quote": {
     "title": "Devis en ligne"
   },
@@ -177,7 +224,7 @@
       "title": "Liens",
       "products": "Produits",
       "services": "Services",
-      "partners": "Partenaires",
+      "contact": "Contact",
       "about": "À propos"
     }
   },

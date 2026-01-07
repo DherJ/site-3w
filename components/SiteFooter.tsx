@@ -1,9 +1,10 @@
+// components/layout/SiteFooter.tsx (ou ton fichier actuel)
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import AddressMapLink from "@/components/ui/AddressMapLink";
 
 export function SiteFooter() {
-
   const t = useTranslations("footer");
   const tradGlobal = useTranslations("global");
   const locale = useLocale();
@@ -26,6 +27,7 @@ export function SiteFooter() {
           <div className="font-bold tracking-wide text-white">
             {t("navigation.title")}
           </div>
+
           <ul className="mt-4 space-y-2 text-white/70">
             {[
               { label: t("navigation.products"), href: `/${locale}/products` },
@@ -36,14 +38,7 @@ export function SiteFooter() {
               <li key={link.label}>
                 <Link
                   href={link.href as any}
-                  className="
-                    relative inline-block transition-colors
-                    hover:text-brandChampagne
-                    after:absolute after:left-0 after:-bottom-0.5
-                    after:h-[1px] after:w-0 after:bg-brandChampagne
-                    after:transition-all after:duration-300
-                    hover:after:w-full
-                  "
+                  className="inline-flex text-white/70 hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -60,19 +55,20 @@ export function SiteFooter() {
 
           <ul className="mt-4 space-y-4 text-white/70">
             <li className="flex items-start gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 text-brandChampagne" />
-              <span>
-                110 rue du Smetz <br />
-                62120 Campagne-lès-Wardrecques <br />
-                France
-              </span>
+              <MapPin className="mt-0.5 h-4 w-4 text-brandChampagne shrink-0" />
+              <AddressMapLink
+                address="110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques"
+                variant="inline"
+                tone="dark"
+                className="text-white/80 hover:text-white" // blanc stable
+              />
             </li>
 
             <li className="flex items-center gap-3">
               <Mail className="h-4 w-4 text-brandChampagne" />
               <a
-                href="mailto:contact@wellwithwaves.com"
-                className="hover:text-brandChampagne transition-colors"
+                href="mailto:cdhersin@wellwithwaves.com"
+                className="text-white/80 hover:text-white transition-colors"
               >
                 cdhersin@wellwithwaves.com
               </a>
@@ -82,7 +78,7 @@ export function SiteFooter() {
               <Phone className="h-4 w-4 text-brandChampagne" />
               <a
                 href="tel:+33652710309"
-                className="hover:text-brandChampagne transition-colors"
+                className="text-white/80 hover:text-white transition-colors"
               >
                 +33 6 52 71 03 09
               </a>
@@ -91,9 +87,34 @@ export function SiteFooter() {
         </div>
       </div>
 
-      {/* Bas de footer */}
-      <div className="border-t border-white/10 py-4 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} {t("allRightsReserved")}
+      {/* Bas de footer : legal */}
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-5 md:flex-row md:items-center md:justify-between">
+          <div className="text-xs text-white/55">
+            © {new Date().getFullYear()} {t("allRightsReserved")}
+          </div>
+
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs">
+            <Link
+              href={`/${locale}/legal/mentions-legales`}
+              className="text-white/65 hover:text-white underline-offset-4 hover:underline transition"
+            >
+              {tradGlobal("legalNotice")}
+            </Link>
+            <Link
+              href={`/${locale}/legal/privacy-policy`}
+              className="text-white/65 hover:text-white underline-offset-4 hover:underline transition"
+            >
+              {tradGlobal("legal.privacyPolicy")}
+            </Link>
+            <Link
+              href={`/${locale}/legal/terms`}
+              className="text-white/65 hover:text-white underline-offset-4 hover:underline transition"
+            >
+              {tradGlobal("legal.termsOfService")}
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

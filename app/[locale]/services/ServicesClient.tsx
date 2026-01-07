@@ -41,7 +41,10 @@ function ServiceRow({
     >
       <div
         className={[
-          "grid lg:grid-cols-[0.85fr_1.15fr]",
+          "grid gap-0",
+          reverse
+            ? "lg:grid-cols-[1.25fr_0.75fr]" // ✅ image à droite => plus étroite
+            : "lg:grid-cols-[0.85fr_1.15fr]", // image à gauche => normal
           reverse ? "lg:[&>*:first-child]:order-2" : "",
         ].join(" ")}
       >

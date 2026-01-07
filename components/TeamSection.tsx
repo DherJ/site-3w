@@ -6,7 +6,7 @@ import SectionTitle from "./ui/SectionTitle";
 import SecondaryButton from "./ui/SecondaryButton";
 import { ArrowRight } from "lucide-react";
 
-import { TEAMS } from "@/data/team";
+import { TEAM } from "@/data/team";
 
 export default function TeamSection() {
 
@@ -26,7 +26,7 @@ export default function TeamSection() {
 
                     <div className="mt-10 grid gap-6 md:grid-cols-3">
                         {/* placeholders */}
-                        {TEAMS.map((m) => (
+                        {TEAM.map((m) => (
                             <div key={m.role} className="card-premium overflow-hidden">
                                 <div className="relative aspect-[4/3]">
                                     <Image

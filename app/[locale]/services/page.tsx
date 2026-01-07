@@ -135,19 +135,6 @@ export default async function ServicesPage({ params }: Props) {
         <ServicesClient
           services={SERVICES}
         />
-
-        {/* SEO block optionnel */}
-        <section className="mt-12 rounded-3xl bg-white/60 p-8 ring-1 ring-brandLine">
-          <h2 className="font-serif text-2xl font-semibold text-brandNavy">
-            {t("seoBlock.h2", { default: "Une approche sur mesure" })}
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-brandMuted md:text-base">
-            {t("seoBlock.p1", {
-              default:
-                "Chaque projet est différent : contraintes d’espace, niveaux de protection, usages, maintenance. Nous vous aidons à choisir la solution la plus simple et la plus sûre.",
-            })}
-          </p>
-        </section>
       </div>
     </div>
   );
