@@ -6,6 +6,7 @@ import Link from "next/link";
 import SignatureLine from "@/components/ui/SignatureLine";
 import { useRevealOnScroll } from "@/components/hooks/useRevealOnScroll";
 import AddressMapLink from "@/components/ui/AddressMapLink";
+import AwardsTimeline from "@/components/about/AwardsTimeline";
 
 type CompanyBlock = {
     kicker: string;
@@ -121,6 +122,7 @@ export default function AboutClient({
                 </div>
             </section>
 
+
             {/* RECOGNITION */}
             <section
                 data-reveal
@@ -164,6 +166,19 @@ export default function AboutClient({
                 </div>
             </section>
 
+            <section data-reveal
+                className={[
+                    "rounded-3xl bg-white/70 p-6 ring-1 ring-brandLine shadow-soft backdrop-blur",
+                    "reveal reveal-right",
+                ].join(" ")}
+            >
+                <AwardsTimeline
+                    kicker={recognition.kicker}
+                    title={recognition.title}
+                    intro={recognition.intro}
+                    items={recognition.items}
+                />
+            </section>
             {/* TEAM + CTA */}
             <section
                 data-reveal
