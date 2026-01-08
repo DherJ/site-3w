@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import SignatureLine from "@/components/ui/SignatureLine";
 import { SERVICES } from "@/data/services";
 import ServicesClient from "./ServicesClient";
+import { getServicesJsonLd } from "./seo";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -65,33 +66,9 @@ export default async function ServicesPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "services" });
   const g = await getTranslations({ locale, namespace: "global" });
 
-  const canonicalPath = `/${locale}/services`;
   const quoteHref = `/${locale}/quote`;
 
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: g("siteName", { default: "NomDeTaMarque" }),
-      url: absoluteUrl(`/${locale}`),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: t("seo.serviceName", { default: "Services de protection & blindage radiologique" }),
-      description: t("seo.description", {
-        default:
-          "Audit, blindage, contrôle & conformité, maintenance. Solutions sur mesure et devis rapide.",
-      }),
-      provider: {
-        "@type": "Organization",
-        name: g("siteName", { default: "NomDeTaMarque" }),
-        url: absoluteUrl(`/${locale}`),
-      },
-      url: absoluteUrl(canonicalPath),
-      areaServed: "FR",
-    },
-  ];
+  const jsonLd = await getServicesJsonLd(locale);
 
   return (
     <div className="relative">
@@ -158,19 +135,6 @@ export default async function ServicesPage({ params }: Props) {
         <ServicesClient
           services={SERVICES}
         />
-
-        {/* SEO block optionnel */}
-        <section className="mt-12 rounded-3xl bg-white/60 p-8 ring-1 ring-brandLine">
-          <h2 className="font-serif text-2xl font-semibold text-brandNavy">
-            {t("seoBlock.h2", { default: "Une approche sur mesure" })}
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-brandMuted md:text-base">
-            {t("seoBlock.p1", {
-              default:
-                "Chaque projet est différent : contraintes d’espace, niveaux de protection, usages, maintenance. Nous vous aidons à choisir la solution la plus simple et la plus sûre.",
-            })}
-          </p>
-        </section>
       </div>
     </div>
   );
