@@ -39,9 +39,13 @@
     "seeServices": "See Services",
     "seo": {
       "title": "Radiation protection services",
-      "description": "Discover our services of sales, rental, quality controls and maintenance of radiation protection equipment designed for demanding medical environments."
+      "description": "Discover our services of sales, rental, quality controls and maintenance of radiation protection equipment designed for demanding medical environments.",
+      "h1": "Radiation Protection Services – Sales, Rental, Quality Controls & Maintenance",
+      "h2": "Comprehensive support for your radiation protection needs",
+      "serviceName": "Radiation Protection Services"
     },
     "sales": {
+      "kicker": "SERVICE",
       "title": "Protective equipment sales",
       "desc": "Lead aprons and premium radiation protection equipment for demanding environments.",
       "process": {
@@ -52,6 +56,7 @@
       }
     },
     "rental": {
+      "kicker": "SERVICE",
       "title": "Equipment rental",
       "desc": "Flexible solutions for temporary needs, replacements or specific events.",
       "process": {
@@ -62,6 +67,7 @@
       }
     },
     "qualityChecks": {
+      "kicker": "SERVICE",
       "title": "Quality control & compliance checks",
       "desc": "Rigorous verification to ensure protection performance and safety over time.",
       "process": {
@@ -72,6 +78,7 @@
       }
     },
     "cleaning": {
+      "kicker": "SERVICE",
       "title": "Specialized cleaning",
       "desc": "Professional cleaning designed to preserve materials and extend equipment lifespan.",
       "process": {
@@ -227,17 +234,192 @@
     }
   },
   "legal": {
+    "common": {
+      "companyName": "3W – Well With Waves",
+      "brandName": "WellWithWaves",
+      "addressLabel": "Address",
+      "address": "110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques, France",
+      "emailLabel": "Email",
+      "email": "cdhersin@wellwithwaves.com",
+      "phoneLabel": "Phone",
+      "phone": "+33 6 52 71 03 09",
+      "publisherTitle": "Website publisher",
+      "publisherCompanyName": "Jérôme Dhersin - JD-PIXEL-WORKS",
+      "publisherCompanyAddress": "154 rue du violon d'or, 59190 Hazebrouck, France",
+      "publisherCompanyMail": "j.dhersin@hotmail.fr",
+      "publisherCompanyPhone": "+33 6 47 65 64 33",
+      "hostingTitle": "Hosting",
+      "hostingPlaceholder": "OVH : 2 rue Kellermann, 59100 Roubaix, France.",
+      "ipTitle": "Intellectual property",
+      "ipText": "All content (texts, images, trademarks, logos) is protected. Any reproduction is prohibited without prior written permission.",
+      "liabilityTitle": "Liability",
+      "liabilityText": "We strive to provide accurate information without guaranteeing completeness. Use of the website is the user’s responsibility.",
+      "contactTitle": "Contact",
+      "contactTextPrefix": "For any question, email us at"
+    },
     "mentions": {
-      "title": "Mentions légales – WellWithWaves",
-      "description": "Mentions légales : éditeur, hébergeur, contact, propriété intellectuelle."
+      "title": "Legal notice – WellWithWaves",
+      "description": "WellWithWaves legal notice: publisher, hosting, contact, intellectual property and liability.",
+      "breadcrumb": "Legal notice",
+      "kicker": "INFORMATION",
+      "pageTitle": "Legal notice",
+      "pageSubtitle": "Legal information related to the WellWithWaves website.",
+      "toc": {
+        "editor": "Website publisher",
+        "hosting": "Hosting",
+        "ip": "Intellectual property",
+        "liability": "Liability",
+        "contact": "Contact"
+      },
+      "sections": {
+        "editor": {
+          "title": "Website publisher",
+          "companyLabel": "Company:",
+          "companyValue": "Jérôme Dhersin – jd-pixel-works",
+          "addressLabel": "Address:",
+          "addressValue": "154 rue du violon d'or, 59190 Hazebrouck, France",
+          "emailLabel": "Email:",
+          "emailValue": "j.dhersin@hotmail.fr",
+          "phoneLabel": "Phone:",
+          "phoneValue": "+33 6 47656433"
+        },
+        "hosting": {
+          "title": "Hosting",
+          "text": "OVH : 2 rue Kellermann, 59100 Roubaix, France."
+        },
+        "ip": {
+          "title": "Intellectual property",
+          "text": "All content (texts, images, trademarks, logos) is protected. Any reproduction is prohibited without prior written permission."
+        },
+        "liability": {
+          "title": "Liability",
+          "text": "We strive to ensure the accuracy of the information, without guaranteeing completeness. Use of the website is under the user’s responsibility."
+        },
+        "contact": {
+          "title": "Contact",
+          "text": "For any question, email us at"
+        }
+      }
     },
     "privacy": {
-      "title": "Politique de confidentialité – WellWithWaves",
-      "description": "Politique de confidentialité : données, finalités, conservation, droits RGPD."
+      "title": "Privacy Policy – WellWithWaves",
+      "description": "Privacy policy: data collected, purposes, retention, GDPR rights and contact information.",
+      "breadcrumb": "Privacy Policy",
+      "kicker": "PRIVACY",
+      "pageTitle": "Privacy Policy",
+      "pageSubtitle": "How we handle your data (GDPR).",
+      "toc": {
+        "data": "Data collected",
+        "purposes": "Purposes",
+        "lawful": "Legal basis",
+        "retention": "Retention period",
+        "processors": "Processors & sharing",
+        "rights": "Your rights",
+        "cookies": "Cookies"
+      },
+      "sections": {
+        "data": {
+          "title": "Data collected",
+          "p1": "We collect the information you submit through forms (e.g., name, email, organization, message) and, potentially, technical data (logs)."
+        },
+        "purposes": {
+          "title": "Purposes",
+          "li1": "Respond to your requests (contact, quotes, information).",
+          "li2": "Ensure website operation and security.",
+          "li3": "Audience measurement (if enabled) – to be specified."
+        },
+        "lawful": {
+          "title": "Legal basis",
+          "p1": "Legitimate interest (responding to requests), pre-contractual measures (quotes), legal obligations where applicable."
+        },
+        "retention": {
+          "title": "Retention period",
+          "p1": "Data is kept for the time needed to process your request, then archived/deleted according to legal obligations."
+        },
+        "processors": {
+          "title": "Processors & sharing",
+          "p1": "Your data may be processed by service providers (hosting, email, etc.) strictly to deliver the service. To be adjusted to your stack."
+        },
+        "rights": {
+          "title": "Your rights",
+          "p1": "Under GDPR: access, rectification, erasure, objection, restriction, portability. You can exercise your rights at"
+        },
+        "cookies": {
+          "title": "Cookies",
+          "p1": "To be completed: necessary cookies / analytics / consent (if applicable)."
+        }
+      }
     },
     "terms": {
-      "title": "Conditions d’utilisation – WellWithWaves",
-      "description": "Conditions d’utilisation : accès, responsabilités, propriété intellectuelle."
+      "title": "Terms of Service – WellWithWaves",
+      "description": "Terms of service: website access, liability, intellectual property, external links and contact.",
+      "breadcrumb": "Terms of Service",
+      "kicker": "TERMS",
+      "pageTitle": "Terms of Service",
+      "pageSubtitle": "Rules for accessing and using the website.",
+      "toc": {
+        "purpose": "Purpose",
+        "access": "Website access",
+        "ip": "Intellectual property",
+        "liability": "Liability",
+        "links": "External links",
+        "changes": "Updates",
+        "contact": "Contact"
+      },
+      "sections": {
+        "purpose": {
+          "title": "Purpose",
+          "p1": "These terms govern access to and use of the WellWithWaves website. By browsing the site, you accept these terms."
+        },
+        "access": {
+          "title": "Website access",
+          "p1": "The website is available free of charge, excluding Internet access costs. Access may be suspended for maintenance or updates."
+        },
+        "ip": {
+          "title": "Intellectual property",
+          "p1": "Content (texts, images, trademarks, logos) is protected. Any reproduction or distribution without permission is prohibited."
+        },
+        "liability": {
+          "title": "Liability",
+          "p1": "We strive to provide accurate information without guaranteeing completeness. Users remain responsible for how they use the information."
+        },
+        "links": {
+          "title": "External links",
+          "p1": "The website may include links to third-party sites. We do not control their content and disclaim any responsibility."
+        },
+        "changes": {
+          "title": "Updates",
+          "p1": "We may update these terms at any time. The applicable version is the one published at the time of consultation."
+        },
+        "contact": {
+          "title": "Contact",
+          "p1": "For any question regarding these terms, contact us at"
+        }
+      }
+    }
+  },
+  "contact": {
+    "kicker": "CONTACT",
+    "title": "Contact",
+    "subtitle": "A question, a specific need, or a quote request? Get in touch and we’ll get back to you shortly.",
+    "seo": {
+      "title": "Contact – WellWithWaves",
+      "description": "Contact WellWithWaves for information, quotes, sales or rental of radiation protection equipment, maintenance and quality control services."
+    },
+    "info": {
+      "kicker": "CONTACT DETAILS"
+    },
+    "form": {
+      "name": "Name",
+      "company": "Organization",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "placeholder": "Tell us about your needs…",
+      "send": "Send message",
+      "sending": "Sending…",
+      "success": "Message sent successfully ✅ We’ll get back to you shortly.",
+      "error": "Sending failed. Please try again or contact us by email."
     }
   },
   "global": {
@@ -255,6 +437,7 @@
     "download": "Download",
     "home": "Home",
     "products": "Products",
-    "siteName": "WellWithWaves"
+    "siteName": "WellWithWaves",
+    "summary": "Summary"
   }
 }

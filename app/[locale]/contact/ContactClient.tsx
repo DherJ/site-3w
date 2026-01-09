@@ -1,3 +1,4 @@
+// app/[locale]/contact/ContactClient.tsx
 "use client";
 
 import { useState } from "react";
@@ -5,7 +6,13 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import AddressMapLink from "@/components/ui/AddressMapLink";
 
-export default function ContactClient({ locale }: { locale: string }) {
+export default function ContactClient({
+  locale,
+  legalCommon,
+}: {
+  locale: string;
+  legalCommon: { address: string; email: string; phone: string };
+}) {
   const t = useTranslations("contact");
   const g = useTranslations("global");
 
@@ -21,7 +28,6 @@ export default function ContactClient({ locale }: { locale: string }) {
     const payload = Object.fromEntries(form.entries());
 
     try {
-      // 👉 si tu as une route API: /api/contact
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -109,7 +115,7 @@ export default function ContactClient({ locale }: { locale: string }) {
           <div className="flex items-start gap-3">
             <MapPin className="mt-0.5 h-4 w-4 text-brandChampagne shrink-0" />
             <AddressMapLink
-              address="110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques"
+              address={legalCommon.address}
               variant="inline"
               tone="light"
               className="text-brandNavy"
@@ -119,20 +125,20 @@ export default function ContactClient({ locale }: { locale: string }) {
           <div className="flex items-center gap-3">
             <Mail className="h-4 w-4 text-brandChampagne" />
             <a
-              href="mailto:cdhersin@wellwithwaves.com"
+              href={`mailto:${legalCommon.email}`}
               className="text-sm font-semibold text-brandNavy hover:text-brandChampagne transition-colors"
             >
-              cdhersin@wellwithwaves.com
+              {legalCommon.email}
             </a>
           </div>
 
           <div className="flex items-center gap-3">
             <Phone className="h-4 w-4 text-brandChampagne" />
             <a
-              href="tel:+33652710309"
+              href={`tel:${legalCommon.phone.replace(/\s/g, "")}`}
               className="text-sm font-semibold text-brandNavy hover:text-brandChampagne transition-colors"
             >
-              +33 6 52 71 03 09
+              {legalCommon.phone}
             </a>
           </div>
         </div>

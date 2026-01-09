@@ -2,12 +2,15 @@
 import Link from "next/link";
 import SignatureLine from "@/components/ui/SignatureLine";
 
+type TocItem = { id: string; label: string };
+
 export default function LegalShell({
   locale,
   breadcrumbLabel,
   kicker,
   title,
   subtitle,
+  toc,
   children,
 }: {
   locale: string;
@@ -15,6 +18,7 @@ export default function LegalShell({
   kicker: string;
   title: string;
   subtitle?: string;
+  toc?: TocItem[];
   children: React.ReactNode;
 }) {
   return (
@@ -54,11 +58,43 @@ export default function LegalShell({
             </p>
           ) : null}
 
-          {/* Content */}
-          <div className="mt-8 rounded-3xl bg-white/60 p-6 ring-1 ring-brandLine md:p-8">
-            <div className="prose prose-sm max-w-none prose-headings:font-serif prose-headings:text-brandNavy prose-p:text-brandMuted prose-li:text-brandMuted">
-              {children}
+          {/* Content layout */}
+          <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_300px] lg:items-start">
+            {/* Main */}
+            <div className="prose prose-sm max-w-none
+              prose-headings:font-serif prose-headings:text-brandNavy
+              prose-p:text-brandMuted prose-p:leading-relaxed
+              prose-li:text-brandMuted prose-li:my-1
+              prose-strong:text-brandNavy
+              prose-a:text-brandNavy prose-a:underline prose-a:underline-offset-4 space-y-6"
+              >
+                {children}
             </div>
+
+            {/* TOC (optional) */}
+            {toc?.length ? (
+              <aside className="lg:sticky lg:top-28">
+                <div className="rounded-3xl bg-white/60 p-6 ring-1 ring-brandLine">
+                  <div className="text-[11px] font-extrabold tracking-[0.22em] text-brandNavy/60">
+                    SOMMAIRE
+                  </div>
+                  <div className="mt-2 h-[2px] w-10 rounded-full bg-brandChampagne/60" />
+
+                  <ul className="mt-4 space-y-2 text-sm">
+                    {toc.map((item) => (
+                      <li key={item.id}>
+                        <a
+                          href={`#${item.id}`}
+                          className="text-brandMuted hover:text-brandNavy transition-colors"
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </aside>
+            ) : null}
           </div>
         </section>
       </div>

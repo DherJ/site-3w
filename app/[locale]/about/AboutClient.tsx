@@ -83,102 +83,44 @@ export default function AboutClient({
                     </div>
 
                     {/* Atelier & localisation */}
-                    <a
-                        href="https://www.google.com/maps/search/?api=1&query=110+Rue+du+Smetz+PePSO,+62120+Campagne-lès-Wardrecques"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="
-                            group block rounded-3xl bg-white/60 p-6 ring-1 ring-brandLine
-                            transition-all duration-300
-                            hover:-translate-y-0.5 hover:ring-brandChampagne/40"
-                    >
-                        <div className="rounded-3xl bg-white/60 ring-1 ring-brandLine overflow-hidden">
-                            {/* Image */}
-                            <div className="group relative aspect-[5/3] w-full">
-                                <Image
-                                    src="/about/company.jpg"
-                                    alt={locale === "fr" ? "Atelier Well With Waves" : "Well With Waves workshop"}
-                                    fill
-                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                                    sizes="(min-width: 1024px) 420px, 100vw"
-                                />
 
-                                {/* voile premium */}
-                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="rounded-3xl bg-white/60 ring-1 ring-brandLine overflow-hidden">
+                        {/* Image */}
+                        <div className="group relative aspect-[5/3] w-full">
+                            <Image
+                                src="/about/company.jpg"
+                                alt={locale === "fr" ? "Atelier Well With Waves" : "Well With Waves workshop"}
+                                fill
+                                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                                sizes="(min-width: 1024px) 420px, 100vw"
+                            />
 
-                                {/* ring inset */}
-                                <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
-                            </div>
+                            {/* voile premium */}
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-                            {/* Adresse */}
-                            <div className="p-5">
-                                <AddressMapLink
-                                    label={company.addressLabel.toUpperCase()}
-                                    address={company.address}
-                                />
-                            </div>
+                            {/* ring inset */}
+                            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
                         </div>
-                    </a>
+
+                        {/* Adresse */}
+                        <div className="p-5">
+                            <AddressMapLink
+                                label={company.addressLabel.toUpperCase()}
+                                address={company.address}
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
-
 
             {/* RECOGNITION */}
-            <section
-                data-reveal
-                className={[
-                    "rounded-3xl bg-white/70 p-6 ring-1 ring-brandLine shadow-soft backdrop-blur",
-                    "reveal reveal-right",
-                ].join(" ")}
-            >
-                <div className="text-[11px] font-extrabold tracking-[0.28em] text-brandNavy/60">
-                    {recognition.kicker}
-                </div>
+            <AwardsTimeline
+                kicker={recognition.kicker}
+                title={recognition.title}
+                intro={recognition.intro}
+                items={recognition.items}
+            />
 
-                <h2 className="mt-3 font-serif text-2xl font-semibold tracking-tight text-brandNavy md:text-3xl">
-                    {recognition.title}
-                </h2>
-
-                <div className="mt-2 h-[2px] w-10 rounded-full bg-brandChampagne/70" />
-
-                <div className="mt-4 w-[220px]">
-                    <SignatureLine align="left" />
-                </div>
-
-                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-brandMuted md:text-base">
-                    {recognition.intro}
-                </p>
-
-                <div className="mt-6 grid gap-3 md:grid-cols-2">
-                    {recognition.items.map((item, i) => (
-                        <div
-                            key={`${item}-${i}`}
-                            className="rounded-3xl bg-white/60 p-5 ring-1 ring-brandLine"
-                        >
-                            <div className="text-[11px] font-extrabold tracking-[0.22em] text-brandNavy/60">
-                                {locale === "fr" ? "DISTINCTION" : "AWARD"}
-                            </div>
-                            <div className="mt-2 text-sm font-semibold text-brandNavy">
-                                {item}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <section data-reveal
-                className={[
-                    "rounded-3xl bg-white/70 p-6 ring-1 ring-brandLine shadow-soft backdrop-blur",
-                    "reveal reveal-right",
-                ].join(" ")}
-            >
-                <AwardsTimeline
-                    kicker={recognition.kicker}
-                    title={recognition.title}
-                    intro={recognition.intro}
-                    items={recognition.items}
-                />
-            </section>
             {/* TEAM + CTA */}
             <section
                 data-reveal

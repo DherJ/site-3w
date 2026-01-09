@@ -2,24 +2,83 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-
-import SignatureLine from "@/components/ui/SignatureLine";
 import { JsonLd } from "@/components/seo/JsonLd";
+import SignatureLine from "@/components/ui/SignatureLine";
 import ContactClient from "./ContactClient";
-import { buildContactJsonLd, buildContactMetadata } from "./seo";
+import { buildContactJsonLd } from "./seo";
+import { getLegalCommon } from "../legal/_shared/legalCommon";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 type Props = { params: { locale: string } };
 
+function absoluteUrl(path: string) {
+  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return buildContactMetadata(params.locale);
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: "contact" });
+
+  const title = t("seo.title", { default: "Contact – WellWithWaves" });
+  const description = t("seo.description", {
+    default:
+      "Contactez WellWithWaves pour vos besoins en radioprotection : vente, location, contrôle qualité et maintenance.",
+  });
+
+  const canonicalPath = `/${locale}/contact`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: absoluteUrl(canonicalPath),
+      languages: {
+        fr: absoluteUrl(`/fr/contact`),
+        en: absoluteUrl(`/en/contact`),
+      },
+    },
+    openGraph: {
+      type: "website",
+      url: absoluteUrl(canonicalPath),
+      title,
+      description,
+      locale,
+      images: [{ url: absoluteUrl(`/og/contact-${locale}.jpg`) }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [absoluteUrl(`/og/contact-${locale}.jpg`)],
+    },
+  };
 }
 
 export default async function ContactPage({ params }: Props) {
   const { locale } = params;
-  const g = await getTranslations({ locale, namespace: "global" });
-  const t = await getTranslations({ locale, namespace: "contact" });
 
-  const jsonLd = buildContactJsonLd(locale);
+  const t = await getTranslations({ locale, namespace: "contact" });
+  const g = await getTranslations({ locale, namespace: "global" });
+
+  const canonicalPath = `/${locale}/contact`;
+  const canonicalUrl = absoluteUrl(canonicalPath);
+
+  const siteName = g("siteName", { default: "WellWithWaves" });
+
+  const email = "cdhersin@wellwithwaves.com";
+  const phone = "+33 6 52 71 03 09";
+  const address = "110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques";
+
+  const common = await getLegalCommon(locale);
+    
+  const jsonLd = buildContactJsonLd({
+    locale,
+    canonicalUrl,
+    siteName: common.companyName,
+    email: common.email,
+    phone: common.phone
+  });
 
   return (
     <div className="relative">
@@ -38,14 +97,14 @@ export default async function ContactPage({ params }: Props) {
           <span className="text-brandNavy">{t("title", { default: "Contact" })}</span>
         </nav>
 
-        {/* HERO */}
+        {/* Hero */}
         <section className="rounded-3xl bg-white/70 p-6 ring-1 ring-brandLine shadow-soft backdrop-blur md:p-10">
           <div className="text-[11px] font-extrabold tracking-[0.28em] text-brandNavy/60">
             {t("kicker", { default: "CONTACT" })}
           </div>
 
           <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-brandNavy md:text-4xl">
-            {t("h1", { default: "Parlons de votre besoin" })}
+            {t("title", { default: "Contact" })}
           </h1>
 
           <div className="mt-2 h-[2px] w-10 rounded-full bg-brandChampagne/70" />
@@ -54,14 +113,15 @@ export default async function ContactPage({ params }: Props) {
             <SignatureLine align="left" />
           </div>
 
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brandMuted md:text-base">
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-brandMuted md:text-base">
             {t("subtitle", {
               default:
-                "Devis, informations produits, services (vente, location, contrôles qualité, nettoyage) — on vous répond rapidement.",
+                "Une question, un besoin spécifique ou une demande de devis ? Écrivez-nous, on revient vers vous rapidement.",
             })}
           </p>
 
-          <ContactClient locale={locale} />
+          {/* Client form + infos */}
+          <ContactClient locale={locale} legalCommon={common}/>
         </section>
       </div>
     </div>

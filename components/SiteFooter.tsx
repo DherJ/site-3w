@@ -1,21 +1,28 @@
-// components/layout/SiteFooter.tsx
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import AddressMapLink from "@/components/ui/AddressMapLink";
+import { getLegalCommon } from "@/app/[locale]/legal/_shared/legalCommon";
 
 export function SiteFooter() {
   const t = useTranslations("footer");
   const tradGlobal = useTranslations("global");
   const locale = useLocale();
 
+  // const common = await getLegalCommon(locale);
+
+  const common = {
+    email: "j.dhersin@hotmail.fr",
+    phone: "+33 6 47 65 64 33"
+  }
+
   return (
     <footer className="bg-brandNavy/95 backdrop-blur-xl ring-1 ring-white/10 text-white">
       <div className="mx-auto max-w-6xl px-4 py-14">
         {/* Top */}
-        <div className="grid gap-10 md:grid-cols-3 md:items-start text-center">
+        <div className="grid gap-10 md:grid-cols-3 md:items-start text-left">
           {/* Bloc marque */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-left">
             <div className="font-serif text-lg font-semibold tracking-tight">
               {t("society")}
             </div>
@@ -25,7 +32,7 @@ export function SiteFooter() {
           </div>
 
           {/* Liens */}
-          <div className="text-sm flex flex-col items-center">
+          <div className="text-sm flex flex-col items-left">
             <div className="font-bold tracking-wide text-white">
               {t("navigation.title")}
             </div>
@@ -50,39 +57,39 @@ export function SiteFooter() {
           </div>
 
           {/* Contact */}
-          <div className="text-sm flex flex-col items-center">
+          <div className="text-sm flex flex-col items-left">
             <div className="font-bold tracking-wide text-white">
               {tradGlobal("contactUs")}
             </div>
 
             <ul className="mt-4 space-y-4 text-white/70 w-full max-w-sm">
-              <li className="flex items-start justify-center gap-3">
+              <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 text-brandChampagne shrink-0" />
                 <AddressMapLink
                   address="110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques"
                   variant="inline"
                   tone="dark"
-                  className="text-white/80 hover:text-white text-left" // laisse l'adresse lisible
+                  className="text-white/80 hover:text-white text-left"
                 />
               </li>
 
-              <li className="flex items-center justify-center gap-3">
+              <li className="flex items-left gap-3">
                 <Mail className="h-4 w-4 text-brandChampagne shrink-0" />
                 <a
-                  href="mailto:cdhersin@wellwithwaves.com"
+                  href={`mailto:${common.email}`}
                   className="text-white/80 hover:text-white transition-colors"
                 >
-                  cdhersin@wellwithwaves.com
+                  {common.email}
                 </a>
               </li>
 
-              <li className="flex items-center justify-center gap-3">
+              <li className="flex items-left gap-3">
                 <Phone className="h-4 w-4 text-brandChampagne shrink-0" />
                 <a
-                  href="tel:+33652710309"
+                  href={`tel:${common.phone}`}
                   className="text-white/80 hover:text-white transition-colors"
                 >
-                  +33 6 52 71 03 09
+                  {common.phone}
                 </a>
               </li>
             </ul>
@@ -123,24 +130,6 @@ export function SiteFooter() {
               {tradGlobal("legal.termsOfService")}
             </Link>
           </div>
-
-          {/* Optionnel : si tu veux garder privacy/terms, décommente */}
-          {/*
-          <div className="mt-2 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs">
-            <Link
-              href={`/${locale}/legal/privacy-policy`}
-              className="text-white/60 hover:text-white transition-colors"
-            >
-              {tradGlobal("legal.privacyPolicy")}
-            </Link>
-            <Link
-              href={`/${locale}/legal/terms`}
-              className="text-white/60 hover:text-white transition-colors"
-            >
-              {tradGlobal("legal.termsOfService")}
-            </Link>
-          </div>
-          */}
         </div>
       </div>
     </footer>

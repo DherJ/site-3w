@@ -1,8 +1,10 @@
-// app/[locale]/legal/mentions-legales/page.tsx
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { JsonLd } from "@/components/seo/JsonLd";
 import LegalShell from "../_shared/LegalShell";
+import LegalSection from "../_shared/LegalSection";
 import { buildLegalJsonLd, buildLegalMetadata } from "../_shared/seo";
+import { getLegalCommon } from "../_shared/legalCommon";
 
 type Props = { params: { locale: string } };
 
@@ -16,18 +18,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     fallbackTitle: "Mentions légales – WellWithWaves",
     fallbackDescription:
       "Mentions légales de WellWithWaves : éditeur, hébergeur, contact, propriété intellectuelle.",
+    ogImagePath: `/og/legal-${locale}.jpg`,
   });
 }
 
 export default async function MentionsLegalesPage({ params }: Props) {
   const { locale } = params;
+  const t = await getTranslations({ locale, namespace: "legal" });
+  const common = await getLegalCommon(locale);
+
   const canonicalPath = `/${locale}/legal/mentions-legales`;
 
-  const jsonLd = buildLegalJsonLd({
+  const jsonLd = await buildLegalJsonLd({
     locale,
     canonicalPath,
-    name: "Mentions légales",
+    name: t("mentions.pageTitle", { default: "Mentions légales" })
   });
+
+  const toc = [
+    { id: "publisher", label: common.publisherTitle },
+    { id: "hosting", label: common.hostingTitle },
+    { id: "ip", label: common.ipTitle },
+    { id: "liability", label: common.liabilityTitle },
+    { id: "contact", label: common.contactTitle },
+  ];
 
   return (
     <>
@@ -35,40 +49,43 @@ export default async function MentionsLegalesPage({ params }: Props) {
 
       <LegalShell
         locale={locale}
-        breadcrumbLabel="Mentions légales"
-        kicker="INFORMATIONS"
-        title="Mentions légales"
-        subtitle="Informations légales relatives au site WellWithWaves."
+        breadcrumbLabel={t("mentions.breadcrumb", { default: "Mentions légales" })}
+        kicker={t("mentions.kicker", { default: "INFORMATIONS" })}
+        title={t("mentions.pageTitle", { default: "Mentions légales" })}
+        subtitle={t("mentions.pageSubtitle", {
+          default: "Informations légales relatives au site WellWithWaves.",
+        })}
+        toc={toc}
       >
-        <h2>Éditeur du site</h2>
-        <ul>
-          <li><strong>Société :</strong> 3W – Well With Waves</li>
-          <li><strong>Adresse :</strong> 110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques, France</li>
-          <li><strong>Email :</strong> cdhersin@wellwithwaves.com</li>
-          <li><strong>Téléphone :</strong> +33 6 52 71 03 09</li>
-        </ul>
+        <LegalSection id="publisher" title={common.publisherTitle}>
+          <ul>
+            <li><strong>{t("mentions.fields.company", { default: "Société" })} :</strong> {common.publisherCompanyName}</li>
+            <li><strong>{common.addressLabel} :</strong> {common.publisherCompanyAddress}</li>
+            <li><strong>{common.emailLabel} :</strong> {common.publisherCompanyMail}</li>
+            <li><strong>{common.phoneLabel} :</strong> {common.publisherCompanyPhone}</li>
+          </ul>
+        </LegalSection>
 
-        <h2>Hébergement</h2>
-        <p>
-          À compléter : nom de l’hébergeur, adresse, téléphone (obligatoire en France).
-        </p>
+        <LegalSection id="hosting" title={common.hostingTitle}>
+          <p>{common.hostingPlaceholder}</p>
+        </LegalSection>
 
-        <h2>Propriété intellectuelle</h2>
-        <p>
-          L’ensemble des contenus (textes, images, marques, logos) est protégé. Toute reproduction
-          est interdite sans autorisation écrite préalable.
-        </p>
+        <LegalSection id="ip" title={common.ipTitle}>
+          <p>{common.ipText}</p>
+        </LegalSection>
 
-        <h2>Responsabilité</h2>
-        <p>
-          Nous nous efforçons d’assurer l’exactitude des informations, sans garantie d’exhaustivité.
-          L’utilisation du site se fait sous la responsabilité de l’utilisateur.
-        </p>
+        <LegalSection id="liability" title={common.liabilityTitle}>
+          <p>{common.liabilityText}</p>
+        </LegalSection>
 
-        <h2>Contact</h2>
-        <p>
-          Pour toute question, écrivez-nous à <strong>cdhersin@wellwithwaves.com</strong>.
-        </p>
+        <LegalSection id="contact" title={common.contactTitle}>
+          <p>
+            {common.contactTextPrefix} 
+            <a href={`mailto:${common.email}`}>
+                <strong> {common.email} </strong>
+            </a>.
+          </p>
+        </LegalSection>
       </LegalShell>
     </>
   );

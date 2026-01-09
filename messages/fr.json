@@ -41,9 +41,11 @@
       "title": "Services de radioprotection",
       "description": "Découvrez nos services de vente, location, contrôles qualité et maintenance d'équipements de radioprotection conçus pour les environnements médicaux exigeants.",
       "h1": "Services de radioprotection – Vente, location, contrôles qualité et maintenance",
-      "h2": "Accompagnement complet pour vos besoins en radioprotection"
+      "h2": "Accompagnement complet pour vos besoins en radioprotection",
+      "serviceName": "Services de radioprotection"
     },
     "sales": {
+      "kicker": "SERVICE",
       "title": "Vente d’équipements de radioprotection",
       "desc": "Tabliers et protections premium pour environnements radiologiques.",
       "process": {
@@ -54,6 +56,7 @@
       }
     },
     "rental": {
+      "kicker": "SERVICE",
       "title": "Location d’équipements",
       "desc": "Solutions flexibles pour besoins temporaires ou spécifiques.",
       "process": {
@@ -64,6 +67,7 @@
       }
     },
     "qualityChecks": {
+      "kicker": "SERVICE",
       "title": "Contrôles qualité",
       "desc": "Vérification rigoureuse pour garantir performance et sécurité.",
       "process": {
@@ -74,6 +78,7 @@
       }
     },
     "cleaning": {
+      "kicker": "SERVICE",
       "title": "Nettoyage spécialisé",
       "desc": "Entretien professionnel pour une durabilité optimale.",
       "process": {
@@ -229,17 +234,159 @@
     }
   },
   "legal": {
+    "common": {
+      "companyName": "3W – Well With Waves",
+      "brandName": "WellWithWaves",
+      "addressLabel": "Adresse",
+      "address": "110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques, France",
+      "emailLabel": "Email",
+      "email": "cdhersin@wellwithwaves.com",
+      "phoneLabel": "Téléphone",
+      "phone": "+33 6 52 71 03 09",
+      "publisherTitle": "Éditeur du site",
+      "publisherCompanyName": "Jérôme Dhersin - JD-PIXEL-WORKS",
+      "publisherCompanyAddress": "154 rue du violon d'or, 59190 Hazebrouck, France",
+      "publisherCompanyMail": "j.dhersin@hotmail.fr",
+      "publisherCompanyPhone": "+33 6 47 65 64 33",
+      "hostingTitle": "Hébergement",
+      "hostingPlaceholder": "OVH : 2 rue Kellermann, 59100 Roubaix, France.",
+      "ipTitle": "Propriété intellectuelle",
+      "ipText": "L’ensemble des contenus (textes, images, marques, logos) est protégé. Toute reproduction est interdite sans autorisation écrite préalable.",
+      "liabilityTitle": "Responsabilité",
+      "liabilityText": "Nous nous efforçons d’assurer l’exactitude des informations, sans garantie d’exhaustivité. L’utilisation du site se fait sous la responsabilité de l’utilisateur.",
+      "contactTitle": "Contact",
+      "contactTextPrefix": "Pour toute question, écrivez-nous à"
+    },
     "mentions": {
       "title": "Mentions légales – WellWithWaves",
-      "description": "Mentions légales : éditeur, hébergeur, contact, propriété intellectuelle."
+      "description": "Mentions légales de WellWithWaves : éditeur, hébergeur, contact, propriété intellectuelle.",
+      "breadcrumb": "Mentions légales",
+      "kicker": "INFORMATIONS",
+      "pageTitle": "Mentions légales",
+      "pageSubtitle": "Informations légales relatives au site WellWithWaves.",
+      "fields": {
+        "company": "Société"
+      }
     },
     "privacy": {
       "title": "Politique de confidentialité – WellWithWaves",
-      "description": "Politique de confidentialité : données, finalités, conservation, droits RGPD."
+      "description": "Politique de confidentialité : données collectées, finalités, conservation, droits RGPD et contact.",
+      "breadcrumb": "Politique de confidentialité",
+      "kicker": "CONFIDENTIALITÉ",
+      "pageTitle": "Politique de confidentialité",
+      "pageSubtitle": "Comment nous traitons vos données (RGPD).",
+      "toc": {
+        "data": "Données collectées",
+        "purposes": "Finalités",
+        "lawful": "Base légale",
+        "retention": "Durée de conservation",
+        "processors": "Partage & sous-traitants",
+        "rights": "Vos droits",
+        "cookies": "Cookies"
+      },
+      "sections": {
+        "data": {
+          "title": "Données collectées",
+          "p1": "Nous collectons les informations que vous nous transmettez via les formulaires (ex : nom, email, établissement, message) et, éventuellement, des données techniques (logs)."
+        },
+        "purposes": {
+          "title": "Finalités",
+          "li1": "Répondre à vos demandes (contact, devis, informations).",
+          "li2": "Assurer le fonctionnement et la sécurité du site.",
+          "li3": "Mesure d’audience (si activée) – à préciser."
+        },
+        "lawful": {
+          "title": "Base légale",
+          "p1": "Intérêt légitime (réponse aux demandes), exécution de mesures précontractuelles (devis), obligations légales si applicable."
+        },
+        "retention": {
+          "title": "Durée de conservation",
+          "p1": "Les données sont conservées le temps nécessaire au traitement de votre demande puis archivées/supprimées selon nos obligations légales."
+        },
+        "processors": {
+          "title": "Partage & sous-traitants",
+          "p1": "Vos données peuvent être traitées par des prestataires (hébergement, emailing, etc.) strictement pour fournir le service. À préciser selon votre stack."
+        },
+        "rights": {
+          "title": "Vos droits",
+          "p1": "Conformément au RGPD : accès, rectification, effacement, opposition, limitation, portabilité. Vous pouvez exercer vos droits à"
+        },
+        "cookies": {
+          "title": "Cookies",
+          "p1": "À compléter : cookies nécessaires / analytics / consentement (si applicable)."
+        }
+      }
     },
     "terms": {
       "title": "Conditions d’utilisation – WellWithWaves",
-      "description": "Conditions d’utilisation : accès, responsabilités, propriété intellectuelle."
+      "description": "Conditions d’utilisation : accès au site, responsabilités, propriété intellectuelle, liens et contact.",
+      "breadcrumb": "Conditions d’utilisation",
+      "kicker": "CONDITIONS",
+      "pageTitle": "Conditions d’utilisation",
+      "pageSubtitle": "Règles d’accès et d’usage du site.",
+      "toc": {
+        "purpose": "Objet",
+        "access": "Accès au site",
+        "ip": "Propriété intellectuelle",
+        "liability": "Responsabilité",
+        "links": "Liens externes",
+        "changes": "Mises à jour",
+        "contact": "Contact"
+      },
+      "sections": {
+        "purpose": {
+          "title": "Objet",
+          "p1": "Les présentes conditions encadrent l’accès et l’utilisation du site WellWithWaves. En naviguant sur le site, vous acceptez ces conditions."
+        },
+        "access": {
+          "title": "Accès au site",
+          "p1": "Le site est accessible gratuitement, hors coûts d’accès à Internet. Nous pouvons suspendre l’accès pour maintenance ou mise à jour."
+        },
+        "ip": {
+          "title": "Propriété intellectuelle",
+          "p1": "Les contenus (textes, images, marques, logos) sont protégés. Toute reproduction, représentation ou diffusion sans autorisation est interdite."
+        },
+        "liability": {
+          "title": "Responsabilité",
+          "p1": "Nous nous efforçons de fournir des informations fiables, sans garantir leur exhaustivité. L’utilisateur reste responsable de l’usage qu’il en fait."
+        },
+        "links": {
+          "title": "Liens externes",
+          "p1": "Le site peut contenir des liens vers des sites tiers. Nous ne contrôlons pas leur contenu et déclinons toute responsabilité."
+        },
+        "changes": {
+          "title": "Mises à jour",
+          "p1": "Nous pouvons modifier ces conditions à tout moment. La version applicable est celle publiée au moment de la consultation."
+        },
+        "contact": {
+          "title": "Contact",
+          "p1": "Pour toute question concernant ces conditions, contactez-nous à"
+        }
+      }
+    }
+  },
+  "contact": {
+    "kicker": "CONTACT",
+    "title": "Contact",
+    "subtitle": "Une question, un besoin, un devis ? Écrivez-nous et nous vous répondons rapidement.",
+    "seo": {
+      "title": "Contact – WellWithWaves",
+      "description": "Contactez WellWithWaves : demande d’information, devis, vente/location, maintenance et contrôles qualité."
+    },
+    "info": {
+      "kicker": "COORDONNÉES"
+    },
+    "form": {
+      "name": "Nom",
+      "company": "Établissement",
+      "email": "Email",
+      "phone": "Téléphone",
+      "message": "Message",
+      "placeholder": "Dites-nous ce dont vous avez besoin…",
+      "send": "Envoyer",
+      "sending": "Envoi…",
+      "success": "Message envoyé ✅ On revient vers vous rapidement.",
+      "error": "Erreur d’envoi. Réessayez ou contactez-nous par email."
     }
   },
   "global": {
@@ -257,6 +404,7 @@
     "download": "Télécharger",
     "home": "Accueil",
     "products": "Produits",
-    "siteName": "WellWithWaves"
+    "siteName": "WellWithWaves",
+    "summary": "Sommaire"
   }
 }

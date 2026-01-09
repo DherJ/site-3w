@@ -5,6 +5,7 @@ import SignatureLine from "@/components/ui/SignatureLine";
 import { useRevealOnScroll } from "@/components/hooks/useRevealOnScroll";
 import { useTranslations } from "next-intl";
 import { Service } from "@/data/services";
+import SectionTitle from "@/components/ui/SectionTitle";
 
 type Item = {
   slug: string;
@@ -14,6 +15,7 @@ type Item = {
 };
 
 function ServiceRow({
+  kicker,
   title,
   desc,
   imageSrc,
@@ -22,6 +24,7 @@ function ServiceRow({
   processTitle,
   processSteps,
 }: {
+  kicker: string;
   title: string;
   desc: string;
   imageSrc: string;
@@ -80,7 +83,7 @@ function ServiceRow({
         <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-between">
           <div>
             <div className="text-[11px] font-extrabold tracking-[0.28em] text-brandNavy/60">
-              SERVICE
+              {kicker}
             </div>
 
             <h2 className="mt-3 font-serif text-2xl font-semibold tracking-tight text-brandNavy md:text-3xl">
@@ -152,7 +155,6 @@ export default function ServicesClient({ services }: { services: Service[] }) {
         const title = t(`${s.i18nKey}.title`);
         const desc = t(`${s.i18nKey}.desc`);
         const processTitle = t(`${s.i18nKey}.process.title`);
-        // const processSteps = t.raw(`${s.i18nKey}.process.steps`) as string[];
         const processSteps = [t(`${s.i18nKey}.process.step1`), t(`${s.i18nKey}.process.step2`), t(`${s.i18nKey}.process.step3`)]
 
         return (
@@ -160,6 +162,7 @@ export default function ServicesClient({ services }: { services: Service[] }) {
             key={s.slug}
             index={idx}
             reverse={idx % 2 === 1}
+            kicker={t(`${s.i18nKey}.kicker`)}
             title={title}
             desc={desc}
             imageSrc={s.imageSrc}
