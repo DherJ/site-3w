@@ -27,8 +27,8 @@ export default function ServicesSection() {
             <ServiceCard
               key={s.slug}
               href={serviceHref(s.slug)}
-              title={t(s.title)}
-              desc={t(s.desc)}
+              title={t(`${s.i18nKey}.title`)}
+              desc={t(`${s.i18nKey}.desc`)}
               imageSrc={s.imageSrc}
             />
           ))}

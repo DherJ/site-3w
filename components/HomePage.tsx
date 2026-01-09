@@ -11,9 +11,6 @@ import CtaSection from "./CtaSection";
 
 export default function HomePage() {
 
-    // Si tu veux utiliser une ancre "Découvrir" qui scroll vers les services :
-    // <Link href="#discover" ... />
-
     return (
         <div>
             {/* 1) HERO FULLSCREEN */}
