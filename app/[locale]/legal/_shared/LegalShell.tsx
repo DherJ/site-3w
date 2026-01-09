@@ -1,4 +1,3 @@
-// app/[locale]/legal/_shared/LegalShell.tsx
 import Link from "next/link";
 import SignatureLine from "@/components/ui/SignatureLine";
 

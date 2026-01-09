@@ -1,17 +1,51 @@
-// app/[locale]/about/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import SignatureLine from "@/components/ui/SignatureLine";
 import AboutClient from "./AboutClient";
-import { getAboutSeo } from "./seo";
-
+import { buildAboutJsonLd } from "./seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { absoluteUrl } from "@/components/seo/builders/url";
 type Props = { params: { locale: string } };
 
-export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { metadata } = await getAboutSeo(props);
-  return metadata;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: "contact" });
+
+  const title = t("seo.title", { default: "Contact – WellWithWaves" });
+  const description = t("seo.description", {
+    default:
+      "Contactez WellWithWaves pour vos besoins en radioprotection : vente, location, contrôle qualité et maintenance.",
+  });
+
+  const canonicalPath = `/${locale}/contact`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: absoluteUrl(canonicalPath),
+      languages: {
+        fr: absoluteUrl(`/fr/about`),
+        en: absoluteUrl(`/en/about`),
+      },
+    },
+    openGraph: {
+      type: "website",
+      url: absoluteUrl(canonicalPath),
+      title,
+      description,
+      locale,
+      images: [{ url: absoluteUrl(`/og/about-${locale}.jpg`) }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [absoluteUrl(`/og/about-${locale}.jpg`)],
+    },
+  };
 }
 
 export default async function AboutPage({ params }: Props) {
@@ -19,8 +53,6 @@ export default async function AboutPage({ params }: Props) {
 
   const t = await getTranslations({ locale, namespace: "about" });
   const g = await getTranslations({ locale, namespace: "global" });
-
-  const { jsonLd } = await getAboutSeo({ params });
 
   const servicesHref = `/${locale}/services`;
   const quoteHref = `/${locale}/quote`;
@@ -30,14 +62,20 @@ export default async function AboutPage({ params }: Props) {
 
   const features = t.raw("company.features") as string[];
 
+    const canonicalPath = `/${locale}/about`;
+  const canonicalUrl = absoluteUrl(canonicalPath);
+
+  
+    const jsonLd = buildAboutJsonLd({
+      locale,
+      canonicalUrl,
+      siteName: g("siteName", { default: "WellWithWaves" }),
+    });
+
   return (
     <div className="relative">
       {/* JSON-LD */}
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
 
       <div className="pointer-events-none absolute inset-0 bg-brandOffWhite" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-brandOffWhite to-white" />

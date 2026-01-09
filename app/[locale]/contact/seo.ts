@@ -1,60 +1,41 @@
+import { getSiteUrlForLocale } from "@/components/seo/builders/url";
+import { buildOrganizationJsonLd } from "@/components/seo/builders/organization";
+import { buildWebsiteJsonLd } from "@/components/seo/builders/website";
+import { SEO_COMPANY } from "@/components/seo/constants";
+
 type ContactJsonLdArgs = {
   locale: string;
-  canonicalUrl: string;
+  canonicalUrl: string; // absoluteUrl(`/${locale}/contact`)
   siteName: string;
-  email: string;
-  phone: string;
 };
 
 export function buildContactJsonLd({
   locale,
   canonicalUrl,
   siteName,
-  email,
-  phone,
 }: ContactJsonLdArgs) {
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": `${canonicalUrl}#organization`,
-      name: siteName,
-      url: canonicalUrl.replace(/\/contact\/?$/, ""),
-      email,
-      telephone: phone,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "110 Rue du Smetz PePSO",
-        postalCode: "62120",
-        addressLocality: "Campagne-lès-Wardrecques",
-        addressCountry: "FR",
-      },
-      contactPoint: [
-        {
-          "@type": "ContactPoint",
-          contactType: "customer support",
-          email,
-          telephone: phone,
-          availableLanguage: locale === "fr" ? ["fr", "en"] : ["en", "fr"],
-        },
-      ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "@id": `${canonicalUrl}#contactpage`,
-      url: canonicalUrl,
-      name: locale === "fr" ? "Contact" : "Contact",
-      isPartOf: {
-        "@type": "WebSite",
-        "@id": `${canonicalUrl.replace(/\/contact\/?$/, "")}#website`,
-        name: siteName,
-        url: canonicalUrl.replace(/\/contact\/?$/, ""),
-      },
-      about: {
-        "@type": "Organization",
-        "@id": `${canonicalUrl}#organization`,
-      },
-    },
-  ];
+  const siteUrl = getSiteUrlForLocale(locale);
+
+  const org = buildOrganizationJsonLd({
+    locale,
+    siteName,
+    siteUrl,
+    email: SEO_COMPANY.email,
+    phone: SEO_COMPANY.phone,
+    address: SEO_COMPANY.address,
+  });
+
+  const website = buildWebsiteJsonLd({ siteName, siteUrl });
+
+  const contactPage = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${canonicalUrl}#contactpage`,
+    url: canonicalUrl,
+    name: "Contact",
+    isPartOf: { "@id": `${siteUrl}#website` },
+    about: { "@id": `${siteUrl}#organization` },
+  } as const;
+
+  return [org, website, contactPage];
 }

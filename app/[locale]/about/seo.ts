@@ -1,85 +1,41 @@
-// app/[locale]/about/seo.ts
-import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getSiteUrlForLocale } from "@/components/seo/builders/url";
+import { buildOrganizationJsonLd } from "@/components/seo/builders/organization";
+import { buildWebsiteJsonLd } from "@/components/seo/builders/website";
+import { SEO_COMPANY } from "@/components/seo/constants";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+type ContactJsonLdArgs = {
+  locale: string;
+  canonicalUrl: string; // absoluteUrl(`/${locale}/contact`)
+  siteName: string;
+};
 
-function absoluteUrl(path: string) {
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-}
+export function buildAboutJsonLd({
+  locale,
+  canonicalUrl,
+  siteName,
+}: ContactJsonLdArgs) {
+  const siteUrl = getSiteUrlForLocale(locale);
 
-type Props = { params: { locale: string } };
-
-export async function getAboutSeo({ params }: Props): Promise<{
-  metadata: Metadata;
-  jsonLd: object[];
-}> {
-  const { locale } = params;
-
-  const t = await getTranslations({ locale, namespace: "about" });
-  const g = await getTranslations({ locale, namespace: "global" });
-
-  const canonicalPath = `/${locale}/about`;
-  const title = t("seo.title", { defaultValue: "À propos – Well With Waves" });
-  const description = t("seo.description", {
-    defaultValue:
-      "Découvrez Well With Waves (3W) : atelier au siège, engagements qualité, distinctions (HIIT 2025, Fonds IMT Numérique, FHF…), et label Deeptech Bpifrance.",
+  const org = buildOrganizationJsonLd({
+    locale,
+    siteName,
+    siteUrl,
+    email: SEO_COMPANY.email,
+    phone: SEO_COMPANY.phone,
+    address: SEO_COMPANY.address,
   });
 
-  const ogImage = absoluteUrl(`/og/about-${locale}.jpg`);
+  const website = buildWebsiteJsonLd({ siteName, siteUrl });
 
-  const metadata: Metadata = {
-    title,
-    description,
-    alternates: {
-      canonical: absoluteUrl(canonicalPath),
-      languages: {
-        fr: absoluteUrl("/fr/about"),
-        en: absoluteUrl("/en/about"),
-      },
-    },
-    openGraph: {
-      type: "website",
-      locale,
-      url: absoluteUrl(canonicalPath),
-      siteName: g("siteName", { defaultValue: "WellWithWaves" }),
-      title,
-      description,
-      images: [{ url: ogImage }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+  const aboutPage = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${canonicalUrl}#aboutpage`,
+    url: canonicalUrl,
+    name: locale === "fr" ? "À propos" : "About",
+    isPartOf: { "@id": `${siteUrl}#website` },
+    about: { "@id": `${siteUrl}#organization` },
+  } as const;
 
-  // JSON-LD (Organization) : simple, propre, et safe
-  const jsonLd: object[] = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: g("siteName", { defaultValue: "WellWithWaves" }),
-      alternateName: "3W",
-      url: absoluteUrl(`/${locale}`),
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "110 Rue du Smetz PePSO",
-        postalCode: "62120",
-        addressLocality: "Campagne-lès-Wardrecques",
-        addressCountry: "FR",
-      },
-      award: [
-        "Lauréat programme HIIT 2025",
-        "Lauréat du Fonds IMT Numérique de la Fondation Mines-Télécom",
-        "Finalistes du concours Mission Entreprendre 2025 – Coup de cœur du jury",
-        "Finale au Palmarès des Entreprises Innovantes",
-        "Lauréats des Trophées de l’innovation (FHF) – Amélioration de l’expérience soignant",
-        "3W labellisée Deeptech par Bpifrance",
-      ],
-    },
-  ];
-
-  return { metadata, jsonLd };
+  return [org, website, aboutPage];
 }

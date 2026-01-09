@@ -1,4 +1,3 @@
-// app/[locale]/contact/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
@@ -64,20 +63,12 @@ export default async function ContactPage({ params }: Props) {
   const canonicalPath = `/${locale}/contact`;
   const canonicalUrl = absoluteUrl(canonicalPath);
 
-  const siteName = g("siteName", { default: "WellWithWaves" });
-
-  const email = "cdhersin@wellwithwaves.com";
-  const phone = "+33 6 52 71 03 09";
-  const address = "110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques";
-
   const common = await getLegalCommon(locale);
-    
+
   const jsonLd = buildContactJsonLd({
     locale,
     canonicalUrl,
-    siteName: common.companyName,
-    email: common.email,
-    phone: common.phone
+    siteName: g("siteName", { default: "WellWithWaves" }),
   });
 
   return (
@@ -121,7 +112,7 @@ export default async function ContactPage({ params }: Props) {
           </p>
 
           {/* Client form + infos */}
-          <ContactClient locale={locale} legalCommon={common}/>
+          <ContactClient locale={locale} legalCommon={common} />
         </section>
       </div>
     </div>

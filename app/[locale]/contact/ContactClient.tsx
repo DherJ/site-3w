@@ -1,4 +1,3 @@
-// app/[locale]/contact/ContactClient.tsx
 "use client";
 
 import { useState } from "react";

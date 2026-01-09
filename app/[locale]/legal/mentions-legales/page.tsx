@@ -10,6 +10,7 @@ type Props = { params: { locale: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params;
+
   return buildLegalMetadata({
     locale,
     canonicalPath: `/${locale}/legal/mentions-legales`,

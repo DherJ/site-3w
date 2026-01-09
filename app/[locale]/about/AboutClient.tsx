@@ -1,4 +1,3 @@
-// components/about/AboutClient.tsx
 "use client";
 
 import Image from "next/image";
@@ -7,6 +6,7 @@ import SignatureLine from "@/components/ui/SignatureLine";
 import { useRevealOnScroll } from "@/components/hooks/useRevealOnScroll";
 import AddressMapLink from "@/components/ui/AddressMapLink";
 import AwardsTimeline from "@/components/about/AwardsTimeline";
+import { TEAM } from "@/data/team";
 
 type CompanyBlock = {
     kicker: string;
@@ -172,6 +172,33 @@ export default function AboutClient({
                             </Link>
                         </div>
                     </div>
+                    <div className="mt-10 grid gap-6 md:grid-cols-3">
+                                            {/* placeholders */}
+                                            {TEAM.map((m) => (
+                                                <div key={m.role} className="card-premium overflow-hidden">
+                                                    <div className="relative aspect-[4/3]">
+                                                        <Image
+                                                            src={m.imageSrc}
+                                                            alt={m.name}
+                                                            fill
+                                                            className="object-cover"
+                                                            sizes="(min-width: 768px) 33vw, 100vw"
+                                                        />
+                                                    </div>
+                                                    <div className="p-6">
+                                                        <div className="font-serif text-lg font-semibold text-brandNavy">
+                                                            {m.name}
+                                                        </div>
+                                                        <div className="mt-1 text-sm font-semibold text-brandMuted">
+                                                            {m.role}
+                                                        </div>
+                                                        <div className="mt-4 text-sm text-brandMuted">
+                                                            Courte description (1 ligne) orientée expertise & accompagnement.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
                 </div>
             </section>
         </div>

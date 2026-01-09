@@ -1,4 +1,3 @@
-// app/[locale]/legal/terms/page.tsx
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { JsonLd } from "@/components/seo/JsonLd";

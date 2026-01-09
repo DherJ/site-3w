@@ -1,4 +1,3 @@
-// app/[locale]/services/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
@@ -7,6 +6,7 @@ import SignatureLine from "@/components/ui/SignatureLine";
 import { SERVICES } from "@/data/services";
 import ServicesClient from "./ServicesClient";
 import { getServicesJsonLd } from "./seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -72,11 +72,8 @@ export default async function ServicesPage({ params }: Props) {
 
   return (
     <div className="relative">
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+
+      <JsonLd data={jsonLd} />
 
       <div className="pointer-events-none absolute inset-0 bg-brandOffWhite" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-brandOffWhite to-white" />

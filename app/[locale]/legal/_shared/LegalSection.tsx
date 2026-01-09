@@ -1,4 +1,3 @@
-// app/[locale]/legal/_shared/LegalSection.tsx
 export default function LegalSection({
   id,
   title,
