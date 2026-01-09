@@ -4,7 +4,9 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  basePath: "/3w",
+  assetPrefix: "/3w",
+  trailingSlash: false,
 };
 
 export default withNextIntl(nextConfig);

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SignatureLine from "@/components/ui/SignatureLine";
+import { useTranslations } from "next-intl";
 
 type TocItem = { id: string; label: string };
 
@@ -20,6 +21,9 @@ export default function LegalShell({
   toc?: TocItem[];
   children: React.ReactNode;
 }) {
+  
+  const g = useTranslations("global");
+  
   return (
     <div className="relative">
       <div className="pointer-events-none absolute inset-0 bg-brandOffWhite" />
@@ -29,7 +33,7 @@ export default function LegalShell({
         {/* Breadcrumb */}
         <nav className="mb-6 flex flex-wrap items-center gap-2 text-xs font-semibold text-brandMuted">
           <Link href={`/${locale}`} className="hover:text-brandNavy">
-            Accueil
+             {g("home", { defaultValue: "Accueil" })}
           </Link>
           <span className="text-brandMuted/40">/</span>
           <span className="text-brandNavy">{breadcrumbLabel}</span>
@@ -75,7 +79,7 @@ export default function LegalShell({
               <aside className="lg:sticky lg:top-28">
                 <div className="rounded-3xl bg-white/60 p-6 ring-1 ring-brandLine">
                   <div className="text-[11px] font-extrabold tracking-[0.22em] text-brandNavy/60">
-                    SOMMAIRE
+                     {g("summary", { defaultValue: "SOMMAIRE" })}
                   </div>
                   <div className="mt-2 h-[2px] w-10 rounded-full bg-brandChampagne/60" />
 
