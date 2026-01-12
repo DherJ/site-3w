@@ -9,8 +9,8 @@
   },
   "home": {
     "heroTitle": "Reliable radiation protection.",
-    "heroSubtitle": "Premium radiation protection equipment for demanding medical environments.",
-    "heroMadeInenFrance": "Made in our workshops in France • RADIATION PROTECTION"
+    "heroSubtitle": "Premium radiation protection equipment for medical environments.",
+    "heroMadeInenFrance": "Made in our workshop in France"
   },
   "proof": {
     "title": "Proof of our expertise",
@@ -29,7 +29,7 @@
     },
     "factoryBadge": {
       "title": "In-house manufacturing",
-      "desc": "Workshops in France, mastered expertise."
+      "desc": "Workshop in France, mastered expertise."
     }
   },
   "services": {
@@ -37,6 +37,8 @@
     "title": "Services – Protection & Radiology shield",
     "subtitle": "Audit, shielding, control and maintenance: a comprehensive, field-oriented support.",
     "seeServices": "See Services",
+    "seeService": "See Service",
+    "ourServices": "Our services",
     "seo": {
       "title": "Radiation protection services",
       "description": "Discover our services of sales, rental, quality controls and maintenance of radiation protection equipment designed for demanding medical environments.",
@@ -87,6 +89,9 @@
         "step2": "Specialized cleaning",
         "step3": "Final control"
       }
+    },
+    "tips": {
+      "horizontalScroll": "Tip: horizontal scroll to see all services."
     }
   },
   "manufactureAndQuality": {
@@ -126,6 +131,8 @@
       "name": "Name",
       "category": "Category"
     },
+    "seeCatalogue": "See the catalogue",
+    "SeeCategory": "See category",
     "empty": "No products match this category.",
     "categories": {
       "tabliers": "Protective aprons",
@@ -133,6 +140,7 @@
       "protege-thyroide": "Thyroid protectors",
       "vestes": "Protective jackets",
       "jupes": "Protective skirts",
+      "pediatrique": "Pédiatrique",
       "autres": "Other equipment"
     },
     "backCatalogue": "Back to catalogue",
@@ -144,7 +152,10 @@
       "title": "SELECTION",
       "subtitle": "Similary products"
     },
-    "specification": "SPECIFICATIONS"
+    "specification": "SPECIFICATIONS",
+    "tips": {
+      "horizontalScroll": "Tip: swipe horizontally to see all categories."
+    }
   },
   "partners": {
     "kicker": "PARTNERS",
@@ -244,8 +255,8 @@
       "phoneLabel": "Phone",
       "phone": "+33 6 52 71 03 09",
       "publisherTitle": "Website publisher",
-      "publisherCompanyName": "Jérôme Dhersin - JD-PIXEL-WORKS",
-      "publisherCompanyAddress": "154 rue du violon d'or, 59190 Hazebrouck, France",
+      "publisherCompanyName": "JD-PIXEL-WORKS",
+      "publisherCompanyAddress": "59190 Hazebrouck, France",
       "publisherCompanyMail": "j.dhersin@hotmail.fr",
       "publisherCompanyPhone": "+33 6 47 65 64 33",
       "hostingTitle": "Hosting",
@@ -438,6 +449,7 @@
     "home": "Home",
     "products": "Products",
     "siteName": "WellWithWaves",
-    "summary": "Summary"
+    "summary": "Summary",
+    "openMaps": "Open in Google Maps"
   }
 }

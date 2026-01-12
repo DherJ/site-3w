@@ -15,6 +15,7 @@ type Item = {
 };
 
 function ServiceRow({
+  slug,
   kicker,
   title,
   desc,
@@ -24,6 +25,7 @@ function ServiceRow({
   processTitle,
   processSteps,
 }: {
+  slug: string;
   kicker: string;
   title: string;
   desc: string;
@@ -35,11 +37,12 @@ function ServiceRow({
 }) {
   return (
     <section
+      id={slug}
       data-reveal
       style={{ transitionDelay: `${index * 80}ms` }}
       className={[
         "rounded-3xl bg-white/70 ring-1 ring-brandLine shadow-soft backdrop-blur",
-        "overflow-hidden",
+        "overflow-hidden scroll-mt-28",
       ].join(" ")}
     >
       <div
@@ -160,6 +163,7 @@ export default function ServicesClient({ services }: { services: Service[] }) {
         return (
           <ServiceRow
             key={s.slug}
+            slug={s.slug}
             index={idx}
             reverse={idx % 2 === 1}
             kicker={t(`${s.i18nKey}.kicker`)}

@@ -3,6 +3,9 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import SectionTitle from "@/components/ui/SectionTitle";
 import ProductCard from "@/components/ui/ProductCard";
@@ -29,6 +32,8 @@ export default function ProductsCatalogue({ locale }: { locale: string }) {
     const [selectedSizes, setSelectedSizes] = useState<SizeKey[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [sort, setSort] = useState<SortKey>("featured");
+    const searchParams = useSearchParams();
+    const router = useRouter();
 
     const quoteHref = `/${locale}/quote`;
     const productHref = (slug: string) => `/${locale}/products/${slug}`;
@@ -39,6 +44,16 @@ export default function ProductsCatalogue({ locale }: { locale: string }) {
         PRODUCTS.forEach((p) => (p.tags ?? []).forEach((x) => set.add(x)));
         return Array.from(set);
     }, []);
+
+    useEffect(() => {
+        const cat = searchParams.get("cat");
+        if (!cat) return;
+
+        if ((PRODUCT_CATEGORY_KEYS as string[]).includes(cat)) {
+            setActiveCategory(cat as ProductCategory);
+        }
+    }, [searchParams]);
+
 
     const filteredProducts = useMemo(() => {
         let list = [...PRODUCTS];
@@ -173,7 +188,10 @@ export default function ProductsCatalogue({ locale }: { locale: string }) {
                                                 <SidebarRadio
                                                     checked={activeCategory === "all"}
                                                     label={t("filters.all")}
-                                                    onClick={() => setActiveCategory("all")}
+                                                    onClick={() => {
+                                                        setActiveCategory("all");
+                                                        router.replace(`/${locale}/products`, { scroll: false });
+                                                    }}
                                                 />
                                                 {PRODUCT_CATEGORY_KEYS.map((key) => (
                                                     <SidebarRadio
@@ -182,7 +200,10 @@ export default function ProductsCatalogue({ locale }: { locale: string }) {
                                                         label={t(PRODUCT_CATEGORIES[key].i18nKey, {
                                                             defaultValue: PRODUCT_CATEGORIES[key].fallback,
                                                         })}
-                                                        onClick={() => setActiveCategory(key)}
+                                                        onClick={() => {
+                                                            setActiveCategory(key);
+                                                            router.replace(`/${locale}/products?cat=${encodeURIComponent(key)}`, { scroll: false });
+                                                        }}
                                                     />
                                                 ))}
                                             </div>

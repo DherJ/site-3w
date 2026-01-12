@@ -13,8 +13,10 @@ export function SiteFooter() {
 
   const common = {
     email: "j.dhersin@hotmail.fr",
-    phone: "+33 6 47 65 64 33"
-  }
+    phone: "+33 6 47 65 64 33",
+    companyName: "3W - WellWithWaves",
+    address: "110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques",
+  };
 
   return (
     <footer className="bg-brandNavy/95 backdrop-blur-xl ring-1 ring-white/10 text-white">
@@ -66,7 +68,8 @@ export function SiteFooter() {
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 text-brandChampagne shrink-0" />
                 <AddressMapLink
-                  address="110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques"
+                  companyName={common.companyName}
+                  address={common.address}
                   variant="inline"
                   tone="dark"
                   className="text-white/80 hover:text-white text-left"

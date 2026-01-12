@@ -18,8 +18,6 @@ export default function ProductPage({ params }: Props) {
   const product = PRODUCTS.find((p) => p.slug === params.slug);
   if (!product) return notFound();
 
-  // Ici, on met une URL de devis "générique" (sans variantes),
-  // le choix final (pb/size) reste géré dans le client.
   const quotePath = `/${params.locale}/quote?product=${product.slug}`;
 
   const jsonLd = getProductJsonLd({

@@ -10,7 +10,7 @@ export default function ContactClient({
   legalCommon,
 }: {
   locale: string;
-  legalCommon: { address: string; email: string; phone: string };
+  legalCommon: { companyName: string; address: string; email: string; phone: string };
 }) {
   const t = useTranslations("contact");
   const g = useTranslations("global");
@@ -114,7 +114,7 @@ export default function ContactClient({
           <div className="flex items-start gap-3">
             <MapPin className="mt-0.5 h-4 w-4 text-brandChampagne shrink-0" />
             <AddressMapLink
-              address={legalCommon.address}
+              address={legalCommon.companyName}
               variant="inline"
               tone="light"
               className="text-brandNavy"

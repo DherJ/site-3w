@@ -9,8 +9,8 @@
   },
   "home": {
     "heroTitle": "La radioprotection, conçue avec exigence.",
-    "heroSubtitle": "Équipements de radioprotection premium pour les environnements médicaux exigeants.",
-    "heroMadeInenFrance": "Fabriqué dans nos ateliers en France • RADIOPROTECTION"
+    "heroSubtitle": "Équipements de radioprotection premium pour les environnements médicaux",
+    "heroMadeInenFrance": "Fabriqué dans notre atelier en France"
   },
   "proof": {
     "title": "Preuve de notre savoir-faire",
@@ -29,7 +29,7 @@
     },
     "factoryBadge": {
       "title": "Fabrication interne",
-      "desc": "Ateliers en France, savoir-faire maîtrisé."
+      "desc": "Atelier en France, savoir-faire maîtrisé."
     }
   },
   "services": {
@@ -37,6 +37,8 @@
     "title": "Services – Protection & Blindage Radiologique",
     "subtitle": "Audit, blindage, contrôle et maintenance : un accompagnement complet, orienté terrain.",
     "seeServices": "Voir les services",
+    "seeService": "Voir le service",
+    "ourServices": "Nos prestations",
     "seo": {
       "title": "Services de radioprotection",
       "description": "Découvrez nos services de vente, location, contrôles qualité et maintenance d'équipements de radioprotection conçus pour les environnements médicaux exigeants.",
@@ -87,6 +89,9 @@
         "step2": "Nettoyage spécialisé",
         "step3": "Contrôle final"
       }
+    },
+    "tips": {
+      "horizontalScroll": "Astuce : scrollez horizontalement pour voir tous les services."
     }
   },
   "manufactureAndQuality": {
@@ -133,8 +138,11 @@
       "protegeThyroide": "Protège-thyroïde",
       "vestes": "Vestes",
       "jupes": "Jupes",
+      "pediatrique": "Pédiatrique",
       "autres": "Autres"
     },
+    "seeCategory": "Voir la catégorie",
+    "seeCatalogue": "Voir le catalogue",
     "backCatalogue": "Retour au catalogue",
     "technicalFile": "Fiche technique",
     "downloadPdf": "Télécharger le Pdf",
@@ -144,7 +152,10 @@
       "title": "SÉLECTION",
       "subtitle": "Produits similaires"
     },
-    "specification": "SPÉCIFICATIONS"
+    "specification": "SPÉCIFICATIONS",
+    "tips": {
+      "horizontalScroll": "Astuce : scrollez horizontalement pour voir toutes les catégories."
+    }
   },
   "partners": {
     "kicker": "PARTENAIRES",
@@ -244,8 +255,8 @@
       "phoneLabel": "Téléphone",
       "phone": "+33 6 52 71 03 09",
       "publisherTitle": "Éditeur du site",
-      "publisherCompanyName": "Jérôme Dhersin - JD-PIXEL-WORKS",
-      "publisherCompanyAddress": "154 rue du violon d'or, 59190 Hazebrouck, France",
+      "publisherCompanyName": "JD-PIXEL-WORKS",
+      "publisherCompanyAddress": "59190 Hazebrouck, France",
       "publisherCompanyMail": "j.dhersin@hotmail.fr",
       "publisherCompanyPhone": "+33 6 47 65 64 33",
       "hostingTitle": "Hébergement",
@@ -405,6 +416,7 @@
     "home": "Accueil",
     "products": "Produits",
     "siteName": "WellWithWaves",
-    "summary": "Sommaire"
+    "summary": "Sommaire",
+    "openMaps": "Ouvrir dans Google Maps"
   }
 }

@@ -14,6 +14,7 @@ export type ProductHighlight = {
 };
 
 export type ProductCategory =
+  | "chasubles"
   | "tabliers"
   | "protege-thyroide"
   | "vestes"

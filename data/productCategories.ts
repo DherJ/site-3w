@@ -4,6 +4,11 @@ export const PRODUCT_CATEGORIES = {
     i18nKey: "categories.tabliers",
     fallback: "Tabliers",
   },
+  chasubles: {
+    key: "chasubles",
+    i18nKey: "categories.chasubles",
+    fallback: "Chasubles",
+  },
   "protege-thyroide": {
     key: "protege-thyroide",
     i18nKey: "categories.protegeThyroide",
@@ -18,6 +23,11 @@ export const PRODUCT_CATEGORIES = {
     key: "jupes",
     i18nKey: "categories.jupes",
     fallback: "Jupes",
+  },
+  pediatrique: {
+    key: "pediatrique",
+    i18nKey: "categories.pediatrique",
+    fallback: "Pediatrique",
   },
   autres: {
     key: "autres",

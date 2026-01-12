@@ -1,8 +1,10 @@
 "use client";
 
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 
 type AddressMapLinkProps = {
+  companyName?: string;
   address: string;
   label?: string;
   variant?: "card" | "inline";
@@ -13,18 +15,21 @@ type AddressMapLinkProps = {
 function buildGoogleMapsUrl(address: string) {
   const query = encodeURIComponent(address);
   return `https://www.google.com/maps/search/?api=1&query=${query}`;
+ // https://www.google.com/maps/place/3W+-+Well+With+Waves/@50.7268101,2.3319638,17z/data=!3m1!4b1!4m6!3m5!1s0x47dcf971dff176d7:0xbe08dee01d971c59!8m2!3d50.7268068!4d2.3368347!16s%2Fg%2F11w1cky29r?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D
 }
 
 export default function AddressMapLink({
+  companyName,
   address,
   label = "ATELIER & SIÈGE",
   variant = "card",
   tone = "light",
   className,
 }: AddressMapLinkProps) {
-  const href = buildGoogleMapsUrl(address);
+  const href = buildGoogleMapsUrl(companyName ? companyName : address);
   const isDark = tone === "dark";
-
+  const g = useTranslations("global");
+ 
   if (variant === "inline") {
     return (
       <a
@@ -82,7 +87,7 @@ export default function AddressMapLink({
 
       {!isDark && (
         <div className="mt-3 text-xs font-bold text-brandMuted">
-          Ouvrir dans Google Maps
+          {g('openMaps')}
         </div>
       )}
     </a>

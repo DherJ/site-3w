@@ -58,7 +58,7 @@ export default {
 
         // tes aliases (optionnels mais pratiques)
         // brandNavy: "#112D4D",
-        brandNavy: "#0f5550ff",
+        brandNavy: "#083431ff",
         brandOffWhite: "#F7F9FC",
         brandChampagne: "#C9B37E",
         brandLine: "#E5E9F0",
