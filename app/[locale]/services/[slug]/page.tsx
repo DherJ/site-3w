@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isKnownSlug(slug)) return {};
 
   const g = await getTranslations({ locale, namespace: "global" });
-  const t = await getTranslations({ locale, namespace: "service" });
+  const t = await getTranslations({ locale, namespace: "serviceDetail" });
 
   const title = t(`${slug}.seo.title`);
   const description = t(`${slug}.seo.description`);
@@ -105,7 +105,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const includedBullets = t.raw(`${slug}.included.bullets`) as string[];
   const pros = t.raw(`${slug}.pros`) as string[];
   const cons = t.raw(`${slug}.cons`) as string[];
-  const steps = t.raw(`${slug}.process.steps`) as { title: string; desc: string }[];
+  const steps = t.raw(`${slug}.process.steps`) as { icon?: string; title: string; desc: string }[];
   const qualityText = t(`${slug}.quality.text`);
   const qualityBullets = t.raw(`${slug}.quality.bullets`) as string[];
   const faq = t.raw(`${slug}.faq`) as { q: string; a: string }[];
@@ -130,6 +130,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <div className="relative">
+      
       <JsonLd data={jsonLd} />
 
       <div className="pointer-events-none absolute inset-0 bg-brandOffWhite" />
@@ -269,16 +270,13 @@ export default async function ServiceDetailPage({ params }: Props) {
         </section>
 
         {/* Process */}
-        <section
-          id="process"
-          className="mt-8 rounded-3xl bg-white/70 p-6 ring-1 ring-brandLine shadow-soft backdrop-blur md:p-8"
-        >
-          <h2 className="text-lg font-extrabold text-brandNavy">{processTitle}</h2>
-
-         <div id="process" className="mt-8">
-  <ProcessWow title={processTitle} steps={steps} />
-</div>
-        </section>
+        <div id="process" className="mt-8">
+          <ProcessWow
+            title={processTitle}
+            steps={steps}
+            subtitle={t(`${slug}.process.subtitle`, { default: "" })}
+          />
+        </div>
 
         {/* Quality */}
         <section className="mt-8 rounded-3xl bg-brandNavy/95 p-6 text-white ring-1 ring-white/10 shadow-soft md:p-8">

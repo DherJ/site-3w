@@ -46,17 +46,6 @@
       "h2": "Accompagnement complet pour vos besoins en radioprotection",
       "serviceName": "Services de radioprotection"
     },
-    "sales": {
-      "kicker": "SERVICE",
-      "title": "Vente d’équipements de radioprotection",
-      "desc": "Tabliers et protections premium pour environnements radiologiques.",
-      "process": {
-        "title": "Process en 3 étapes",
-        "step1": "Analyse du besoin",
-        "step2": "Sélection des équipements",
-        "step3": "Livraison & accompagnement"
-      }
-    },
     "rental": {
       "kicker": "SERVICE",
       "title": "Location d’équipements",
@@ -144,6 +133,7 @@
         "Délais de retour/traitement à intégrer dans le planning."
       ],
       "process": {
+        "subtitle": "Un cycle complet pour sécuriser l’usage et garantir l’hygiène entre chaque location.",
         "steps": [
           {
             "title": "1) Qualification",
@@ -199,96 +189,6 @@
         }
       ]
     },
-    "sales": {
-      "title": "Vente d’équipements de radioprotection",
-      "subtitle": "Construisez un parc durable, cohérent et confortable, sélectionné selon votre usage réel — avec conseils, mise en service et accompagnement.",
-      "seo": {
-        "title": "Vente – Équipements de radioprotection",
-        "description": "Achat de tabliers et équipements : conseil, sélection adaptée, constitution de parc, recommandations d’entretien et de contrôle."
-      },
-      "why": {
-        "title": "Pourquoi acheter ?",
-        "bullets": [
-          "Stabiliser un besoin récurrent et garantir une disponibilité immédiate.",
-          "Standardiser votre parc et votre expérience terrain.",
-          "Optimiser les coûts sur le long terme quand l’usage est régulier."
-        ]
-      },
-      "included": {
-        "bullets": [
-          "Conseil de choix : protection, confort, tailles, contraintes métier.",
-          "Aide à la constitution du parc : quantités, rotation, stockage.",
-          "Recommandations d’entretien et bonnes pratiques.",
-          "Option : plan de suivi (inspection / contrôles périodiques)."
-        ]
-      },
-      "pros": [
-        "Rentable en usage fréquent et long terme.",
-        "Disponibilité immédiate, pas de réservation.",
-        "Parc homogène, adapté à vos équipes.",
-        "Meilleure maîtrise de l’organisation et de la rotation."
-      ],
-      "cons": [
-        "Investissement initial plus important.",
-        "Gestion interne du stockage et du suivi d’état.",
-        "Plan de contrôle/entretien à structurer pour rester performant dans le temps."
-      ],
-      "process": {
-        "steps": [
-          {
-            "title": "1) Cadrage",
-            "desc": "Usage, fréquence, contraintes, tailles, confort attendu."
-          },
-          {
-            "title": "2) Recommandation",
-            "desc": "Sélection d’équipements + options (rotation, stockage, accessoires)."
-          },
-          {
-            "title": "3) Devis",
-            "desc": "Budget, délais, modalités et éventuelles personnalisations."
-          },
-          {
-            "title": "4) Livraison & mise en service",
-            "desc": "Remise/expédition, vérification, conseils d’utilisation et stockage."
-          },
-          {
-            "title": "5) Suivi",
-            "desc": "Option : contrôles périodiques, maintenance, renouvellement parc."
-          }
-        ]
-      },
-      "quality": {
-        "text": "L’objectif : un parc cohérent, confortable et fiable, avec des recommandations qui prolongent la durée de vie et réduisent l’usure.",
-        "bullets": [
-          "Choix guidé par le terrain (pas uniquement une fiche produit).",
-          "Bonnes pratiques : pliage, stockage, manipulation, transport.",
-          "Plan de contrôle recommandé selon l’intensité d’usage.",
-          "Aide à la traçabilité (identifiants, rotation, historique)."
-        ]
-      },
-      "faq": [
-        {
-          "q": "Achat ou location : comment choisir ?",
-          "a": "Usage régulier → achat. Besoin ponctuel/pics/remplacement → location. Le mix est fréquent."
-        },
-        {
-          "q": "Peut-on mixer tailles et modèles ?",
-          "a": "Oui, on recommande souvent une base standard + quelques variantes pour couvrir toutes les morphologies."
-        },
-        {
-          "q": "Proposez-vous un accompagnement entretien ?",
-          "a": "Oui : bonnes pratiques + option de contrôles périodiques."
-        },
-        {
-          "q": "Quels délais ?",
-          "a": "Selon quantités et tailles. Le devis inclut une estimation réaliste."
-        },
-        {
-          "q": "Aidez-vous à dimensionner le parc ?",
-          "a": "Oui, on vous aide à calibrer quantités/rotation pour éviter le sous-stock ou la surcapacité."
-        }
-      ]
-    },
     "quality": {
       "title": "Contrôles qualité & conformité",
       "subtitle": "Sécurisez l’usage, prolongez la durée de vie et gardez un parc clair : état, traçabilité, recommandations et décisions actionnables.",
@@ -324,6 +224,7 @@
         "Peut révéler un besoin de renouvellement (à anticiper)."
       ],
       "process": {
+        "subtitle": "Un protocole rigoureux, pensé pour être actionnable et adapté à votre contexte.",
         "steps": [
           {
             "title": "1) Cadrage",
@@ -414,25 +315,31 @@
         "Rotation à organiser si parc limité."
       ],
       "process": {
+        "subtitle": "Un cycle complet pour garantir l’hygiène et l’intégrité entre chaque usage.",
         "steps": [
           {
-            "title": "1) Réception & tri",
+            "icon": "inbox",
+            "title": "Réception & tri",
             "desc": "Identification, état initial, tri par niveau de traitement."
           },
           {
-            "title": "2) Nettoyage / désinfection",
+            "icon": "spray",
+            "title": "Nettoyage / désinfection",
             "desc": "Procédé adapté pour préserver matériaux et zones sensibles."
           },
           {
-            "title": "3) Inspection",
+            "icon": "search",
+            "title": "Inspection",
             "desc": "Contrôle visuel : sangles, coutures, pliures, fermetures."
           },
           {
-            "title": "4) Remise en état",
+            "icon": "wrench",
+            "title": "Remise en état",
             "desc": "Actions simples + recommandations si réparation/renouvellement nécessaire."
           },
           {
-            "title": "5) Traçabilité & retour",
+            "icon": "clipboard",
+            "title": "Traçabilité & retour",
             "desc": "Historique mis à jour, retour/remise en circulation."
           }
         ]
@@ -491,6 +398,10 @@
     "kicker": "CATALOGUE",
     "title": "Équipements de radioprotection",
     "subtitle": "Une sélection pensée pour les environnements médicaux exigeants : confort, durabilité et finition premium.",
+    "seo": {
+      "title": "Catalogue d’équipements de radioprotection",
+      "description": "Découvrez notre catalogue d’équipements de radioprotection : tabliers plombés, protège-thyroïde, vestes et jupes. Solutions professionnelles certifiées, confort et performance, devis rapide."
+    },
     "filters": {
       "kicker": "FILTRES",
       "all": "Tous",
@@ -606,7 +517,121 @@
     }
   },
   "quote": {
-    "title": "Devis en ligne"
+    "seo": {
+      "title": "Demander un devis",
+      "description": "Demandez un devis en quelques étapes. Réponse rapide et adaptée à vos besoins."
+    },
+    "title": "Demander un devis",
+    "wizard": {
+      "kicker": "DEVIS EN LIGNE",
+      "heading": "Demande rapide"
+    },
+    "steps": {
+      "need": "1 Besoin",
+      "details": "2 Détails",
+      "logistics": "3 Logistique",
+      "company": "4 Entreprise",
+      "review": "5 Récap"
+    },
+    "needs": {
+      "purchase": {
+        "label": "Achat",
+        "desc": "Demande de prix & disponibilité."
+      },
+      "rental": {
+        "label": "Location",
+        "desc": "Besoin ponctuel / événement."
+      },
+      "quality": {
+        "label": "Contrôle & blindage",
+        "desc": "Conformité, protections, options."
+      },
+      "cleaning": {
+        "label": "Nettoyage",
+        "desc": "Procédure & fréquence."
+      },
+      "mix": {
+        "label": "Mix",
+        "desc": "Plusieurs besoins à la fois."
+      }
+    },
+    "sections": {
+      "need": {
+        "title": "Type de demande",
+        "subtitle": "Choisis un ou plusieurs besoins."
+      },
+      "details": {
+        "title": "Détails"
+      },
+      "logistics": {
+        "title": "Logistique"
+      },
+      "company": {
+        "title": "Entreprise"
+      },
+      "review": {
+        "title": "Récapitulatif",
+        "subtitle": "Vérifie tes infos avant l’envoi."
+      }
+    },
+    "fields": {
+      "quantity": {
+        "label": "QUANTITÉ (OPTIONNEL)"
+      },
+      "deadline": {
+        "label": "DÉLAI (OPTIONNEL)",
+        "placeholder": "ex : 2 semaines"
+      },
+      "notes": {
+        "label": "COMMENTAIRE"
+      },
+      "address": {
+        "label": "ADRESSE (OPTIONNEL)"
+      },
+      "company": {
+        "label": "ÉTABLISSEMENT"
+      },
+      "contact": {
+        "label": "CONTACT"
+      },
+      "email": {
+        "label": "EMAIL"
+      },
+      "phone": {
+        "label": "TÉLÉPHONE (OPTIONNEL)"
+      }
+    },
+    "buttons": {
+      "back": "← Retour",
+      "next": "Continuer →",
+      "submit": "Envoyer le devis",
+      "submitting": "Envoi...",
+      "reset": "Réinitialiser"
+    },
+    "progress": {
+      "title": "PROGRESSION",
+      "selection": "SÉLECTION",
+      "todoTitle": "À faire",
+      "todo": [
+        "Choisis ton type de demande, puis continue.",
+        "Ajoute les détails (quantité / délai) si nécessaire.",
+        "Renseigne l’adresse si tu as une contrainte logistique.",
+        "Indique tes coordonnées pour qu’on te recontacte.",
+        "Vérifie une dernière fois avant l’envoi."
+      ],
+      "eta": "Temps estimé : ~2 min",
+      "stepLabel": "Étape"
+    },
+    "alerts": {
+      "sent": "Devis envoyé ✅",
+      "error": "Erreur envoi devis"
+    },
+    "validation": {
+      "needsMin": "Choisis au moins un besoin",
+      "companyRequired": "Nom établissement requis",
+      "contactRequired": "Nom contact requis",
+      "emailInvalid": "Email invalide"
+    }
   },
   "footer": {
     "society": "3W - Well With Waves",
@@ -793,6 +818,7 @@
     "products": "Produits",
     "siteName": "WellWithWaves",
     "summary": "Sommaire",
-    "openMaps": "Ouvrir dans Google Maps"
+    "openMaps": "Ouvrir dans Google Maps",
+    "services": "Services"
   }
 }

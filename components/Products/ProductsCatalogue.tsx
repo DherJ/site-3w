@@ -7,7 +7,6 @@ import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import SectionTitle from "@/components/ui/SectionTitle";
 import ProductCard from "@/components/ui/ProductCard";
 import ProofListItems from "@/components/ui/ProofListItems";
 
@@ -18,13 +17,15 @@ import {
     ProductCategory,
 } from "@/data/productCategories";
 import UnderlineReveal from "../ui/UnderlineReveal";
+import { JsonLd } from "../seo/JsonLd";
+import SignatureLine from "../ui/SignatureLine";
 
 type SortKey = "featured" | "name" | "category";
 
 const ALL_SIZES = ["XS", "S", "M", "L", "XL", "XXL"] as const;
 type SizeKey = (typeof ALL_SIZES)[number];
 
-export default function ProductsCatalogue({ locale }: { locale: string }) {
+export default function ProductsCatalogue({ locale, jsonLd, }: { locale: string, jsonLd: any; }) {
     const t = useTranslations("products");
     const tGlobal = useTranslations("global");
 
@@ -115,41 +116,66 @@ export default function ProductsCatalogue({ locale }: { locale: string }) {
         setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((x) => x !== tag) : [...prev, tag]));
     };
 
+    // ✅ label catégorie (pour breadcrumb)
+    const activeCategoryLabel =
+        activeCategory === "all"
+            ? null
+            : t(PRODUCT_CATEGORIES[activeCategory].i18nKey, {
+                defaultValue: PRODUCT_CATEGORIES[activeCategory].fallback,
+            });
+
     return (
-        <div className="relative py-12">
-            {/* fond premium */}
-            <div className="pointer-events-none absolute inset-0 bg-brandOffWhite" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-brandOffWhite to-white" />
+        <div className="relative">
+            <JsonLd data={jsonLd} />
 
-            <div className="relative">
+            {/* ✅ Breadcrumb (aligné au layout) */}
+            <div className="relative mx-auto max-w-6xl px-4 py-14 md:py-14">
+
+                <nav className="mb-6 flex flex-wrap items-center gap-2 text-xs font-semibold text-brandMuted">
+                    <Link href={`/${locale}`} className="hover:text-brandNavy">
+                        {tGlobal("home", { default: "Accueil" })}
+                    </Link>
+
+                    <span className="text-brandMuted/40">/</span>
+
+                    <Link
+                        href={`/${locale}/products`}
+                        className="text-brandNavy hover:text-brandNavy/80 transition-colors"
+                    >
+                        {t("title", { default: "Catalogue" })}
+                    </Link>
+
+                    {activeCategoryLabel ? (
+                        <>
+                            <span className="text-brandMuted/40">/</span>
+                            <span className="text-brandNavy">{activeCategoryLabel}</span>
+                        </>
+                    ) : null}
+                </nav>
+
                 {/* HERO */}
-                <section className="pt-10 md:pt-14">
+                <section className="rounded-3xl bg-white/70 p-6 ring-1 ring-brandLine shadow-soft backdrop-blur md:p-10">
                     <div className="mx-auto max-w-6xl px-4">
-                        <div className="rounded-3xl bg-white/70 p-8 ring-1 ring-brandLine shadow-soft backdrop-blur sm:p-12">
-                            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-                                <div className="max-w-2xl">
-                                    <SectionTitle align="left" kicker={t("kicker")} title={t("title")} subtitle={t("subtitle")} />
-                                </div>
-
-                                <div className="flex flex-wrap gap-3">
-                                    <Link
-                                        href={quoteHref}
-                                        className="inline-flex rounded-2xl bg-brandChampagne px-6 py-3 text-sm font-extrabold text-brandNavy transition hover:-translate-y-0.5 hover:bg-brandChampagne/90"
-                                    >
-                                        {tGlobal("quote")}
-                                    </Link>
-
-                                    <Link
-                                        href="#products-grid"
-                                        className="inline-flex rounded-2xl bg-brandNavy px-6 py-3 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-brandNavy/90"
-                                    >
-                                        {tGlobal("discoverCatalog")}
-                                    </Link>
-                                </div>
+                        <div>
+                            <div className="text-[11px] font-extrabold tracking-[0.28em] text-brandNavy/60">
+                                {t("kicker")}
                             </div>
 
-                            <ProofListItems />
+                            <h2 className="mt-3 font-serif text-2xl font-semibold tracking-tight text-brandNavy md:text-3xl">
+                                {t("title")}
+                            </h2>
+
+                            <div className="mt-2 h-[2px] w-10 rounded-full bg-brandChampagne/70" />
+
+                            <div className="mt-4 w-[220px]">
+                                <SignatureLine align="left" />
+                            </div>
+
+                            <p className="mt-4 text-sm leading-relaxed text-brandMuted md:text-base">
+                                {t("subtitle")}
+                            </p>
                         </div>
+                        <ProofListItems />
                     </div>
                 </section>
 
@@ -245,7 +271,6 @@ export default function ProductsCatalogue({ locale }: { locale: string }) {
                             {/* CONTENT */}
                             <div>
                                 {/* TOOLBAR (sans cadre, underline champagne à droite) */}
-                                {/* TOOLBAR (sans cadre, underline à droite) */}
                                 <div className="mb-6">
                                     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                                         <div className="text-sm text-brandMuted">

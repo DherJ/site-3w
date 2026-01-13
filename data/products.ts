@@ -24,7 +24,6 @@ export type ProductCategory =
 export type ProductImage = {
   src: string;
   alt: string;
-  /** Optionnel : split hover sur l’image active */
   hoverSrc?: string;
 };
 
@@ -78,7 +77,7 @@ export const PRODUCTS: Product[] = [
     category: "tabliers",
     tags: ["Best-seller", "Personnalisable"],
 
-    // ✅ taille choisie (par défaut) si tu veux une pré-sélection
+    // ✅ taille choisie (par défaut)
     size: "XL",
 
     datasheetPdf: "/pdf/tablier-plombe-premium.pdf",

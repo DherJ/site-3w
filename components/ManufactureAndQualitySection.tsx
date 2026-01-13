@@ -49,7 +49,7 @@ export default function ManufactureAndQualitySection() {
 
                         <div className="mt-10">
                             <Button asChild>
-                                <Link href={`/${locale}/manufacture-and-quality`}>
+                                <Link href={`/${locale}/about`}>
                                     {t("discover")} <ArrowRight className="h-4 w-4" />
                                 </Link>
                             </Button>

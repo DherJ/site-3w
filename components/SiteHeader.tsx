@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
-import { Users, Mail, BookOpen, Wrench } from "lucide-react";
+import { Users, Mail, BookOpen, Wrench, Handshake } from "lucide-react";
 import HeaderProductsDropdown from "@/components/layout/HeaderProductsDropdown";
 import HeaderServicesDropdown from "./layout/HeaderServicesDropdown";
 import { NavIcon } from "./ui/NavBarServicesIcon";
@@ -100,8 +100,8 @@ export function SiteHeader() {
   const appleEase = "ease-[cubic-bezier(0.16,1,0.3,1)]";
 
   const links = [
-    { key: "products", Icon: BookOpen, href: `/${locale}/products`, label: t("products") },
-    { key: "services", imageSrc: "/icons/services.png", href: `/${locale}/services`, label: t("services") },
+    { key: "products", imageSrc: "/icons/products.png", Icon: BookOpen, href: `/${locale}/products`, label: t("products") },
+    { key: "services", Icon: Handshake, href: `/${locale}/services`, label: t("services") },
     { key: "about", Icon: Users, href: `/${locale}/about`, label: t("about") },
     { key: "contact", Icon: Mail, href: `/${locale}/contact`, label: t("contact") },
   ];
@@ -207,13 +207,13 @@ export function SiteHeader() {
                             ].join(" ")}
                           >
                             {imageSrc ? (
-                              <span className="relative h-6 w-6 shrink-0">
+                              <span className="relative h-8 w-8 shrink-0">
                                 <Image
                                   src={imageSrc}
                                   alt=""
                                   fill
                                   className="object-contain opacity-90"
-                                  sizes="24px"
+                                  sizes="48px"
                                 />
                               </span>
                             ) : (

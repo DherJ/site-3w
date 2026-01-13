@@ -6,7 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
 import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
+import SiteFooter from "@/components/SiteFooter";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 const SITE_URL = "https://wellwithwaves.com";
@@ -160,8 +160,8 @@ export default async function LocaleLayout({
 
       <div className="relative z-10">
         <SiteHeader />
-        <main className="min-h-[70vh]">{children}</main>
-        <SiteFooter />
+        <main className="min-h-[70vh] py-24">{children}</main>
+        <SiteFooter locale={locale} />
       </div>
     </NextIntlClientProvider>
   );

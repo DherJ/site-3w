@@ -1,15 +1,14 @@
-
+import type { Metadata } from "next";
 import ProductsCatalogue from "@/components/products/ProductsCatalogue";
+import { getProductsMetadata, getProductsJsonLd } from "./seo";
 
-export default function ProductsPage({
-  params,
-}: {
-  params: { locale: string };
-}) {
+type Props = { params: { locale: string } };
 
-  const locale = params.locale;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return getProductsMetadata({ locale: params.locale });
+}
 
-  return (
-    <ProductsCatalogue locale={locale} />
-  );
+export default function ProductsPage({ params }: Props) {
+  const jsonLd = getProductsJsonLd(params.locale);
+  return <ProductsCatalogue locale={params.locale} jsonLd={jsonLd} />;
 }

@@ -78,7 +78,7 @@ export default async function ServicesPage({ params }: Props) {
       <div className="pointer-events-none absolute inset-0 bg-brandOffWhite" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-brandOffWhite to-white" />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-10 md:py-14">
+      <div className="relative mx-auto max-w-6xl px-4 py-14 md:py-14">
 
         <nav className="mb-6 flex flex-wrap items-center gap-2 text-xs font-semibold text-brandMuted">
           <Link href={`/${locale}`} className="hover:text-brandNavy">

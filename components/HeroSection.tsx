@@ -51,7 +51,7 @@ export default function ProofSection() {
                             </Button>
 
                             <Button asChild>
-                                <Link href={`/${locale}/manufacture-and-quality`}>
+                                <Link href={`/${locale}/products`}>
                                     {tradGlobal("discoverCatalog")} <ArrowRight className="h-4 w-4" />
                                 </Link>
                             </Button>

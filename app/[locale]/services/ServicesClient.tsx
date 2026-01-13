@@ -5,14 +5,6 @@ import SignatureLine from "@/components/ui/SignatureLine";
 import { useRevealOnScroll } from "@/components/hooks/useRevealOnScroll";
 import { useTranslations } from "next-intl";
 import { Service } from "@/data/services";
-import SectionTitle from "@/components/ui/SectionTitle";
-
-type Item = {
-  slug: string;
-  title: string;
-  desc: string;
-  imageSrc: string;
-};
 
 function ServiceRow({
   slug,

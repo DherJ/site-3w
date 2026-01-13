@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { PRODUCTS } from "@/data/products";
 import SignatureLine from "@/components/ui/SignatureLine";
+import RadiationLoader from "@/components/ui/RadiationLoader";
+import { SummaryPillRow } from "./ui/SummaryPillRow";
 
 import {
   ShoppingCart,
@@ -23,88 +26,108 @@ import {
   Phone,
   Layers,
   ListChecks,
-  Eye
+  Eye,
 } from "lucide-react";
 
-import RadiationLoader from "@/components/ui/RadiationLoader";
-import { SummaryPillRow } from "./ui/SummaryPillRow";
+type NeedKey = "purchase" | "rental" | "quality" | "cleaning" | "mix";
 
-const schema = z.object({
-  product: z.string().optional(),
-  pb: z.string().optional(),
-  size: z.string().optional(),
+type Copy = {
+  heroKicker: string;
+  heroTitle: string;
 
-  needs: z.array(z.enum(["purchase", "rental", "quality", "cleaning", "mix"])).min(1, "Choisis au moins un besoin"),
-  quantity: z.coerce.number().int().min(1).optional(),
-  notes: z.string().max(2000).optional(),
-  address: z.string().optional(),
-  deadline: z.string().optional(),
-  company: z.string().min(1, "Nom établissement requis"),
-  contact: z.string().min(1, "Nom contact requis"),
-  email: z.string().email("Email invalide"),
-  phone: z.string().optional(),
-});
+  stepper: Array<{ key: "need" | "details" | "logistics" | "company" | "review"; label: string }>;
 
-type FormValues = z.infer<typeof schema>;
+  needs: Array<{ val: NeedKey; label: string; desc: string }>;
 
-const steps = [
-  { key: "need", icon: <Layers className="h-4 w-4" />, label: "1 Besoin" },
-  { key: "details", icon: <Eye className="h-4 w-4" />, label: "2 Détails" },
-  { key: "logistics", icon: <MapPin className="h-4 w-4" />, label: "3 Logistique" },
-  { key: "company", icon: <Building2 className="h-4 w-4" />, label: "4 Entreprise" },
-  { key: "review", icon: <ListChecks className="h-4 w-4" />, label: "5 Récap" },
-] as const;
+  section: {
+    needTitle: string;
+    needSubtitle: string;
+    detailsTitle: string;
+    logisticsTitle: string;
+    companyTitle: string;
+    reviewTitle: string;
+    reviewSubtitle: string;
+  };
 
-const TOTAL_STEPS = steps.length;
-const percentForStep = (active: number) =>
-  Math.round(((active + 1) / TOTAL_STEPS) * 100);
+  fields: {
+    quantityLabel: string;
+    deadlineLabel: string;
+    deadlinePlaceholder: string;
+    notesLabel: string;
 
-const NEEDS: Array<{
-  val: FormValues["needs"][number];
-  label: string;
-  icon: React.ReactNode;
-  desc: string;
-}> = [
-    { val: "purchase", label: "Achat", icon: <ShoppingCart className="h-4 w-4" />, desc: "Demande de prix & disponibilité." },
-    { val: "rental", label: "Location", icon: <Repeat2 className="h-4 w-4" />, desc: "Besoin ponctuel / événement." },
-    { val: "quality", label: "Contrôle & blindage", icon: <Shield className="h-4 w-4" />, desc: "Conformité, protections, options." },
-    { val: "cleaning", label: "Nettoyage", icon: <SprayCan className="h-4 w-4" />, desc: "Procédure & fréquence." },
-    { val: "mix", label: "Mix", icon: <Layers className="h-4 w-4" />, desc: "Plusieurs besoins à la fois." },
-  ];
+    addressLabel: string;
 
-function Stepper({ active }: { active: number }) {
-  return (
-    <div className="flex flex-wrap gap-2">
-      {steps.map((s, i) => {
-        const isActive = i === active;
-        return (
-          <div
-            key={s.key}
-            className={[
-              "rounded-full px-8 py-2 text-xs font-extrabold tracking-[0.12em]",
-              "ring-1 transition-all",
-              isActive
-                ? "bg-brandNavy text-white ring-brandNavy/20 shadow-sm"
-                : "bg-white/70 text-brandNavy ring-brandLine hover:ring-brandChampagne/40",
-            ].join(" ")}
-          >
-            {s.icon}
-            {s.label}
-          </div>
-        );
-      })}
-    </div>
-  );
+    companyLabel: string;
+    contactLabel: string;
+    emailLabel: string;
+    phoneLabel: string;
+  };
+
+  buttons: {
+    back: string;
+    next: string;
+    submit: string;
+    submitting: string;
+  };
+
+  progress: {
+    title: string;
+    selection: string;
+    todoTitle: string;
+    todo: string[]; // 5 items
+    eta: string;
+    stepLabel: string;
+  };
+
+  alerts: {
+    sent: string;
+    error: string;
+    needsMin: string;
+    companyRequired?: string;
+    contactRequired?: string;
+    emailInvalid?: string;
+  };
+};
+
+function makeSchema(copy: Copy) {
+  return z.object({
+    product: z.string().optional(),
+    pb: z.string().optional(),
+    size: z.string().optional(),
+
+    needs: z
+      .array(z.enum(["purchase", "rental", "quality", "cleaning", "mix"]))
+      .min(1, copy.alerts.needsMin),
+
+    quantity: z.coerce.number().int().min(1).optional(),
+    notes: z.string().max(2000).optional(),
+    address: z.string().optional(),
+    deadline: z.string().optional(),
+
+    company: z.string().min(1, copy.alerts.companyRequired ?? "Company is required"),
+    contact: z.string().min(1, copy.alerts.contactRequired ?? "Contact is required"),
+    email: z.string().email(copy.alerts.emailInvalid ?? "Invalid email"),
+    phone: z.string().optional(),
+  });
 }
 
+type FormValues = z.infer<ReturnType<typeof makeSchema>>;
 
-function ChampagneDivider() {
-  return (
-    <div className="mt-2 flex justify-end">
-      <div className="h-px w-3/4 bg-brandChampagne/45" />
-    </div>
-  );
-}
+const STEP_ICONS: Record<string, React.ReactNode> = {
+  need: <Layers className="h-4 w-4" />,
+  details: <Eye className="h-4 w-4" />,
+  logistics: <MapPin className="h-4 w-4" />,
+  company: <Building2 className="h-4 w-4" />,
+  review: <ListChecks className="h-4 w-4" />,
+};
+
+const NEED_ICONS: Record<NeedKey, React.ReactNode> = {
+  purchase: <ShoppingCart className="h-4 w-4" />,
+  rental: <Repeat2 className="h-4 w-4" />,
+  quality: <Shield className="h-4 w-4" />,
+  cleaning: <SprayCan className="h-4 w-4" />,
+  mix: <Layers className="h-4 w-4" />,
+};
 
 function StepTransition({
   stepKey,
@@ -118,25 +141,52 @@ function StepTransition({
   return (
     <div
       key={stepKey}
-      className={
-        direction === "next"
-          ? "animate-step-in-next"
-          : "animate-step-in-prev"
-      }
+      className={direction === "next" ? "animate-step-in-next" : "animate-step-in-prev"}
     >
       {children}
     </div>
   );
 }
 
-export function QuoteWizard() {
+function Stepper({ active, steps }: { active: number; steps: Copy["stepper"] }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {steps.map((s, i) => {
+        const isActive = i === active;
+        return (
+          <div
+            key={s.key}
+            className={[
+              "inline-flex items-center gap-2",
+              "rounded-full px-6 py-2 text-xs font-extrabold tracking-[0.12em]",
+              "ring-1 transition-all",
+              isActive
+                ? "bg-brandNavy text-white ring-brandNavy/20 shadow-sm"
+                : "bg-white/70 text-brandNavy ring-brandLine hover:ring-brandChampagne/40",
+            ].join(" ")}
+          >
+            {STEP_ICONS[s.key]}
+            {s.label}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export function QuoteWizard({ locale, copy }: { locale: string; copy: Copy }) {
   const searchParams = useSearchParams();
+
+  const steps = copy.stepper;
+  const TOTAL_STEPS = steps.length;
+  const percentForStep = (active: number) => Math.round(((active + 1) / TOTAL_STEPS) * 100);
+
+  const schema = useMemo(() => makeSchema(copy), [copy]);
+
   const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [prefillDone, setPrefillDone] = useState(false);
-
-
-  const [direction, setDirection] = useState<"next" | "prev">("next");
 
   const urlProduct = searchParams.get("product") ?? undefined;
   const urlPb = searchParams.get("pb") ?? undefined;
@@ -144,12 +194,7 @@ export function QuoteWizard() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      needs: [],
-      product: undefined,
-      pb: undefined,
-      size: undefined,
-    },
+    defaultValues: { needs: [], product: undefined, pb: undefined, size: undefined },
     mode: "onTouched",
   });
 
@@ -164,12 +209,6 @@ export function QuoteWizard() {
   const contact = form.watch("contact");
   const email = form.watch("email");
   const phone = form.watch("phone");
-
-  const [initialParams] = useState(() => ({
-    product: urlProduct,
-    pb: urlPb,
-    size: urlSize,
-  }));
 
   useEffect(() => {
     if (prefillDone) return;
@@ -188,35 +227,31 @@ export function QuoteWizard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [urlProduct, urlPb, urlSize, prefillDone]);
 
-  const summary = useMemo(() => {
-    const map: Record<string, string> = {
-      purchase: "Achat",
-      rental: "Location",
-      quality: "Contrôle",
-      cleaning: "Nettoyage",
-      mix: "Mix",
-    };
+  const needsLabelMap = useMemo(() => {
+    const m = new Map<NeedKey, string>();
+    copy.needs.forEach((n) => m.set(n.val, n.label));
+    return m;
+  }, [copy.needs]);
 
-    const pickedProduct = product
-      ? PRODUCTS.find((p) => p.slug === product)
-      : undefined;
+  const summary = useMemo(() => {
+    const pickedProduct = product ? PRODUCTS.find((p) => p.slug === product) : undefined;
 
     return {
       product: pickedProduct?.title || "—",
       pb: pb || "—",
       size: size || "—",
-      needs: needs?.length ? needs.map((n) => map[n]).join(", ") : "—",
+      needs: needs?.length ? needs.map((n) => needsLabelMap.get(n as NeedKey) ?? String(n)).join(", ") : "—",
       quantity: quantity ? String(quantity) : "—",
       deadline: deadline || "—",
       company: company || "—",
     };
-  }, [product, pb, size, needs, quantity, deadline, company]);
-
+  }, [product, pb, size, needs, quantity, deadline, company, needsLabelMap]);
 
   async function onSubmit(v: FormValues) {
     const payload = {
       ...v,
-      productTitle: v.product ? PRODUCTS.find(p => p.slug === v.product)?.title : undefined,
+      locale,
+      productTitle: v.product ? PRODUCTS.find((p) => p.slug === v.product)?.title : undefined,
       createdAt: new Date().toISOString(),
     };
 
@@ -231,11 +266,11 @@ export function QuoteWizard() {
 
       const json = await res.json();
       if (!res.ok || !json.ok) {
-        alert(json.error || "Erreur envoi devis");
+        alert(json.error || copy.alerts.error);
         return;
       }
 
-      alert("Devis envoyé ✅");
+      alert(copy.alerts.sent);
     } finally {
       setIsSubmitting(false);
     }
@@ -244,35 +279,20 @@ export function QuoteWizard() {
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
       {/* LEFT */}
-      <div className="rounded-3xl bg-white/70 p-6 ring-1 ring-brandLine shadow-soft backdrop-blur">
-        {/* Title */}
-        <div>
-          <div className="text-[11px] font-extrabold tracking-[0.28em] text-brandNavy/60">
-            DEVIS EN LIGNE
-          </div>
-          <h2 className="mt-2 font-serif text-2xl font-semibold tracking-tight text-brandNavy">
-            Demande rapide
-          </h2>
-          <div className="mt-3">
-            <SignatureLine align="left" />
-          </div>
-        </div>
-
+      <div>
         <div className="mt-6">
-          <Stepper active={active} />
+          <Stepper active={active} steps={steps} />
         </div>
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6 space-y-6">
           <StepTransition stepKey={`step-${active}`} direction={direction}>
             {active === 0 && (
               <div>
-                <h3 className="text-lg font-extrabold text-brandNavy">Type de demande</h3>
-                <p className="mt-1 text-sm text-brandMuted">
-                  Choisis un ou plusieurs besoins.
-                </p>
+                <h3 className="text-lg font-extrabold text-brandNavy">{copy.section.needTitle}</h3>
+                <p className="mt-1 text-sm text-brandMuted">{copy.section.needSubtitle}</p>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {NEEDS.map((it) => {
+                  {copy.needs.map((it) => {
                     const checked = needs?.includes(it.val);
                     return (
                       <button
@@ -303,16 +323,12 @@ export function QuoteWizard() {
                                 : "bg-white text-brandNavy ring-brandLine group-hover:ring-brandChampagne/35",
                             ].join(" ")}
                           >
-                            {checked ? <Check className="h-4 w-4" /> : it.icon}
+                            {checked ? <Check className="h-4 w-4" /> : NEED_ICONS[it.val]}
                           </div>
 
                           <div className="min-w-0">
-                            <div className="text-sm font-extrabold text-brandNavy">
-                              {it.label}
-                            </div>
-                            <div className="mt-0.5 text-xs text-brandMuted">
-                              {it.desc}
-                            </div>
+                            <div className="text-sm font-extrabold text-brandNavy">{it.label}</div>
+                            <div className="mt-0.5 text-xs text-brandMuted">{it.desc}</div>
                           </div>
                         </div>
                       </button>
@@ -322,7 +338,7 @@ export function QuoteWizard() {
 
                 {form.formState.errors.needs ? (
                   <p className="mt-2 text-sm font-semibold text-red-600">
-                    {form.formState.errors.needs.message as any}
+                    {String(form.formState.errors.needs.message)}
                   </p>
                 ) : null}
               </div>
@@ -330,12 +346,12 @@ export function QuoteWizard() {
 
             {active === 1 && (
               <div className="space-y-4">
-                <h3 className="text-lg font-extrabold text-brandNavy">Détails</h3>
+                <h3 className="text-lg font-extrabold text-brandNavy">{copy.section.detailsTitle}</h3>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/70">
-                      QUANTITÉ (OPTIONNEL)
+                      {copy.fields.quantityLabel}
                     </label>
                     <input
                       type="number"
@@ -346,11 +362,11 @@ export function QuoteWizard() {
 
                   <div>
                     <label className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/70">
-                      DÉLAI (OPTIONNEL)
+                      {copy.fields.deadlineLabel}
                     </label>
                     <input
                       className="mt-2 w-full rounded-2xl bg-white/70 px-4 py-3 text-sm font-semibold text-brandNavy ring-1 ring-brandLine outline-none focus:ring-brandChampagne/45"
-                      placeholder="ex: 2 semaines"
+                      placeholder={copy.fields.deadlinePlaceholder}
                       {...form.register("deadline")}
                     />
                   </div>
@@ -358,7 +374,7 @@ export function QuoteWizard() {
 
                 <div>
                   <label className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/70">
-                    COMMENTAIRE
+                    {copy.fields.notesLabel}
                   </label>
                   <textarea
                     className="mt-2 w-full rounded-2xl bg-white/70 px-4 py-3 text-sm font-semibold text-brandNavy ring-1 ring-brandLine outline-none focus:ring-brandChampagne/45"
@@ -371,11 +387,11 @@ export function QuoteWizard() {
 
             {active === 2 && (
               <div className="space-y-4">
-                <h3 className="text-lg font-extrabold text-brandNavy">Logistique</h3>
+                <h3 className="text-lg font-extrabold text-brandNavy">{copy.section.logisticsTitle}</h3>
 
                 <div>
                   <label className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/70">
-                    ADRESSE (OPTIONNEL)
+                    {copy.fields.addressLabel}
                   </label>
                   <input
                     className="mt-2 w-full rounded-2xl bg-white/70 px-4 py-3 text-sm font-semibold text-brandNavy ring-1 ring-brandLine outline-none focus:ring-brandChampagne/45"
@@ -387,11 +403,11 @@ export function QuoteWizard() {
 
             {active === 3 && (
               <div className="space-y-4">
-                <h3 className="text-lg font-extrabold text-brandNavy">Entreprise</h3>
+                <h3 className="text-lg font-extrabold text-brandNavy">{copy.section.companyTitle}</h3>
 
                 <div>
                   <label className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/70">
-                    ÉTABLISSEMENT
+                    {copy.fields.companyLabel}
                   </label>
                   <input
                     className="mt-2 w-full rounded-2xl bg-white/70 px-4 py-3 text-sm font-semibold text-brandNavy ring-1 ring-brandLine outline-none focus:ring-brandChampagne/45"
@@ -399,14 +415,14 @@ export function QuoteWizard() {
                   />
                   {form.formState.errors.company ? (
                     <p className="mt-2 text-sm font-semibold text-red-600">
-                      {form.formState.errors.company.message}
+                      {String(form.formState.errors.company.message)}
                     </p>
                   ) : null}
                 </div>
 
                 <div>
                   <label className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/70">
-                    CONTACT
+                    {copy.fields.contactLabel}
                   </label>
                   <input
                     className="mt-2 w-full rounded-2xl bg-white/70 px-4 py-3 text-sm font-semibold text-brandNavy ring-1 ring-brandLine outline-none focus:ring-brandChampagne/45"
@@ -414,7 +430,7 @@ export function QuoteWizard() {
                   />
                   {form.formState.errors.contact ? (
                     <p className="mt-2 text-sm font-semibold text-red-600">
-                      {form.formState.errors.contact.message}
+                      {String(form.formState.errors.contact.message)}
                     </p>
                   ) : null}
                 </div>
@@ -422,7 +438,7 @@ export function QuoteWizard() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/70">
-                      EMAIL
+                      {copy.fields.emailLabel}
                     </label>
                     <input
                       className="mt-2 w-full rounded-2xl bg-white/70 px-4 py-3 text-sm font-semibold text-brandNavy ring-1 ring-brandLine outline-none focus:ring-brandChampagne/45"
@@ -430,14 +446,14 @@ export function QuoteWizard() {
                     />
                     {form.formState.errors.email ? (
                       <p className="mt-2 text-sm font-semibold text-red-600">
-                        {form.formState.errors.email.message}
+                        {String(form.formState.errors.email.message)}
                       </p>
                     ) : null}
                   </div>
 
                   <div>
                     <label className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/70">
-                      TÉLÉPHONE (OPTIONNEL)
+                      {copy.fields.phoneLabel}
                     </label>
                     <input
                       className="mt-2 w-full rounded-2xl bg-white/70 px-4 py-3 text-sm font-semibold text-brandNavy ring-1 ring-brandLine outline-none focus:ring-brandChampagne/45"
@@ -450,26 +466,26 @@ export function QuoteWizard() {
 
             {active === 4 && (
               <div className="space-y-4">
-                <h3 className="text-lg font-extrabold text-brandNavy">Récapitulatif</h3>
-                <p className="text-sm text-brandMuted">
-                  Vérifie tes infos avant l’envoi.
-                </p>
+                <h3 className="text-lg font-extrabold text-brandNavy">{copy.section.reviewTitle}</h3>
+                <p className="text-sm text-brandMuted">{copy.section.reviewSubtitle}</p>
 
                 <div className="grid gap-4">
-                  {/* Produit */}
+                  {/* Product */}
                   <div className="rounded-2xl bg-white/60 p-5 ring-1 ring-brandLine">
                     <div className="flex items-center gap-3">
                       <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brandChampagne/15 text-brandNavy ring-1 ring-brandChampagne/25">
                         <Package className="h-4 w-4" />
                       </div>
                       <div className="text-sm font-extrabold tracking-[0.14em] text-brandNavy/70">
-                        PRODUIT
+                        {copy.progress.selection}
                       </div>
                     </div>
 
                     <div className="mt-4 grid gap-3 sm:grid-cols-2">
                       <div>
-                        <div className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/60">Produit</div>
+                        <div className="text-xs font-extrabold tracking-[0.14em] text-brandNavy/60">
+                          {copy.progress.selection}
+                        </div>
                         <div className="mt-2 inline-flex rounded-2xl bg-white/70 px-4 py-2 text-sm font-semibold text-brandNavy ring-1 ring-brandLine">
                           {summary.product}
                         </div>
@@ -477,23 +493,27 @@ export function QuoteWizard() {
 
                       <div className="flex flex-wrap gap-2 sm:justify-end sm:items-end">
                         {summary.pb !== "—" && (
-                          <span className="...">Pb : {summary.pb}</span>
+                          <span className="inline-flex rounded-full bg-white/70 px-3 py-1.5 text-xs font-extrabold text-brandNavy ring-1 ring-brandLine">
+                            Pb: {summary.pb}
+                          </span>
                         )}
                         {summary.size !== "—" && (
-                          <span className="...">Taille : {summary.size}</span>
+                          <span className="inline-flex rounded-full bg-white/70 px-3 py-1.5 text-xs font-extrabold text-brandNavy ring-1 ring-brandLine">
+                            Size: {summary.size}
+                          </span>
                         )}
                       </div>
                     </div>
                   </div>
 
-                  {/* Besoin */}
+                  {/* Need */}
                   <div className="rounded-2xl bg-white/60 p-5 ring-1 ring-brandLine">
                     <div className="flex items-center gap-3">
                       <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brandChampagne/15 text-brandNavy ring-1 ring-brandChampagne/25">
                         <Layers className="h-4 w-4" />
                       </div>
                       <div className="text-sm font-extrabold tracking-[0.14em] text-brandNavy/70">
-                        BESOIN
+                        NEED
                       </div>
                     </div>
 
@@ -504,7 +524,7 @@ export function QuoteWizard() {
                     </div>
                   </div>
 
-                  {/* Détails / Logistique */}
+                  {/* Details / Logistics */}
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="rounded-2xl bg-white/60 p-5 ring-1 ring-brandLine">
                       <div className="flex items-center gap-3">
@@ -512,16 +532,16 @@ export function QuoteWizard() {
                           <CalendarClock className="h-4 w-4" />
                         </div>
                         <div className="text-sm font-extrabold tracking-[0.14em] text-brandNavy/70">
-                          DÉTAILS
+                          DETAILS
                         </div>
                       </div>
 
                       <div className="mt-4 flex flex-wrap gap-2">
                         <span className="inline-flex rounded-full bg-white/70 px-3 py-1.5 text-xs font-extrabold text-brandNavy ring-1 ring-brandLine">
-                          Quantité : {summary.quantity}
+                          Qty: {summary.quantity}
                         </span>
                         <span className="inline-flex rounded-full bg-white/70 px-3 py-1.5 text-xs font-extrabold text-brandNavy ring-1 ring-brandLine">
-                          Délai : {summary.deadline}
+                          ETA: {summary.deadline}
                         </span>
                       </div>
                     </div>
@@ -532,7 +552,7 @@ export function QuoteWizard() {
                           <MapPin className="h-4 w-4" />
                         </div>
                         <div className="text-sm font-extrabold tracking-[0.14em] text-brandNavy/70">
-                          LOGISTIQUE
+                          LOGISTICS
                         </div>
                       </div>
 
@@ -542,14 +562,14 @@ export function QuoteWizard() {
                     </div>
                   </div>
 
-                  {/* Entreprise */}
+                  {/* Company */}
                   <div className="rounded-2xl bg-white/60 p-5 ring-1 ring-brandLine">
                     <div className="flex items-center gap-3">
                       <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brandChampagne/15 text-brandNavy ring-1 ring-brandChampagne/25">
                         <Building2 className="h-4 w-4" />
                       </div>
                       <div className="text-sm font-extrabold tracking-[0.14em] text-brandNavy/70">
-                        ENTREPRISE
+                        COMPANY
                       </div>
                     </div>
 
@@ -578,9 +598,9 @@ export function QuoteWizard() {
                 </div>
 
                 <div className="rounded-2xl bg-brandChampagne/15 p-4 ring-1 ring-brandChampagne/25">
-                  <div className="text-sm font-extrabold text-brandNavy">Dernière vérification</div>
+                  <div className="text-sm font-extrabold text-brandNavy">Final check</div>
                   <div className="mt-1 text-sm text-brandMuted">
-                    Une fois envoyé, on te recontacte rapidement avec une proposition adaptée.
+                    Once submitted, we’ll get back to you quickly with a tailored proposal.
                   </div>
                 </div>
               </div>
@@ -597,7 +617,7 @@ export function QuoteWizard() {
               }}
               className="rounded-2xl border border-gray-200 bg-white px-4 py-2 font-bold text-brand-text disabled:opacity-40"
             >
-              ← Retour
+              {copy.buttons.back}
             </button>
 
             {active < 4 ? (
@@ -615,9 +635,9 @@ export function QuoteWizard() {
                   setDirection("next");
                   setActive((s) => Math.min(4, s + 1));
                 }}
-                className="rounded-2xl bg-brandNavy px-5 py-2 text-sm font-extrabold text-white px-5 py-2 font-extrabold shadow-soft hover:opacity-95"
+                className="rounded-2xl bg-brandNavy px-5 py-2 text-sm font-extrabold text-white shadow-soft hover:opacity-95"
               >
-                Continuer →
+                {copy.buttons.next}
               </button>
             ) : (
               <button
@@ -630,7 +650,7 @@ export function QuoteWizard() {
                   "disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed",
                 ].join(" ")}
               >
-                {isSubmitting ? <RadiationLoader /> : "Envoyer le devis"}
+                {isSubmitting ? <RadiationLoader /> : copy.buttons.submit}
               </button>
             )}
           </div>
@@ -642,27 +662,20 @@ export function QuoteWizard() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="text-[11px] font-extrabold tracking-[0.28em] text-brandNavy/60">
-              PROGRESSION
+              {copy.progress.title}
             </div>
             <div className="mt-2 font-serif text-xl font-semibold text-brandNavy">
               {steps[active]?.label}
             </div>
           </div>
 
-          {/* mini loader + % */}
           <div className="flex flex-col items-end gap-2">
             <div className="scale-90 origin-top-right">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/70 ring-1 ring-brandLine">
-                <RadiationLoader
-                  size={18}
-                  variant={active === 4 ? "champagne" : "navy"}
-                />
+                <RadiationLoader size={18} variant={active === 4 ? "champagne" : "navy"} />
               </span>
             </div>
-
-            <div className="text-sm font-extrabold text-brandNavy">
-              {percentForStep(active)}%
-            </div>
+            <div className="text-sm font-extrabold text-brandNavy">{percentForStep(active)}%</div>
           </div>
         </div>
 
@@ -670,80 +683,65 @@ export function QuoteWizard() {
           <SignatureLine align="left" />
         </div>
 
-        {/* Progress bar */}
         <div className="mt-4">
           <div className="h-2 w-full rounded-full bg-white/70 ring-1 ring-brandLine overflow-hidden">
-            <div
-              className="h-full rounded-full bg-brandChampagne"
-              style={{ width: `${percentForStep(active)}%` }}
-            />
+            <div className="h-full rounded-full bg-brandChampagne" style={{ width: `${percentForStep(active)}%` }} />
           </div>
 
           <div className="mt-2 flex items-center justify-between text-xs font-semibold text-brandMuted">
-            <span>Étape {active + 1} / {TOTAL_STEPS}</span>
-            <span>Temps estimé : ~2 min</span>
+            <span>
+              {copy.progress.stepLabel} {active + 1} / {TOTAL_STEPS}
+            </span>
+            <span>{copy.progress.eta}</span>
           </div>
         </div>
 
-        {/* Chips (super lisible, pas de lignes) */}
         <div className="mt-5 grid gap-3">
           <div className="rounded-2xl bg-white/60 p-4 ring-1 ring-brandLine">
             <div className="text-[11px] font-extrabold tracking-[0.18em] text-brandNavy/60">
-              SÉLECTION
+              {copy.progress.selection}
             </div>
 
             <SummaryPillRow
-  label="Produit"
-  value={summary.product}
-  onClear={() => {
-    form.setValue("product", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
-    form.setValue("pb", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
-    form.setValue("size", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+              label="Product"
+              value={summary.product}
+              onClear={() => {
+                form.setValue("product", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+                form.setValue("pb", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+                form.setValue("size", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+                setDirection("prev");
+                setActive(0);
+              }}
+            />
 
-    setDirection("prev");
-    setActive(0);
-  }}
-/>
+            <SummaryPillRow
+              label="Lead eq."
+              value={summary.pb}
+              onClear={() => {
+                form.setValue("pb", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+                form.setValue("size", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+                setDirection("prev");
+                setActive(0);
+              }}
+            />
 
-<SummaryPillRow
-  label="Équivalence Pb"
-  value={summary.pb}
-  onClear={() => {
-    form.setValue("pb", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
-    form.setValue("size", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
-
-    setDirection("prev");
-    setActive(0);
-  }}
-/>
-
-<SummaryPillRow
-  label="Taille"
-  value={summary.size}
-  onClear={() => {
-    form.setValue("size", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
-
-    setDirection("prev");
-    setActive(0);
-  }}
-/>
-
+            <SummaryPillRow
+              label="Size"
+              value={summary.size}
+              onClear={() => {
+                form.setValue("size", undefined, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+                setDirection("prev");
+                setActive(0);
+              }}
+            />
           </div>
 
-          {/* “Prochaine action” contextuelle */}
           <div className="rounded-2xl bg-brandChampagne/15 p-4 ring-1 ring-brandChampagne/25">
-            <div className="text-sm font-extrabold text-brandNavy">À faire</div>
-            <div className="mt-1 text-sm text-brandMuted">
-              {active === 0 && "Choisis ton type de demande, puis continue."}
-              {active === 1 && "Ajoute les détails (quantité / délai) si nécessaire."}
-              {active === 2 && "Renseigne l’adresse si tu as une contrainte logistique."}
-              {active === 3 && "Indique tes coordonnées pour qu’on te recontacte."}
-              {active === 4 && "Vérifie une dernière fois avant l’envoi."}
-            </div>
+            <div className="text-sm font-extrabold text-brandNavy">{copy.progress.todoTitle}</div>
+            <div className="mt-1 text-sm text-brandMuted">{copy.progress.todo[active] ?? ""}</div>
           </div>
         </div>
       </aside>
-
     </div>
   );
 }
