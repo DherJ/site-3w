@@ -94,6 +94,382 @@
       "horizontalScroll": "Astuce : scrollez horizontalement pour voir tous les services."
     }
   },
+  "serviceDetail": {
+    "common": {
+      "kicker": "SERVICE",
+      "seeProcess": "Voir le processus",
+      "seeServices": "Voir les services",
+      "includedTitle": "Ce qui est inclus",
+      "prosTitle": "Avantages",
+      "consTitle": "Points d’attention",
+      "processTitle": "Le processus",
+      "qualityTitle": "Qualité, hygiène & conformité",
+      "faqTitle": "FAQ",
+      "ctaTitle": "Parlons de votre besoin",
+      "ctaText": "Décrivez votre contexte (durée, quantités, contraintes). Nous vous proposons une solution adaptée.",
+      "ctaButton": "Demander un devis"
+    },
+    "rental": {
+      "title": "Location d’équipements de radioprotection",
+      "subtitle": "La solution flexible pour équiper vos équipes sans immobiliser de budget, avec un cycle complet de contrôle, traçabilité et désinfection.",
+      "seo": {
+        "title": "Location – Équipements de radioprotection",
+        "description": "Location de tabliers et équipements : flexibilité, disponibilité, suivi du cycle, désinfection et contrôle qualité du blindage."
+      },
+      "why": {
+        "title": "Pourquoi choisir la location ?",
+        "bullets": [
+          "Répondre à un besoin ponctuel : chantier, pic d’activité, remplacement.",
+          "Gagner en agilité sans investissement initial lourd.",
+          "Bénéficier d’un parc suivi, contrôlé et remis en circulation selon un protocole clair."
+        ]
+      },
+      "included": {
+        "bullets": [
+          "Mise à disposition des équipements selon tailles et contraintes terrain.",
+          "Suivi de cycle : identification, dates, durée et état.",
+          "Fin de location : retour, désinfection, inspection et contrôle qualité du blindage.",
+          "Conseils d’usage, stockage et bonnes pratiques."
+        ]
+      },
+      "pros": [
+        "Flexible : s’adapte aux besoins variables.",
+        "Coût lissé et prévisible.",
+        "Matériel suivi et contrôlé entre chaque cycle.",
+        "Moins de charge logistique interne."
+      ],
+      "cons": [
+        "Disponibilité liée au stock (réservation recommandée).",
+        "Sur longue durée, l’achat peut devenir plus avantageux.",
+        "Délais de retour/traitement à intégrer dans le planning."
+      ],
+      "process": {
+        "steps": [
+          {
+            "title": "1) Qualification",
+            "desc": "Durée, quantités, tailles, contraintes métier (bloc, chantier, cabinet…)."
+          },
+          {
+            "title": "2) Mise à disposition",
+            "desc": "Préparation, identification et remise/expédition du matériel."
+          },
+          {
+            "title": "3) Période d’usage",
+            "desc": "Support et recommandations (stockage, manipulation, transport)."
+          },
+          {
+            "title": "4) Retour",
+            "desc": "Collecte/retour planifié pour sécuriser le cycle et la disponibilité."
+          },
+          {
+            "title": "5) Désinfection & contrôle",
+            "desc": "Nettoyage, inspection, contrôle qualité du blindage, traçabilité, remise en circulation."
+          }
+        ]
+      },
+      "quality": {
+        "text": "Chaque retour déclenche un cycle de remise en conformité afin de garantir un niveau de sécurité constant et une expérience utilisateur irréprochable.",
+        "bullets": [
+          "Désinfection / nettoyage spécialisé selon protocole.",
+          "Inspection : coutures, sangles, zones de pliure, fermetures.",
+          "Contrôle qualité du blindage (selon le niveau requis).",
+          "Traçabilité : historique des cycles et actions réalisées."
+        ]
+      },
+      "faq": [
+        {
+          "q": "Quelle durée minimale de location ?",
+          "a": "Selon le besoin : de quelques jours à plusieurs mois. Le devis fixe la durée et les conditions."
+        },
+        {
+          "q": "Comment garantissez-vous l’hygiène entre deux locations ?",
+          "a": "Retour = désinfection + inspection + traçabilité avant remise en circulation."
+        },
+        {
+          "q": "Le contrôle du blindage est-il inclus ?",
+          "a": "Oui, le cycle inclut un contrôle qualité adapté au niveau requis (à préciser au devis)."
+        },
+        {
+          "q": "Peut-on réserver à l’avance ?",
+          "a": "Oui. La planification est recommandée, surtout en période de forte demande."
+        },
+        {
+          "q": "Que se passe-t-il si un équipement est endommagé ?",
+          "a": "On évalue l’état au retour et on propose la meilleure option : remise en état, remplacement, ou ajustement selon conditions."
+        }
+      ]
+    },
+    "sales": {
+      "title": "Vente d’équipements de radioprotection",
+      "subtitle": "Construisez un parc durable, cohérent et confortable, sélectionné selon votre usage réel — avec conseils, mise en service et accompagnement.",
+      "seo": {
+        "title": "Vente – Équipements de radioprotection",
+        "description": "Achat de tabliers et équipements : conseil, sélection adaptée, constitution de parc, recommandations d’entretien et de contrôle."
+      },
+      "why": {
+        "title": "Pourquoi acheter ?",
+        "bullets": [
+          "Stabiliser un besoin récurrent et garantir une disponibilité immédiate.",
+          "Standardiser votre parc et votre expérience terrain.",
+          "Optimiser les coûts sur le long terme quand l’usage est régulier."
+        ]
+      },
+      "included": {
+        "bullets": [
+          "Conseil de choix : protection, confort, tailles, contraintes métier.",
+          "Aide à la constitution du parc : quantités, rotation, stockage.",
+          "Recommandations d’entretien et bonnes pratiques.",
+          "Option : plan de suivi (inspection / contrôles périodiques)."
+        ]
+      },
+      "pros": [
+        "Rentable en usage fréquent et long terme.",
+        "Disponibilité immédiate, pas de réservation.",
+        "Parc homogène, adapté à vos équipes.",
+        "Meilleure maîtrise de l’organisation et de la rotation."
+      ],
+      "cons": [
+        "Investissement initial plus important.",
+        "Gestion interne du stockage et du suivi d’état.",
+        "Plan de contrôle/entretien à structurer pour rester performant dans le temps."
+      ],
+      "process": {
+        "steps": [
+          {
+            "title": "1) Cadrage",
+            "desc": "Usage, fréquence, contraintes, tailles, confort attendu."
+          },
+          {
+            "title": "2) Recommandation",
+            "desc": "Sélection d’équipements + options (rotation, stockage, accessoires)."
+          },
+          {
+            "title": "3) Devis",
+            "desc": "Budget, délais, modalités et éventuelles personnalisations."
+          },
+          {
+            "title": "4) Livraison & mise en service",
+            "desc": "Remise/expédition, vérification, conseils d’utilisation et stockage."
+          },
+          {
+            "title": "5) Suivi",
+            "desc": "Option : contrôles périodiques, maintenance, renouvellement parc."
+          }
+        ]
+      },
+      "quality": {
+        "text": "L’objectif : un parc cohérent, confortable et fiable, avec des recommandations qui prolongent la durée de vie et réduisent l’usure.",
+        "bullets": [
+          "Choix guidé par le terrain (pas uniquement une fiche produit).",
+          "Bonnes pratiques : pliage, stockage, manipulation, transport.",
+          "Plan de contrôle recommandé selon l’intensité d’usage.",
+          "Aide à la traçabilité (identifiants, rotation, historique)."
+        ]
+      },
+      "faq": [
+        {
+          "q": "Achat ou location : comment choisir ?",
+          "a": "Usage régulier → achat. Besoin ponctuel/pics/remplacement → location. Le mix est fréquent."
+        },
+        {
+          "q": "Peut-on mixer tailles et modèles ?",
+          "a": "Oui, on recommande souvent une base standard + quelques variantes pour couvrir toutes les morphologies."
+        },
+        {
+          "q": "Proposez-vous un accompagnement entretien ?",
+          "a": "Oui : bonnes pratiques + option de contrôles périodiques."
+        },
+        {
+          "q": "Quels délais ?",
+          "a": "Selon quantités et tailles. Le devis inclut une estimation réaliste."
+        },
+        {
+          "q": "Aidez-vous à dimensionner le parc ?",
+          "a": "Oui, on vous aide à calibrer quantités/rotation pour éviter le sous-stock ou la surcapacité."
+        }
+      ]
+    },
+    "quality": {
+      "title": "Contrôles qualité & conformité",
+      "subtitle": "Sécurisez l’usage, prolongez la durée de vie et gardez un parc clair : état, traçabilité, recommandations et décisions actionnables.",
+      "seo": {
+        "title": "Contrôles qualité – Conformité radioprotection",
+        "description": "Inspection, contrôle qualité du blindage, traçabilité et rapport clair : conforme, à surveiller, à retirer."
+      },
+      "why": {
+        "title": "Pourquoi mettre en place des contrôles ?",
+        "bullets": [
+          "Détecter tôt l’usure (zones de pliure, sangles, coutures).",
+          "Renforcer la sécurité et la conformité au quotidien.",
+          "Transformer un parc “flou” en parc piloté (historique, décisions, rotation)."
+        ]
+      },
+      "included": {
+        "bullets": [
+          "Inspection visuelle : coutures, sangles, fermetures, zones sollicitées.",
+          "Contrôle de l’intégrité du blindage (selon protocole défini).",
+          "Synthèse d’état : conforme / à surveiller / à retirer.",
+          "Recommandations : stockage, rotation, bonnes pratiques."
+        ]
+      },
+      "pros": [
+        "Réduit le risque d’usage d’un équipement dégradé.",
+        "Décisions claires et traçables.",
+        "Optimise le parc (remplacements ciblés).",
+        "Renforce votre démarche qualité."
+      ],
+      "cons": [
+        "Organisation logistique (immobilisation temporaire).",
+        "Fréquence à calibrer selon usage.",
+        "Peut révéler un besoin de renouvellement (à anticiper)."
+      ],
+      "process": {
+        "steps": [
+          {
+            "title": "1) Cadrage",
+            "desc": "Inventaire, niveau de contrôle, fréquence, contraintes opérationnelles."
+          },
+          {
+            "title": "2) Collecte / réception",
+            "desc": "Réception, vérification des identifiants, tri."
+          },
+          {
+            "title": "3) Inspection & contrôle",
+            "desc": "Inspection visuelle + contrôle intégrité du blindage."
+          },
+          {
+            "title": "4) Synthèse",
+            "desc": "Décision par équipement + priorisation des actions."
+          },
+          {
+            "title": "5) Traçabilité",
+            "desc": "Historique mis à jour + recommandations de prochain contrôle."
+          }
+        ]
+      },
+      "quality": {
+        "text": "Un bon contrôle doit être exploitable : lisible, traçable, actionnable — avec un niveau de preuve adapté à votre contexte.",
+        "bullets": [
+          "Résultats simples : conforme / à surveiller / non conforme.",
+          "Historique des cycles et actions.",
+          "Recommandations de rotation pour limiter l’usure localisée.",
+          "Possibilité de coupler avec un cycle nettoyage/désinfection."
+        ]
+      },
+      "faq": [
+        {
+          "q": "À quelle fréquence contrôler ?",
+          "a": "Selon intensité d’usage. On définit une périodicité réaliste au cadrage."
+        },
+        {
+          "q": "Que contient le rapport ?",
+          "a": "Synthèse par équipement + recommandations (surveiller, réparer, retirer, remplacer)."
+        },
+        {
+          "q": "Combien de temps d’immobilisation ?",
+          "a": "Selon volume et protocole. On peut organiser une rotation pour limiter l’impact."
+        },
+        {
+          "q": "Peut-on coupler contrôle et nettoyage ?",
+          "a": "Oui, c’est souvent la meilleure approche : hygiène + contrôle dans un même cycle."
+        },
+        {
+          "q": "Que faire si non conforme ?",
+          "a": "On priorise et recommande l’action la plus sûre selon l’usage et l’état."
+        }
+      ]
+    },
+    "cleaning": {
+      "title": "Nettoyage spécialisé & remise en état",
+      "subtitle": "Un cycle d’hygiène et d’inspection qui protège vos équipes, améliore le confort d’usage et prolonge la durée de vie du parc.",
+      "seo": {
+        "title": "Nettoyage spécialisé – Équipements de radioprotection",
+        "description": "Désinfection, inspection post-nettoyage, recommandations et option cycle complet avec contrôle du blindage."
+      },
+      "why": {
+        "title": "Pourquoi un nettoyage spécialisé ?",
+        "bullets": [
+          "Garantir une hygiène maîtrisée entre rotations.",
+          "Éviter les méthodes de nettoyage qui accélèrent l’usure.",
+          "Détecter tôt les points de faiblesse avant qu’ils ne deviennent critiques."
+        ]
+      },
+      "included": {
+        "bullets": [
+          "Nettoyage/désinfection selon protocole adapté.",
+          "Inspection visuelle post-nettoyage (coutures, sangles, pliures).",
+          "Traitement des points d’attention et recommandations.",
+          "Option : cycle complet nettoyage + contrôle intégrité du blindage."
+        ]
+      },
+      "pros": [
+        "Hygiène répétable et fiable.",
+        "Prolonge la durée de vie du parc.",
+        "Améliore le confort des utilisateurs.",
+        "Réduit le risque d’anomalies non détectées."
+      ],
+      "cons": [
+        "Planification nécessaire (collecte/retour).",
+        "Immobilisation temporaire du matériel.",
+        "Rotation à organiser si parc limité."
+      ],
+      "process": {
+        "steps": [
+          {
+            "title": "1) Réception & tri",
+            "desc": "Identification, état initial, tri par niveau de traitement."
+          },
+          {
+            "title": "2) Nettoyage / désinfection",
+            "desc": "Procédé adapté pour préserver matériaux et zones sensibles."
+          },
+          {
+            "title": "3) Inspection",
+            "desc": "Contrôle visuel : sangles, coutures, pliures, fermetures."
+          },
+          {
+            "title": "4) Remise en état",
+            "desc": "Actions simples + recommandations si réparation/renouvellement nécessaire."
+          },
+          {
+            "title": "5) Traçabilité & retour",
+            "desc": "Historique mis à jour, retour/remise en circulation."
+          }
+        ]
+      },
+      "quality": {
+        "text": "Nettoyer, c’est bien. Le faire sans dégrader, c’est essentiel. Nos protocoles visent l’hygiène et la préservation de l’intégrité.",
+        "bullets": [
+          "Protocoles adaptés aux matériaux et zones sensibles.",
+          "Recommandations de stockage (éviter plis agressifs, compression).",
+          "Rotation du parc pour limiter l’usure localisée.",
+          "Couplage possible avec contrôle qualité du blindage."
+        ]
+      },
+      "faq": [
+        {
+          "q": "Tout se nettoie pareil ?",
+          "a": "Non. Les matériaux et zones sensibles demandent un protocole adapté pour éviter la dégradation."
+        },
+        {
+          "q": "Y a-t-il une inspection systématique ?",
+          "a": "Oui, après nettoyage on inspecte les zones d’usure fréquente."
+        },
+        {
+          "q": "Peut-on planifier un cycle régulier ?",
+          "a": "Oui, c’est idéal : calendrier mensuel/trimestriel selon usage."
+        },
+        {
+          "q": "Que se passe-t-il si vous détectez une anomalie ?",
+          "a": "On la signale et on recommande l’action : surveiller, réparer, retirer ou remplacer."
+        },
+        {
+          "q": "Nettoyage + contrôle blindage ?",
+          "a": "Oui, on peut faire un cycle complet hygiène + contrôle intégrité."
+        }
+      ]
+    }
+  },
   "manufactureAndQuality": {
     "label": "Fabrication & qualité",
     "title": "Un savoir-faire français au service de la radioprotection.",
