@@ -7,7 +7,7 @@ import { getTranslations } from "next-intl/server";
 
 import SignatureLine from "@/components/ui/SignatureLine";
 import { JsonLd } from "@/components/seo/JsonLd";
-import ProcessWow from "@/components/ui/ProcessWow";
+import ProcessWow, { type ProcessStep } from "@/components/ui/ProcessWow";
 
 import { SERVICES } from "@/data/services";
 
@@ -105,7 +105,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const includedBullets = t.raw(`${slug}.included.bullets`) as string[];
   const pros = t.raw(`${slug}.pros`) as string[];
   const cons = t.raw(`${slug}.cons`) as string[];
-  const steps = t.raw(`${slug}.process.steps`) as { icon?: string; title: string; desc: string }[];
+  const steps = t.raw(`${slug}.process.steps`) as ProcessStep[];
   const qualityText = t(`${slug}.quality.text`);
   const qualityBullets = t.raw(`${slug}.quality.bullets`) as string[];
   const faq = t.raw(`${slug}.faq`) as { q: string; a: string }[];
