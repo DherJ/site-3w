@@ -29,7 +29,7 @@ export default function AddressMapLink({
   const href = buildGoogleMapsUrl(companyName ? companyName : address);
   const isDark = tone === "dark";
   const g = useTranslations("global");
- 
+ const formattedAddress = address.replace(", ", "\n");
   if (variant === "inline") {
     return (
       <a
@@ -45,7 +45,9 @@ export default function AddressMapLink({
         )}
       >
         <span className="leading-snug">
-          {address}
+          {formattedAddress.split("\n").map((line, i) => (
+            <div key={i}>{line.trim()}</div>
+          ))}
         </span>
       </a>
     );

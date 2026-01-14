@@ -7,6 +7,7 @@ import SecondaryButton from "./ui/SecondaryButton";
 import { ArrowRight } from "lucide-react";
 
 import { TEAM } from "@/data/team";
+import { withBasePath } from "@/lib/withBasePath";
 
 export default function TeamSection() {
 
@@ -30,7 +31,7 @@ export default function TeamSection() {
                             <div key={m.role} className="card-premium overflow-hidden">
                                 <div className="relative aspect-[4/3]">
                                     <Image
-                                        src={m.imageSrc}
+                                        src={withBasePath(m.imageSrc)}
                                         alt={m.name}
                                         fill
                                         className="object-cover"
