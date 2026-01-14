@@ -1,10 +1,8 @@
+// middleware.ts
 import createMiddleware from "next-intl/middleware";
+import {routing} from "./routing";
 
-export default createMiddleware({
-  locales: ["fr", "en"],
-  defaultLocale: "fr",
-  localePrefix: "always"
-});
+export default createMiddleware(routing);
 
 export const config = {
   matcher: ["/((?!api|_next|.*\\..*).*)"]
