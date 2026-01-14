@@ -184,8 +184,6 @@ export function SiteHeader() {
                 <nav className="hidden items-center gap-10 space-x-14 md:flex">
                   {links.map((l) => {
                     const active = isActive(pathname, l.href);
-                    const Icon = l.Icon;
-                    const imageSrc = l.imageSrc;
                     // ✅ Special case: products dropdown
                     if (l.key === "products") {
                       return (
@@ -206,20 +204,7 @@ export function SiteHeader() {
                               active ? "text-white after:scale-x-100" : "",
                             ].join(" ")}
                           >
-                            {imageSrc ? (
-                              <span className="relative h-8 w-8 shrink-0">
-                                <Image
-                                  src={imageSrc}
-                                  alt=""
-                                  fill
-                                  className="object-contain opacity-90"
-                                  sizes="48px"
-                                />
-                              </span>
-                            ) : (
-                              <NavIcon link={l} />
-                            )}
-
+                            <NavIcon link={l} />
                             {l.label}
                           </Link>
 
@@ -256,13 +241,7 @@ export function SiteHeader() {
                               active ? "text-white after:scale-x-100" : "",
                             ].join(" ")}
                           >
-                            {imageSrc ? (
-                              <span className="relative h-6 w-6 shrink-0">
-                                <Image src={imageSrc} alt="" fill className="object-contain opacity-90" sizes="24px" />
-                              </span>
-                            ) : (
-                              <NavIcon link={l} />
-                            )}
+                            <NavIcon link={l} />
                             {l.label}
                           </Link>
 
