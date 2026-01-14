@@ -11,12 +11,7 @@ import ProcessWow, { type ProcessStep } from "@/components/ui/ProcessWow";
 
 import { SERVICES } from "@/data/services";
 import { withBasePath } from "@/lib/withBasePath";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://localhost:3000";
-
-function absoluteUrl(path: string) {
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-}
+import { absoluteUrl } from "@/lib/utils";
 
 type Props = {
   params: { locale: string; slug: string };

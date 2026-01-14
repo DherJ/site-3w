@@ -6,14 +6,9 @@ import SignatureLine from "@/components/ui/SignatureLine";
 import ContactClient from "./ContactClient";
 import { buildContactJsonLd } from "./seo";
 import { getLegalCommon } from "../legal/_shared/legalCommon";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://localhost:3000";
+import { absoluteUrl } from "@/lib/utils";
 
 type Props = { params: { locale: string } };
-
-function absoluteUrl(path: string) {
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params;

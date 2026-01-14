@@ -1,13 +1,8 @@
+import { absoluteUrl } from "@/lib/utils";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://localhost:3000";
-
 type Props = { params: { locale: string } };
-
-function absoluteUrl(path: string) {
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params;

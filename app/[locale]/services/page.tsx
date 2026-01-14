@@ -7,16 +7,11 @@ import { SERVICES } from "@/data/services";
 import ServicesClient from "./ServicesClient";
 import { getServicesJsonLd } from "./seo";
 import { JsonLd } from "@/components/seo/JsonLd";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://localhost:3000";
+import { absoluteUrl } from "@/lib/utils";
 
 type Props = {
   params: { locale: string };
 };
-
-function absoluteUrl(path: string) {
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params;

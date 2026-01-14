@@ -7,12 +7,7 @@ import {
   PRODUCT_CATEGORY_KEYS,
   type ProductCategory,
 } from "@/data/productCategories";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://localhost:3000";
-
-function absoluteUrl(path: string) {
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-}
+import { absoluteUrl } from "@/lib/utils";
 
 type SeoParams = { locale: string };
 
