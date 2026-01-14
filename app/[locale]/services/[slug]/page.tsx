@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import ProcessWow, { type ProcessStep } from "@/components/ui/ProcessWow";
 
 import { SERVICES } from "@/data/services";
+import { withBasePath } from "@/lib/withBasePath";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -193,7 +194,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <div className="relative overflow-hidden rounded-3xl ring-1 ring-brandLine bg-white/60">
               <div className="relative h-52 w-full md:h-64">
                 <Image
-                  src={heroImage}
+                  src={withBasePath(heroImage)}
                   alt=""
                   fill
                   className="object-contain p-6"

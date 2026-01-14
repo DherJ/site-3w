@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import HoverRevealImage from "@/components/ui/HoverRevealImage";
 import CursorZoomImage from "@/components/ui/CursorZoomImage";
+import { withBasePath } from "@/lib/withBasePath";
 
 export type GalleryImage = {
   src: string;
@@ -95,7 +96,7 @@ export default function ProductGallery({
             >
               <div className="relative aspect-square w-[88px]">
                 <Image
-                  src={img.src}
+                  src={withBasePath(img.src)}
                   alt={img.alt}
                   fill
                   className={[
@@ -134,7 +135,7 @@ export default function ProductGallery({
               >
                 {/* Sur mobile: pas de split (trop “gadget”), on affiche base */}
                 <Image
-                  src={img.src}
+                  src={withBasePath(img.src)}
                   alt={img.alt}
                   fill
                   className="object-cover"

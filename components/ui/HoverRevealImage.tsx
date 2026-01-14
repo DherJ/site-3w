@@ -1,5 +1,6 @@
 "use client";
 
+import { withBasePath } from "@/lib/withBasePath";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -137,7 +138,7 @@ export default function HoverRevealImage({
     >
       {/* Base */}
       <Image
-        src={baseSrc}
+        src={withBasePath(baseSrc)}
         alt={alt}
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
@@ -148,7 +149,7 @@ export default function HoverRevealImage({
       {/* Hover (split) */}
       {hoverSrc ? (
         <Image
-          src={hoverSrc}
+          src={withBasePath(hoverSrc)}
           alt={`${alt} — détail`}
           fill
           className="reveal-hover object-cover pointer-events-none"

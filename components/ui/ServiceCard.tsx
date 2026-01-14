@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { withBasePath } from "@/lib/withBasePath";
 
 export default function ServiceCard({
   href,
@@ -23,7 +24,7 @@ export default function ServiceCard({
     >
       <div className="relative aspect-[16/10] w-full">
         <Image
-          src={imageSrc}
+          src={withBasePath(imageSrc)}
           alt={title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

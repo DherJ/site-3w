@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { PRODUCT_CATEGORY_MENU } from "@/data/productCategoryMenu";
 import { useDragScroll } from "@/components/hooks/useDragScroll";
+import { withBasePath } from "@/lib/withBasePath";
 
 export default function HeaderProductsDropdown({
     locale,
@@ -74,7 +75,7 @@ export default function HeaderProductsDropdown({
                                     {/* image top */}
                                     <div className="relative aspect-[4/3] w-full bg-white">
                                         <Image
-                                            src={c.imageSrc}
+                                            src={withBasePath(c.imageSrc)}
                                             alt={c.fallback}
                                             fill
                                             className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"

@@ -5,6 +5,7 @@ import SignatureLine from "@/components/ui/SignatureLine";
 import { useRevealOnScroll } from "@/components/hooks/useRevealOnScroll";
 import { useTranslations } from "next-intl";
 import { Service } from "@/data/services";
+import { withBasePath } from "@/lib/withBasePath";
 
 function ServiceRow({
   slug,
@@ -60,7 +61,7 @@ function ServiceRow({
             <div className="relative h-full w-full p-8 md:p-10 lg:p-12">
               <div className="relative h-full w-full">
                 <Image
-                  src={imageSrc}
+                  src={withBasePath(imageSrc)}
                   alt={title}
                   fill
                   className="object-contain [transform:scale(0.92)]"

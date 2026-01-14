@@ -1,5 +1,6 @@
 "use client";
 
+import { withBasePath } from "@/lib/withBasePath";
 import Image from "next/image";
 import { useMemo, useRef, useState } from "react";
 
@@ -72,7 +73,7 @@ export default function CursorZoomImage({
         style={{ transform }}
       >
         <Image
-          src={src}
+          src={withBasePath(src)}
           alt={alt}
           fill
           priority={priority}

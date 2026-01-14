@@ -9,6 +9,7 @@ import { Users, Mail, BookOpen, Wrench, Handshake } from "lucide-react";
 import HeaderProductsDropdown from "@/components/layout/HeaderProductsDropdown";
 import HeaderServicesDropdown from "./layout/HeaderServicesDropdown";
 import { NavIcon } from "./ui/NavBarServicesIcon";
+import { withBasePath } from "@/lib/withBasePath";
 
 
 /* -----------------------------
@@ -161,7 +162,7 @@ export function SiteHeader() {
                   <div className="relative flex items-center bg-white px-6 h-[96px] shrink-0">
                     <div className="relative h-[52px] w-[170px] 2xl:h-[65px] 2xl:w-[190px]">
                       <Image
-                        src="/logo.png"
+                        src={withBasePath("/logo.png")}
                         alt="Well With Waves"
                         fill
                         priority

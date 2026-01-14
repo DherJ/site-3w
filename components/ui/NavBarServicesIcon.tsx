@@ -1,3 +1,4 @@
+import { withBasePath } from "@/lib/withBasePath";
 import Image from "next/image";
 
 export function NavIcon({ link }: { link: any }) {
@@ -5,7 +6,7 @@ export function NavIcon({ link }: { link: any }) {
     return (
       <span className="relative h-6 w-6 shrink-0">
         <Image
-          src={link.imageSrc}
+          src={withBasePath(link.imageSrc)}
           alt=""
           fill
           className="object-contain scale-110 opacity-90"

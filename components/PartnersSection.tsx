@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import SectionTitle from "./ui/SectionTitle";
+import { withBasePath } from "@/lib/withBasePath";
 
 type Partner = {
   name: string;
@@ -50,7 +51,7 @@ function PartnersMarquee({
             "
           >
             <Image
-              src={p.logo}
+              src={withBasePath(p.logo)}
               alt={p.name}
               width={220}
               height={80}

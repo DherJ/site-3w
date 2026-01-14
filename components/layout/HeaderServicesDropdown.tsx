@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { SERVICES } from "@/data/services";
 import { useDragScroll } from "../hooks/useDragScroll";
+import { withBasePath } from "@/lib/withBasePath";
 
 export default function HeaderServicesDropdown({
   locale,
@@ -69,7 +70,7 @@ export default function HeaderServicesDropdown({
                 >
                   <div className="relative h-10 w-12 shrink-0 overflow-hidden rounded-xl bg-white ring-1 ring-brandLine">
                     <Image
-                      src={s.imageSrc}
+                      src={withBasePath(s.imageSrc)}
                       alt={s.fallback}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"

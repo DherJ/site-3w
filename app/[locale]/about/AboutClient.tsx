@@ -7,6 +7,7 @@ import { useRevealOnScroll } from "@/components/hooks/useRevealOnScroll";
 import AddressMapLink from "@/components/ui/AddressMapLink";
 import AwardsTimeline from "@/components/about/AwardsTimeline";
 import { TEAM } from "@/data/team";
+import { withBasePath } from "@/lib/withBasePath";
 
 type CompanyBlock = {
     kicker: string;
@@ -88,7 +89,7 @@ export default function AboutClient({
                         {/* Image */}
                         <div className="group relative aspect-[5/3] w-full">
                             <Image
-                                src="/about/company.jpg"
+                                src={withBasePath("/about/company.jpg")}
                                 alt={locale === "fr" ? "Atelier Well With Waves" : "Well With Waves workshop"}
                                 fill
                                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
@@ -179,7 +180,7 @@ export default function AboutClient({
                                                 <div key={m.role} className="card-premium overflow-hidden">
                                                     <div className="relative aspect-[4/3]">
                                                         <Image
-                                                            src={m.imageSrc}
+                                                            src={withBasePath(m.imageSrc)}
                                                             alt={m.name}
                                                             fill
                                                             className="object-cover"

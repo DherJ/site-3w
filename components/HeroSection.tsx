@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/Button";
 import Link from "next/link";
+import { withBasePath } from "@/lib/withBasePath";
 
 export default function ProofSection() {
 
@@ -17,7 +18,7 @@ export default function ProofSection() {
             {/* 1) HERO FULLSCREEN */}
             <section className="relative z-0 h-[100svh] w-full overflow-hidden">
                 <Image
-                    src="/hero/hero-full.png"
+                    src={withBasePath("/hero/hero-full.png")}
                     alt="Well With Waves – Radioprotection"
                     fill
                     priority
