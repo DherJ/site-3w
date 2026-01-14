@@ -1,12 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { cabin } from "./fonts";
+import { withBasePath } from "@/lib/withBasePath";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://wellwithwaves.com"),
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: withBasePath("/favicon.ico"),
+    apple: withBasePath("/apple-touch-icon.png"),
   },
 };
 
