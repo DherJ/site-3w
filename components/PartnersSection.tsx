@@ -59,6 +59,7 @@ function PartnersMarquee({
                 opacity-90 transition-opacity duration-300
                 hover:opacity-100
               "
+              unoptimized
             />
           </div>
         ))}

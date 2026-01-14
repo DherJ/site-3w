@@ -65,6 +65,7 @@ function ServiceRow({
                   fill
                   className="object-contain [transform:scale(0.92)]"
                   sizes="(min-width: 1024px) 520px, 100vw"
+                  unoptimized
                 />
               </div>
             </div>

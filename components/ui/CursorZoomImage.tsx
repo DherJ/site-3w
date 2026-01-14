@@ -79,6 +79,7 @@ export default function CursorZoomImage({
           sizes={sizes}
           className="object-cover"
           draggable={false}
+          unoptimized
         />
       </div>
 

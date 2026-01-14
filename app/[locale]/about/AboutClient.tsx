@@ -93,6 +93,7 @@ export default function AboutClient({
                                 fill
                                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                                 sizes="(min-width: 1024px) 420px, 100vw"
+                                unoptimized
                             />
 
                             {/* voile premium */}
@@ -183,6 +184,7 @@ export default function AboutClient({
                                                             fill
                                                             className="object-cover"
                                                             sizes="(min-width: 768px) 33vw, 100vw"
+                                                            unoptimized
                                                         />
                                                     </div>
                                                     <div className="p-6">

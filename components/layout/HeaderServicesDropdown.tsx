@@ -74,6 +74,7 @@ export default function HeaderServicesDropdown({
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                       sizes="48px"
+                      unoptimized
                     />
                   </div>
 

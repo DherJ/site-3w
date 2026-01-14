@@ -28,6 +28,7 @@ export default function ServiceCard({
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+          unoptimized
         />
         <div className="absolute inset-0 bg-brandNavy/10" />
       </div>

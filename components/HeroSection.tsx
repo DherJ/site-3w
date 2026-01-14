@@ -23,6 +23,7 @@ export default function ProofSection() {
                     priority
                     className="object-cover object-[50%_5%] md:object-[50%_3%]"
                     sizes="100vw"
+                    unoptimized
                 />
                 {/* overlay premium */}
                 <div className="absolute inset-0 bg-brandNavy/35" />

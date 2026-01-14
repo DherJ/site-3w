@@ -80,6 +80,7 @@ export default function HeaderProductsDropdown({
                                             className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                                             sizes="220px"
                                             priority={false}
+                                            unoptimized
                                         />
                                         {/* subtle top gradient like ecommerce */}
                                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />

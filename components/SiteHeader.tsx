@@ -167,6 +167,7 @@ export function SiteHeader() {
                         priority
                         className="object-contain"
                         sizes="170px"
+                        unoptimized
                       />
                     </div>
 

@@ -10,6 +10,7 @@ export function NavIcon({ link }: { link: any }) {
           fill
           className="object-contain scale-110 opacity-90"
           sizes="24px"
+          unoptimized
         />
       </span>
     );

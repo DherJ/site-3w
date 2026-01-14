@@ -26,6 +26,7 @@ export default function ManufactureAndQualitySection() {
                             alt="Atelier de fabrication Well With Waves"
                             fill
                             className="object-cover"
+                            unoptimized
                         />
                     </div>
 

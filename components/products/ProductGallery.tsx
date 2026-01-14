@@ -103,6 +103,7 @@ export default function ProductGallery({
                     isActive ? "scale-[1.02]" : "hover:scale-[1.04]",
                   ].join(" ")}
                   sizes="88px"
+                  unoptimized
                 />
                 <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
               </div>
@@ -139,6 +140,7 @@ export default function ProductGallery({
                   className="object-cover"
                   sizes="100vw"
                   priority={idx === 0}
+                  unoptimized
                 />
               </div>
             ))}

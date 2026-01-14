@@ -142,6 +142,7 @@ export default function HoverRevealImage({
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
         sizes={sizes}
+        unoptimized
       />
 
       {/* Hover (split) */}
@@ -152,6 +153,7 @@ export default function HoverRevealImage({
           fill
           className="reveal-hover object-cover pointer-events-none"
           sizes={sizes}
+          unoptimized
         />
       ) : null}
 

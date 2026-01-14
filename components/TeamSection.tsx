@@ -35,6 +35,7 @@ export default function TeamSection() {
                                         fill
                                         className="object-cover"
                                         sizes="(min-width: 768px) 33vw, 100vw"
+                                        unoptimized
                                     />
                                 </div>
                                 <div className="p-6">
