@@ -7,7 +7,7 @@ import ContactClient from "./ContactClient";
 import { buildContactJsonLd } from "./seo";
 import { getLegalCommon } from "../legal/_shared/legalCommon";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://localhost:3000";
 
 type Props = { params: { locale: string } };
 

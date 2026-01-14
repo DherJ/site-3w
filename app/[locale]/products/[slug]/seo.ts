@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { PRODUCTS } from "@/data/products";
 import { PRODUCT_CATEGORIES } from "@/data/productCategories";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://localhost:3000";
 
 function absoluteUrl(path: string) {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;

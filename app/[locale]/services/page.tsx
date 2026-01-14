@@ -8,7 +8,7 @@ import ServicesClient from "./ServicesClient";
 import { getServicesJsonLd } from "./seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://localhost:3000";
 
 type Props = {
   params: { locale: string };
