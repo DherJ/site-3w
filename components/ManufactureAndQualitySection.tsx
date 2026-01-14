@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/Button";
 import { useLocale, useTranslations } from "next-intl";
 import SectionTitle from "./ui/SectionTitle";
+import { withBasePath } from "@/lib/withBasePath";
 
 export default function ManufactureAndQualitySection() {
 
@@ -22,7 +23,7 @@ export default function ManufactureAndQualitySection() {
                     {/* Image atelier */}
                     <div className="relative aspect-[4/3] overflow-hidden rounded-xl ring-1 ring-brandLine">
                         <Image
-                            src="/manufactureAndQuality/workshop.jpg"
+                            src={withBasePath("/manufactureAndQuality/workshop.jpg")}
                             alt="Atelier de fabrication Well With Waves"
                             fill
                             className="object-cover"
