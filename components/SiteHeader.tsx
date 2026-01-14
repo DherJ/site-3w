@@ -100,7 +100,7 @@ export function SiteHeader() {
   const appleEase = "ease-[cubic-bezier(0.16,1,0.3,1)]";
 
   const links = [
-    { key: "products", imageSrc: "/icons/products.png", Icon: BookOpen, href: `/${locale}/products`, label: t("products") },
+    { key: "products", Icon: BookOpen, href: `/${locale}/products`, label: t("products") },
     { key: "services", Icon: Handshake, href: `/${locale}/services`, label: t("services") },
     { key: "about", Icon: Users, href: `/${locale}/about`, label: t("about") },
     { key: "contact", Icon: Mail, href: `/${locale}/contact`, label: t("contact") },
