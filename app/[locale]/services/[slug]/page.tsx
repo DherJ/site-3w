@@ -17,11 +17,6 @@ type Props = {
   params: { locale: string; slug: string };
 };
 
-// ✅ Optionnel mais pratique: pré-génère les routes (SSG)
-export async function generateStaticParams() {
-  return SERVICES.map((s) => ({ slug: s.slug }));
-}
-
 function getHeroImage(slug: string) {
   return SERVICES.find((s) => s.slug === slug)?.imageSrc ?? "/services/default.png";
 }
