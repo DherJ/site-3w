@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 
 import { PRODUCTS } from "@/data/products";
 import { PRODUCT_CATEGORIES } from "@/data/productCategories";
+import type { LeadEquivalent, ProductSize } from "@/data/products";
 
 import ProductCard from "@/components/ui/ProductCard";
 import SignatureLine from "@/components/ui/SignatureLine";
@@ -21,9 +22,6 @@ import {
   getVariantForLead,
   isSizeValidForLead,
 } from "@/components/products/hooks/getSelectedVariant";
-
-import type { LeadEquivalent, ProductSize } from "@/data/products";
-
 
 type PageProps = { params: { locale: string; slug: string } };
 

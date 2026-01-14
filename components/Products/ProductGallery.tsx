@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import HoverRevealImage from "@/components/ui/HoverRevealImage";
-import CursorZoomImage from "../ui/CursorZoomImage";
+import CursorZoomImage from "@/components/ui/CursorZoomImage";
 
 export type GalleryImage = {
   src: string;

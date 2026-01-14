@@ -1,4 +1,3 @@
-// /components/products/getSelectedVariant.ts
 import type { LeadEquivalent, Product, ProductSize, ProductVariant } from "@/data/products";
 
 export function getDefaultLead(product: Product): LeadEquivalent {

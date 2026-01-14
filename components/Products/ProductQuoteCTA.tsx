@@ -32,7 +32,7 @@ export default function ProductQuoteCTA({
   const canQuote =
     !!product.slug &&
     !!pb &&
-    !!size; // tu peux rendre plus permissif si tu veux
+    !!size;
 
   return (
     <div className="mt-8">

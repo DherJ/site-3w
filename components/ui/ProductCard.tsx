@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import SignatureLine from "@/components/ui/SignatureLine";
 import { useTranslations } from "next-intl";
-import HoverRevealImage from "./HoverRevealImage";
+import HoverRevealImage from "@/components/ui/HoverRevealImage";
+import SignatureLine from "@/components/ui/SignatureLine";
 
 export default function ProductCard({
   hrefQuote,
