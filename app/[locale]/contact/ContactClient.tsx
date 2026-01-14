@@ -114,7 +114,7 @@ export default function ContactClient({
           <div className="flex items-start gap-3">
             <MapPin className="mt-0.5 h-4 w-4 text-brandChampagne shrink-0" />
             <AddressMapLink
-              address={legalCommon.companyName}
+              address={legalCommon.address}
               variant="inline"
               tone="light"
               className="text-brandNavy"
