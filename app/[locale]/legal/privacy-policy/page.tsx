@@ -36,10 +36,12 @@ export default async function PrivacyPolicyPage({ params }: Props) {
   });
 
   const toc = [
+    { id: "controller", label: t("privacy.toc.controller") },
     { id: "data", label: t("privacy.toc.data") },
     { id: "purposes", label: t("privacy.toc.purposes") },
     { id: "lawful", label: t("privacy.toc.lawful") },
     { id: "retention", label: t("privacy.toc.retention") },
+    { id: "security", label: t("privacy.toc.security") },
     { id: "processors", label: t("privacy.toc.processors") },
     { id: "rights", label: t("privacy.toc.rights") },
     { id: "cookies", label: t("privacy.toc.cookies") },
@@ -62,6 +64,25 @@ export default async function PrivacyPolicyPage({ params }: Props) {
         <LegalSection id="data" title={t("privacy.sections.data.title")}>
           <p>{t("privacy.sections.data.p1")}</p>
         </LegalSection>
+
+        <LegalSection id="controller" title={t("privacy.sections.controller.title")}>
+          <p>
+            {t("privacy.sections.controller.p1", {
+              companyName: common.companyName,
+              address: common.address
+            })}
+          </p>
+          <p className="mt-3">
+            {t("privacy.sections.controller.p2", { email: common.email })}{" "}
+            <strong>{common.email}</strong>.
+          </p>
+        </LegalSection>
+
+        <LegalSection id="security" title={t("privacy.sections.security.title")}>
+          <p>{t("privacy.sections.security.p1")}</p>
+          <p className="mt-3">{t("privacy.sections.security.p2")}</p>
+        </LegalSection>
+
 
         <LegalSection id="purposes" title={t("privacy.sections.purposes.title")}>
           <ul>

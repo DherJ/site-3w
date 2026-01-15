@@ -620,7 +620,9 @@
         "Vérifie une dernière fois avant l’envoi."
       ],
       "eta": "Temps estimé : ~2 min",
-      "stepLabel": "Étape"
+      "stepLabel": "Étape",
+      "finalCheckTitle": "Vérification finale",
+      "finalCheckText": "Après validation, nous vous recontacterons rapidement avec une proposition adaptée à vos besoins."
     },
     "alerts": {
       "sent": "Devis envoyé ✅",
@@ -688,44 +690,68 @@
       "pageTitle": "Politique de confidentialité",
       "pageSubtitle": "Comment nous traitons vos données (RGPD).",
       "toc": {
+        "controller": "Responsable du traitement",
         "data": "Données collectées",
-        "purposes": "Finalités",
+        "purposes": "Finalités du traitement",
         "lawful": "Base légale",
         "retention": "Durée de conservation",
-        "processors": "Partage & sous-traitants",
+        "security": "Sécurité des données",
+        "processors": "Sous-traitants et destinataires",
         "rights": "Vos droits",
         "cookies": "Cookies"
       },
       "sections": {
+        "controller": {
+          "title": "Responsable du traitement",
+          "p1": "Les données à caractère personnel collectées sur le site WellWithWaves sont traitées sous la responsabilité de la société {companyName}, située à {address}.",
+          "p2": "Pour toute question relative à la protection des données, vous pouvez nous contacter à : {email}."
+        },
         "data": {
           "title": "Données collectées",
-          "p1": "Nous collectons les informations que vous nous transmettez via les formulaires (ex : nom, email, établissement, message) et, éventuellement, des données techniques (logs)."
+          "p1": "Nous collectons uniquement les données strictement nécessaires via les formulaires du site (demande de devis, formulaire de contact), notamment : nom, prénom, adresse email professionnelle, établissement, fonction, numéro de téléphone et contenu du message.",
+          "p2": "Les champs marqués comme obligatoires sont nécessaires au traitement de votre demande. Les autres informations sont facultatives.",
+          "p3": "Merci de ne pas transmettre de données sensibles ou médicales via les formulaires du site."
         },
         "purposes": {
-          "title": "Finalités",
-          "li1": "Répondre à vos demandes (contact, devis, informations).",
-          "li2": "Assurer le fonctionnement et la sécurité du site.",
-          "li3": "Mesure d’audience (si activée) – à préciser."
+          "title": "Finalités du traitement",
+          "li1": "Traitement et réponse aux demandes de contact et de devis.",
+          "li2": "Gestion de la relation précontractuelle et commerciale.",
+          "li3": "Fonctionnement, maintenance et sécurisation du site.",
+          "li4": "Mesure d’audience strictement nécessaire (le cas échéant)."
         },
         "lawful": {
-          "title": "Base légale",
-          "p1": "Intérêt légitime (réponse aux demandes), exécution de mesures précontractuelles (devis), obligations légales si applicable."
+          "title": "Base légale du traitement",
+          "p1": "Les traitements reposent sur l’intérêt légitime de WellWithWaves à répondre aux sollicitations et, le cas échéant, sur l’exécution de mesures précontractuelles lorsque vous effectuez une demande de devis.",
+          "p2": "Lorsque requis, certains traitements peuvent également reposer sur votre consentement."
         },
         "retention": {
           "title": "Durée de conservation",
-          "p1": "Les données sont conservées le temps nécessaire au traitement de votre demande puis archivées/supprimées selon nos obligations légales."
+          "p1": "Les données issues des formulaires de contact et de demande de devis sont conservées pendant une durée maximale de 3 ans à compter du dernier échange.",
+          "p2": "Les données techniques (logs) sont conservées pour une durée limitée à des fins de sécurité, de diagnostic et conformément aux obligations légales applicables.",
+          "p3": "Au-delà de ces délais, les données sont supprimées ou anonymisées."
+        },
+        "security": {
+          "title": "Sécurité des données",
+          "p1": "WellWithWaves met en œuvre des mesures techniques et organisationnelles appropriées afin de garantir la sécurité et la confidentialité des données personnelles.",
+          "p2": "Ces mesures incluent notamment le chiffrement des échanges (HTTPS), des accès restreints aux données et des environnements d’hébergement sécurisés."
         },
         "processors": {
-          "title": "Partage & sous-traitants",
-          "p1": "Vos données peuvent être traitées par des prestataires (hébergement, emailing, etc.) strictement pour fournir le service. À préciser selon votre stack."
+          "title": "Sous-traitants et destinataires",
+          "p1": "Les données personnelles sont destinées exclusivement à WellWithWaves.",
+          "p2": "Elles peuvent être traitées par des prestataires techniques (hébergement, services email) agissant en tant que sous-traitants, uniquement pour fournir le service et dans le respect du RGPD.",
+          "p3": "Sauf mention contraire, aucun transfert de données hors de l’Union européenne n’est réalisé."
         },
         "rights": {
           "title": "Vos droits",
-          "p1": "Conformément au RGPD : accès, rectification, effacement, opposition, limitation, portabilité. Vous pouvez exercer vos droits à"
+          "p1": "Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants : accès, rectification, effacement, opposition, limitation et portabilité.",
+          "p2": "Vous pouvez exercer vos droits en nous contactant à : {email}.",
+          "p3": "Vous disposez également du droit d’introduire une réclamation auprès de la CNIL."
         },
         "cookies": {
           "title": "Cookies",
-          "p1": "À compléter : cookies nécessaires / analytics / consentement (si applicable)."
+          "p1": "Le site WellWithWaves utilise uniquement des cookies strictement nécessaires à son fonctionnement.",
+          "p2": "Aucun cookie publicitaire ou de traçage à des fins commerciales n’est utilisé.",
+          "p3": "Des outils de mesure d’audience peuvent être activés, dans le respect de la réglementation en vigueur et, le cas échéant, avec votre consentement."
         }
       }
     },
@@ -819,6 +845,10 @@
     "siteName": "WellWithWaves",
     "summary": "Sommaire",
     "openMaps": "Ouvrir dans Google Maps",
-    "services": "Services"
+    "services": "Services",
+    "privatePolicy": {
+      "notice": "Les informations transmises via ce formulaire sont utilisées uniquement pour répondre à votre demande. Merci de ne pas transmettre de données médicales. Pour en savoir plus :",
+      "link": "Politique de confidentialité"
+    }
   }
 }

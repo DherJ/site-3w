@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import AddressMapLink from "@/components/ui/AddressMapLink";
+import Link from "next/link";
 
 export default function ContactClient({
   locale,
@@ -89,6 +90,25 @@ export default function ContactClient({
             {g("requestQuote")}
           </a>
         </div>
+
+        <p className="mt-4 text-xs text-brandMuted">
+          {g("privatePolicy.notice", {
+            default:
+              "Les informations transmises via ce formulaire sont utilisées uniquement pour répondre à votre demande. Merci de ne pas transmettre de données médicales. Pour en savoir plus :"
+          })}{" "}
+          <Link href={`/${locale}/legal/privacy-policy`} className="underline font-semibold">
+            {g("privatePolicy.link", { default: "Politique de confidentialité" })}
+          </Link>
+          .
+        </p>
+
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+        />
 
         {sent === "ok" && (
           <div className="mt-4 rounded-2xl bg-brandChampagne/15 p-4 ring-1 ring-brandChampagne/25 text-sm font-semibold text-brandNavy">

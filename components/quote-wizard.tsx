@@ -28,6 +28,7 @@ import {
   ListChecks,
   Eye,
 } from "lucide-react";
+import Link from "next/link";
 
 type NeedKey = "purchase" | "rental" | "quality" | "cleaning" | "mix";
 
@@ -74,9 +75,11 @@ type Copy = {
     title: string;
     selection: string;
     todoTitle: string;
-    todo: string[]; // 5 items
+    todo: string[];
     eta: string;
     stepLabel: string;
+    finalCheckTitle: string;
+    finalCheckText: string;
   };
 
   alerts: {
@@ -86,6 +89,11 @@ type Copy = {
     companyRequired?: string;
     contactRequired?: string;
     emailInvalid?: string;
+  };
+
+  privatePolicy: {
+    notice: string;
+    linkText: string;
   };
 };
 
@@ -332,8 +340,16 @@ export function QuoteWizard({ locale, copy }: { locale: string; copy: Copy }) {
                           </div>
                         </div>
                       </button>
+
                     );
                   })}
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                  />
                 </div>
 
                 {form.formState.errors.needs ? (
@@ -598,62 +614,84 @@ export function QuoteWizard({ locale, copy }: { locale: string; copy: Copy }) {
                 </div>
 
                 <div className="rounded-2xl bg-brandChampagne/15 p-4 ring-1 ring-brandChampagne/25">
-                  <div className="text-sm font-extrabold text-brandNavy">Final check</div>
+                  <div className="text-sm font-extrabold text-brandNavy">
+                    {copy.progress.finalCheckTitle}
+                  </div>
                   <div className="mt-1 text-sm text-brandMuted">
-                    Once submitted, we’ll get back to you quickly with a tailored proposal.
+                    {copy.progress.finalCheckText}
                   </div>
                 </div>
               </div>
             )}
           </StepTransition>
 
-          <div className="flex items-center justify-between gap-3">
-            <button
-              type="button"
-              disabled={active === 0}
-              onClick={() => {
-                setDirection("prev");
-                setActive((s) => Math.max(0, s - 1));
-              }}
-              className="rounded-2xl border border-gray-200 bg-white px-4 py-2 font-bold text-brand-text disabled:opacity-40"
-            >
-              {copy.buttons.back}
-            </button>
-
-            {active < 4 ? (
+          <div className="space-y-3">
+            {/* ROW boutons (toujours identique) */}
+            <div className="flex items-center justify-end gap-3">
               <button
                 type="button"
-                onClick={async () => {
-                  if (active === 0) {
-                    const ok = await form.trigger(["needs"]);
-                    if (!ok) return;
-                  }
-                  if (active === 3) {
-                    const ok = await form.trigger(["company", "contact", "email"]);
-                    if (!ok) return;
-                  }
-                  setDirection("next");
-                  setActive((s) => Math.min(4, s + 1));
+                disabled={active === 0}
+                onClick={() => {
+                  setDirection("prev");
+                  setActive((s) => Math.max(0, s - 1));
                 }}
-                className="rounded-2xl bg-brandNavy px-5 py-2 text-sm font-extrabold text-white shadow-soft hover:opacity-95"
+                className="rounded-2xl border border-gray-200 bg-white px-4 py-2 font-bold text-brand-text disabled:opacity-40"
               >
-                {copy.buttons.next}
+                {copy.buttons.back}
               </button>
-            ) : (
-              <button
-                type="button"
-                disabled={isSubmitting}
-                onClick={form.handleSubmit(onSubmit)}
-                className={[
-                  "rounded-2xl px-5 py-2 text-sm font-extrabold shadow-sm transition",
-                  "bg-brandChampagne text-brandNavy hover:-translate-y-0.5 hover:bg-brandChampagne/90",
-                  "disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed",
-                ].join(" ")}
-              >
-                {isSubmitting ? <RadiationLoader /> : copy.buttons.submit}
-              </button>
+
+              {active < 4 ? (
+                <button
+                  type="button"
+                  onClick={async () => {
+                    if (active === 0) {
+                      const ok = await form.trigger(["needs"]);
+                      if (!ok) return;
+                    }
+                    if (active === 3) {
+                      const ok = await form.trigger(["company", "contact", "email"]);
+                      if (!ok) return;
+                    }
+                    setDirection("next");
+                    setActive((s) => Math.min(4, s + 1));
+                  }}
+                  className="rounded-2xl bg-brandNavy px-5 py-2 text-sm font-extrabold text-white shadow-soft hover:opacity-95"
+                >
+                  {copy.buttons.next}
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  disabled={isSubmitting}
+                  onClick={form.handleSubmit(onSubmit)}
+                  className={[
+                    "rounded-2xl px-5 py-2 text-sm font-extrabold shadow-sm transition",
+                    "bg-brandChampagne text-brandNavy hover:-translate-y-0.5 hover:bg-brandChampagne/90",
+                    "disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed",
+                  ].join(" ")}
+                >
+                  {isSubmitting ? <RadiationLoader /> : copy.buttons.submit}
+                </button>
+              )}
+            </div>
+
+            {/* TEXTE sous les boutons */}
+            {active === 4 && (
+              <p className="text-xs text-brandMuted">
+                {copy.privatePolicy.notice}{" "}
+                <a
+                  href={`/${locale}/legal/privacy-policy`}
+                  className="underline font-semibold"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {copy.privatePolicy.linkText}
+                </a>
+                .
+              </p>
             )}
           </div>
+
         </form>
       </div>
 

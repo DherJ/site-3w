@@ -10,6 +10,7 @@ export default async function QuotePage({ params }: Props) {
   const { locale } = params;
 
   const t = await getTranslations({ locale, namespace: "quote" });
+  const g = await getTranslations({ locale, namespace: "global" });
   const jsonLd = await getQuoteJsonLd(locale);
 
   const copy = {
@@ -99,6 +100,10 @@ export default async function QuotePage({ params }: Props) {
       ],
       eta: t("progress.eta", { default: "Temps estimé : ~2 min" }),
       stepLabel: t("progress.stepLabel", { default: "Étape" }),
+      finalCheckTitle: t("progress.finalCheckTitle", { default: "Vérification finale" }),
+      finalCheckText: t("progress.finalCheckText", {
+        default: "Après validation, nous vous recontacterons rapidement avec une proposition adaptée à vos besoins.",
+      }),
     },
 
     alerts: {
@@ -110,6 +115,13 @@ export default async function QuotePage({ params }: Props) {
       contactRequired: t("validation.contactRequired", { default: "Nom contact requis" }),
       emailInvalid: t("validation.emailInvalid", { default: "Email invalide" }),
     },
+    privatePolicy: {
+      notice: g("privatePolicy.notice", {
+        default:
+          "Les informations transmises via ce formulaire sont utilisées uniquement pour répondre à votre demande. Merci de ne pas transmettre de données médicales. Pour en savoir plus :",
+      }),
+      linkText: g("privatePolicy.link", { default: "Politique de confidentialité" }),
+    }
   };
 
   return <QuotePageClient locale={locale} copy={copy} jsonLd={jsonLd} />;
