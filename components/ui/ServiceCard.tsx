@@ -22,7 +22,7 @@ export default function ServiceCard({
         "transition hover:-translate-y-0.5 hover:shadow-[0_22px_70px_rgba(17,45,77,0.10)]",
       ].join(" ")}
     >
-      <div className="relative aspect-[16/10] w-full">
+      <div className="relative aspect-[3/2] w-full sm:aspect-[16/10]">
         <Image
           src={withBasePath(imageSrc)}
           alt={title}
@@ -34,13 +34,13 @@ export default function ServiceCard({
         <div className="absolute inset-0 bg-brandNavy/10" />
       </div>
 
-      <div className="p-6">
-        <h3 className="font-serif text-xl font-semibold text-brandNavy">
+      <div className="p-4 sm:p-6">
+        <h3 className="font-serif text-lg font-semibold text-brandNavy sm:text-xl">
           {title}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-brandMuted">{desc}</p>
+        <p className="mt-2 text-xs leading-relaxed text-brandMuted sm:mt-3 sm:text-sm">{desc}</p>
 
-        <div className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brandNavy">
+        <div className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-brandNavy sm:mt-5 sm:text-sm">
           En savoir plus
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </div>

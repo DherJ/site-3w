@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 
 import { JsonLd } from "@/components/seo/JsonLd";
 import SignatureLine from "@/components/ui/SignatureLine";
-import { QuoteWizard } from "@/components/quote-wizard";
+import { QuoteWizard } from "@/components/QuoteWizard";
 
 export default function QuotePageClient({
   locale,

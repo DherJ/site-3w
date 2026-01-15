@@ -13,7 +13,7 @@ export default function ServicesSection() {
   const serviceHref = (slug: string) => `/${locale}/services/${slug}`;
 
   return (
-    <section id="discover" className="section py-16 md:py-24">
+    <section id="discover" className="section py-12 md:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
           kicker="SERVICES"
@@ -21,7 +21,7 @@ export default function ServicesSection() {
           subtitle={t("subtitle")}
         />
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map((s) => (
 
             <ServiceCard

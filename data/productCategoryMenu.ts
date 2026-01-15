@@ -10,7 +10,7 @@ export type CategoryMenuItem = {
 
 export const PRODUCT_CATEGORY_MENU: CategoryMenuItem[] = PRODUCT_CATEGORY_KEYS.map((key) => ({
   key,
-  href: (locale) => `/${locale}/products?category=${encodeURIComponent(key)}`,
+  href: (locale) => `/${locale}/products?cat=${encodeURIComponent(key)}`,
   imageSrc: `/categories/${key}.jpg`,
   fallback: PRODUCT_CATEGORIES[key].fallback,
   i18nKey: PRODUCT_CATEGORIES[key].i18nKey,

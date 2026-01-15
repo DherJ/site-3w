@@ -11,6 +11,10 @@ import HeaderProductsDropdown from "@/components/layout/HeaderProductsDropdown";
 import HeaderServicesDropdown from "./layout/HeaderServicesDropdown";
 import { NavIcon } from "./ui/NavBarServicesIcon";
 
+import { PRODUCT_CATEGORY_MENU } from "@/data/productCategoryMenu";
+import { SERVICES } from "@/data/services";
+import { withBasePath } from "@/lib/withBasePath";
+
 /* -----------------------------
    Utils
 ----------------------------- */
@@ -80,11 +84,14 @@ function LocaleSwitch() {
 ----------------------------- */
 export function SiteHeader() {
   const t = useTranslations("nav");
+  const tProducts = useTranslations("products");
+  const tServices = useTranslations("services");
+
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
   const scrolled = useScrolled(24);
-  type OpenMenu = "products" | "services" | null;
 
+  type OpenMenu = "products" | "services" | null;
   const [openMenu, setOpenMenu] = useState<OpenMenu>(null);
   const closeTimer = useRef<number | null>(null);
 
@@ -107,7 +114,7 @@ export function SiteHeader() {
   const appleEase = "ease-[cubic-bezier(0.16,1,0.3,1)]";
 
   const links = [
-    { key: "products", imageSrc: "/icons/products.png", Icon: BookOpen, href: `/${locale}/products`, label: t("products") },
+    { key: "products", Icon: BookOpen, href: `/${locale}/products`, label: t("products") },
     { key: "services", Icon: Handshake, href: `/${locale}/services`, label: t("services") },
     { key: "about", Icon: Users, href: `/${locale}/about`, label: t("about") },
     { key: "contact", Icon: Mail, href: `/${locale}/contact`, label: t("contact") },
@@ -131,7 +138,7 @@ export function SiteHeader() {
     };
   }, [mobileOpen]);
 
-  // ✅ close mobile when route changes (pathname)
+  // ✅ close mobile when route changes
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
@@ -151,25 +158,28 @@ export function SiteHeader() {
           ].join(" ")}
         >
           <div className="relative z-[100] bg-brandNavy/90 backdrop-blur-xl ring-1 ring-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.18)] overflow-visible">
-            <div className="flex h-[96px] items-stretch">
-              {/* LEFT: Logo block */}
-              <div className="flex items-stretch pl-0">
+            {/* ✅ MOBILE HEIGHT DOWN: 64px */}
+            <div className="flex h-[64px] md:h-[96px] items-stretch">
+              {/* LEFT: Logo block (✅ slimmer on mobile) */}
+              <div className="flex items-stretch pl-0 shrink-0">
                 <Link href={`/${locale}`} className="relative flex items-stretch">
-                  <div className="relative flex items-center bg-white px-6 h-[96px] shrink-0">
-                    <div className="relative h-[52px] w-[170px] 2xl:h-[65px] 2xl:w-[190px]">
+                  <div className="relative flex items-center bg-white px-3 md:px-6 h-[64px] md:h-[96px] shrink-0">
+                    {/* ✅ Smaller logo in mobile */}
+                    <div className="relative h-[30px] w-[104px] md:h-[52px] md:w-[170px] 2xl:h-[65px] 2xl:w-[190px]">
                       <Image
-                        src="/logo.png"
+                        src={withBasePath("/logo.png")}
                         alt="Well With Waves"
                         fill
                         priority
                         className="object-contain"
-                        sizes="170px"
+                        sizes="(max-width: 768px) 104px, 170px"
                       />
                     </div>
 
+                    {/* ✅ Smaller wedge in mobile */}
                     <span
                       aria-hidden
-                      className="absolute right-[-54px] top-0 h-full w-20 bg-white"
+                      className="absolute right-[-22px] md:right-[-54px] top-0 h-full w-9 md:w-20 bg-white"
                       style={{ clipPath: "polygon(0 0, 100% 0, 70% 100%, 0 100%)" }}
                     />
                   </div>
@@ -177,11 +187,10 @@ export function SiteHeader() {
               </div>
 
               {/* CENTER: Nav (desktop only) */}
-              <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-4">
+              <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-4 min-w-0">
                 <nav className="hidden items-center gap-10 space-x-14 md:flex">
                   {links.map((l) => {
                     const active = isActive(pathname, l.href);
-                    const imageSrc = (l as any).imageSrc;
 
                     if (l.key === "products") {
                       return (
@@ -201,13 +210,7 @@ export function SiteHeader() {
                               active ? "text-white after:scale-x-100" : "",
                             ].join(" ")}
                           >
-                            {imageSrc ? (
-                              <span className="relative h-8 w-8 shrink-0">
-                                <Image src={imageSrc} alt="" fill className="object-contain opacity-90" sizes="48px" />
-                              </span>
-                            ) : (
-                              <NavIcon link={l as any} />
-                            )}
+                            <NavIcon link={l as any} />
                             {l.label}
                           </Link>
 
@@ -271,8 +274,8 @@ export function SiteHeader() {
                 </nav>
               </div>
 
-              {/* RIGHT: Locale + CTA (desktop) + Burger (mobile) */}
-              <div className="flex items-center gap-3 pr-6 md:pr-10">
+              {/* RIGHT: desktop locale + CTA + burger */}
+              <div className="flex items-center gap-2 pr-3 md:pr-10 shrink-0">
                 {/* Desktop locale */}
                 <div className="hidden md:block mr-2 md:mr-4">
                   <LocaleSwitch />
@@ -291,11 +294,11 @@ export function SiteHeader() {
                   {t("quote")}
                 </Link>
 
-                {/* ✅ Burger button (mobile only) */}
+                {/* ✅ Burger always visible in mobile */}
                 <button
                   type="button"
                   onClick={() => setMobileOpen(true)}
-                  className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15 text-white hover:bg-white/15 transition"
+                  className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15 text-white hover:bg-white/15 transition"
                   aria-label="Open menu"
                   aria-expanded={mobileOpen}
                 >
@@ -306,8 +309,8 @@ export function SiteHeader() {
           </div>
         </div>
 
-        {/* Spacer */}
-        <div className="h-[96px]" />
+        {/* ✅ Spacer matches navbar height */}
+        <div className="h-[64px] md:h-[96px]" />
 
         {/* ============ MOBILE DRAWER ============ */}
         {mobileOpen ? (
@@ -321,19 +324,17 @@ export function SiteHeader() {
             />
 
             {/* panel */}
-            <div className="absolute inset-x-0 top-0 h-[100svh] bg-brandNavy text-white shadow-2xl">
+            <div className="absolute inset-x-0 top-0 h-[100svh] bg-brandNavy text-white shadow-2xl overflow-y-auto">
               {/* top bar */}
               <div className="flex items-center justify-between px-4 py-4 ring-1 ring-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="relative h-9 w-32">
-                    <Image src="/logo.png" alt="Well With Waves" fill className="object-contain" sizes="128px" />
-                  </div>
+                <div className="relative h-8 w-28">
+                  <Image src={withBasePath("/logo.png")} alt="Well With Waves" fill className="object-contain" sizes="112px" />
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15 hover:bg-white/15 transition"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15 hover:bg-white/15 transition"
                   aria-label="Close menu"
                 >
                   <X className="h-5 w-5" />
@@ -342,7 +343,7 @@ export function SiteHeader() {
 
               {/* content */}
               <div className="px-4 py-5">
-                {/* Locale switch (mobile) */}
+                {/* Locale switch */}
                 <div className="mb-5 flex items-center justify-between rounded-2xl bg-white/5 ring-1 ring-white/10 p-3">
                   <div className="text-xs font-extrabold tracking-[0.22em] text-white/70">
                     {t("language", { default: "LANGUE" })}
@@ -350,7 +351,6 @@ export function SiteHeader() {
                   <LocaleSwitch />
                 </div>
 
-                {/* Primary links */}
                 <div className="grid gap-2">
                   {/* Products accordion */}
                   <button
@@ -362,12 +362,7 @@ export function SiteHeader() {
                       <BookOpen className="h-5 w-5" />
                       {t("products")}
                     </span>
-                    <ChevronDown
-                      className={[
-                        "h-5 w-5 transition-transform",
-                        mobileAcc.products ? "rotate-180" : "rotate-0",
-                      ].join(" ")}
-                    />
+                    <ChevronDown className={["h-5 w-5 transition-transform", mobileAcc.products ? "rotate-180" : "rotate-0"].join(" ")} />
                   </button>
 
                   {mobileAcc.products ? (
@@ -375,13 +370,34 @@ export function SiteHeader() {
                       <Link
                         href={`/${locale}/products`}
                         onClick={() => setMobileOpen(false)}
-                        className="block rounded-xl px-3 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
+                        className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-extrabold text-white hover:bg-white/10"
                       >
-                        {t("products", { default: "Produits" })}
+                        <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/15 bg-white/5">
+                          <BookOpen className="h-6 w-6 absolute inset-0 m-auto text-white/90" />
+                        </span>
+                        <span className="min-w-0 truncate">{tProducts("title", { default: "Catalogue" })}</span>
                       </Link>
 
-                      {/* 👉 Ajoute ici des sous-liens si tu veux */}
-                      {/* <Link href={`/${locale}/products?cat=tabliers`} ...>Tabliers</Link> */}
+                      <div className="mt-1 h-px w-full bg-white/10" />
+
+                      <div className="mt-1 grid gap-1">
+                        {PRODUCT_CATEGORY_MENU.map((item) => {
+                          const label = tProducts(item.i18nKey as any, { defaultValue: item.fallback });
+                          return (
+                            <Link
+                              key={item.key}
+                              href={item.href(locale)}
+                              onClick={() => setMobileOpen(false)}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-white/90 hover:bg-white/10"
+                            >
+                              <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/15 bg-white/5">
+                                <Image src={withBasePath(item.imageSrc)} alt="" fill className="object-cover" sizes="36px" />
+                              </span>
+                              <span className="min-w-0 truncate">{label}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   ) : null}
 
@@ -395,12 +411,7 @@ export function SiteHeader() {
                       <Handshake className="h-5 w-5" />
                       {t("services")}
                     </span>
-                    <ChevronDown
-                      className={[
-                        "h-5 w-5 transition-transform",
-                        mobileAcc.services ? "rotate-180" : "rotate-0",
-                      ].join(" ")}
-                    />
+                    <ChevronDown className={["h-5 w-5 transition-transform", mobileAcc.services ? "rotate-180" : "rotate-0"].join(" ")} />
                   </button>
 
                   {mobileAcc.services ? (
@@ -408,16 +419,37 @@ export function SiteHeader() {
                       <Link
                         href={`/${locale}/services`}
                         onClick={() => setMobileOpen(false)}
-                        className="block rounded-xl px-3 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
+                        className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-extrabold text-white hover:bg-white/10"
                       >
-                        {t("services", { default: "Services" })}
+                        <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/15 bg-white/5">
+                          <Handshake className="h-6 w-6 absolute inset-0 m-auto text-white/90" />
+                        </span>
+                        <span className="min-w-0 truncate">{t("services", { default: "Services" })}</span>
                       </Link>
 
-                      {/* 👉 Ajoute ici des sous-liens si tu veux */}
+                      <div className="mt-1 h-px w-full bg-white/10" />
+
+                      <div className="mt-1 grid gap-1">
+                        {SERVICES.map((s) => {
+                          const label = tServices(`${s.i18nKey}.title`, { defaultValue: s.fallback });
+                          return (
+                            <Link
+                              key={s.key}
+                              href={`/${locale}/services/${s.slug}`}
+                              onClick={() => setMobileOpen(false)}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-white/90 hover:bg-white/10"
+                            >
+                              <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/15 bg-white/5">
+                                <Image src={withBasePath(s.imageSrc)} alt="" fill className="object-contain p-1.5" sizes="36px" />
+                              </span>
+                              <span className="min-w-0 truncate">{label}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   ) : null}
 
-                  {/* About */}
                   <Link
                     href={`/${locale}/about`}
                     onClick={() => setMobileOpen(false)}
@@ -429,7 +461,6 @@ export function SiteHeader() {
                     </span>
                   </Link>
 
-                  {/* Contact */}
                   <Link
                     href={`/${locale}/contact`}
                     onClick={() => setMobileOpen(false)}
@@ -442,7 +473,6 @@ export function SiteHeader() {
                   </Link>
                 </div>
 
-                {/* CTA */}
                 <div className="mt-6">
                   <Link
                     href={quoteHref}
@@ -453,11 +483,7 @@ export function SiteHeader() {
                   </Link>
                 </div>
 
-                {/* small hint / divider */}
                 <div className="mt-6 h-px w-full bg-white/10" />
-                <div className="mt-4 text-xs text-white/60">
-                  {t("mobileHint", { default: "Menu" })}
-                </div>
               </div>
             </div>
           </div>

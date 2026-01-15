@@ -12,7 +12,7 @@ type Partner = {
 
 function PartnersMarquee({
   items,
-  speed = 28,
+  speed = 36,
 }: {
   items: Partner[];
   speed?: number;
@@ -24,7 +24,7 @@ function PartnersMarquee({
       className="
         relative overflow-hidden
         bg-brandNavy
-        py-6
+        py-4 sm:py-6
       "
     >
       {/* fades gauche / droite */}
@@ -32,7 +32,7 @@ function PartnersMarquee({
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-brandNavy to-transparent z-10" />
 
       <div
-        className="group flex w-max items-center gap-12 will-change-transform"
+        className="group flex w-max items-center gap-8 sm:gap-12 will-change-transform"
         style={{
           animation: `partners-marquee ${speed}s linear infinite`,
         }}
@@ -42,26 +42,29 @@ function PartnersMarquee({
             key={`${p.name}-${idx}`}
             className="
               flex items-center justify-center
-              h-16 sm:h-20
-              px-8
+              h-12 sm:h-16
+              px-4 sm:px-8
               rounded-xl
               transition-all duration-300
               hover:bg-white/5
               hover:ring-1 hover:ring-brandChampagne/30
             "
           >
-            <Image
-              src={withBasePath(p.logo)}
-              alt={p.name}
-              width={220}
-              height={80}
-              className="
-                h-18 sm:h-16 w-auto object-contain
-                opacity-90 transition-opacity duration-300
-                hover:opacity-100
-              "
-              unoptimized
-            />
+            <div className="relative h-7 w-[120px] overflow-hidden sm:h-10 sm:w-[160px] md:h-12 md:w-[200px]">
+              <Image
+                src={withBasePath(p.logo)}
+                alt={p.name}
+                fill
+                sizes="(max-width: 640px) 120px, (max-width: 768px) 160px, 200px"
+                className="
+                  object-contain
+                  scale-[1.18] origin-center
+                  opacity-90 transition-all duration-300
+                  hover:opacity-100
+                "
+                unoptimized
+              />
+            </div>
           </div>
         ))}
       </div>
@@ -77,6 +80,12 @@ function PartnersMarquee({
           }
           100% {
             transform: translateX(-50%);
+          }
+        }
+
+        @media (max-width: 640px) {
+          .group {
+            animation-duration: 48s !important;
           }
         }
 
