@@ -97,7 +97,8 @@
       "faqTitle": "FAQ",
       "ctaTitle": "Let’s discuss your needs",
       "ctaText": "Share your context (duration, quantities, constraints). We’ll propose the right approach.",
-      "ctaButton": "Request a quote"
+      "ctaButton": "Request a quote",
+      "step": "Step"
     },
     "rental": {
       "title": "Radiation protection equipment rental",
@@ -477,6 +478,9 @@
       "h1": "Premium radiation protection — with proof to back it up.",
       "p": "Well With Waves (3W) designs and manufactures radiation protection equipment for demanding healthcare environments. From selection to maintenance, our promise is simple: comfort, durability and compliance.",
       "cta2": "Explore our services"
+    },
+    "tips": {
+      "horizontalScroll": "Tip: scroll horizontally to see all items."
     },
     "company": {
       "kicker": "THE COMPANY",

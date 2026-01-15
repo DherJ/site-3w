@@ -1,7 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { withBasePath } from "@/lib/withBasePath";
+
+const toWebp = (imageSrc: string) => imageSrc.replace(/\.png$/i, ".webp");
 
 export default function ServiceCard({
   href,
@@ -23,14 +24,18 @@ export default function ServiceCard({
       ].join(" ")}
     >
       <div className="relative aspect-[3/2] w-full sm:aspect-[16/10]">
-        <Image
-          src={withBasePath(imageSrc)}
-          alt={title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
-          unoptimized
-        />
+        <picture className="absolute inset-0 h-full w-full">
+          <source
+            srcSet={withBasePath(`/services/webp/${toWebp(imageSrc.split("/").pop() || "")}`)}
+            type="image/webp"
+          />
+          <img
+            src={withBasePath(imageSrc)}
+            alt={title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            loading="lazy"
+          />
+        </picture>
         <div className="absolute inset-0 bg-brandNavy/10" />
       </div>
 

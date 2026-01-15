@@ -1,11 +1,12 @@
-"use client";
+﻿"use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { PRODUCT_CATEGORY_MENU } from "@/data/productCategoryMenu";
 import { useDragScroll } from "@/components/hooks/useDragScroll";
 import { withBasePath } from "@/lib/withBasePath";
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
 export default function HeaderProductsDropdown({
     locale,
@@ -28,7 +29,7 @@ export default function HeaderProductsDropdown({
                                 {t("kicker", { defaultValue: "CATALOGUE" })}
                             </div>
                             <div className="mt-2 font-serif text-xl font-semibold text-brandNavy">
-                                {t("filters.category", { defaultValue: "Catégories" })}
+                                {t("filters.category", { defaultValue: "Categories" })}
                             </div>
                         </div>
 
@@ -74,15 +75,19 @@ export default function HeaderProductsDropdown({
                                 >
                                     {/* image top */}
                                     <div className="relative aspect-[4/3] w-full bg-white">
-                                        <Image
-                                            src={withBasePath(c.imageSrc)}
-                                            alt={c.fallback}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                                            sizes="220px"
-                                            priority={false}
-                                            unoptimized
-                                        />
+                                        <picture className="absolute inset-0 h-full w-full">
+                                            <source
+                                                srcSet={withBasePath(`/categories/webp/${toWebp(c.imageSrc.split("/").pop() || "")}`)}
+                                                type="image/webp"
+                                            />
+                                            <img
+                                                src={withBasePath(c.imageSrc)}
+                                                alt={c.fallback}
+                                                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                                                sizes="220px"
+                                                loading="lazy"
+                                            />
+                                        </picture>
                                         {/* subtle top gradient like ecommerce */}
                                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                                     </div>
@@ -99,7 +104,7 @@ export default function HeaderProductsDropdown({
                                         {/* footer action row */}
                                         <div className="mt-3 flex items-center justify-between">
                                             <span className="text-xs font-extrabold tracking-[0.16em] text-brandNavy/70">
-                                                {t("seeCategory", { defaultValue: "Voir la catégorie" })}
+                                                {t("seeCategory", { defaultValue: "Voir la categorie" })}
                                             </span>
                                             <span className="text-brandNavy/35 transition-colors group-hover:text-brandNavy/70">
                                                 →

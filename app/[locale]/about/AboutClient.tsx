@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import SignatureLine from "@/components/ui/SignatureLine";
 import { useRevealOnScroll } from "@/components/hooks/useRevealOnScroll";
@@ -34,6 +33,8 @@ type TeamBlock = {
     ctaDesc: string;
     quoteHref: string;
 };
+
+const toWebp = (imageSrc: string) => imageSrc.replace(/\.(png|jpe?g)$/i, ".webp");
 
 export default function AboutClient({
     locale,
@@ -88,14 +89,19 @@ export default function AboutClient({
                     <div className="rounded-3xl bg-white/60 ring-1 ring-brandLine overflow-hidden">
                         {/* Image */}
                         <div className="group relative aspect-[5/3] w-full">
-                            <Image
-                                src={withBasePath("/about/company.jpg")}
-                                alt={locale === "fr" ? "Atelier Well With Waves" : "Well With Waves workshop"}
-                                fill
-                                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                                sizes="(min-width: 1024px) 420px, 100vw"
-                                unoptimized
-                            />
+                            <picture className="absolute inset-0 h-full w-full">
+                                <source
+                                    srcSet={withBasePath(`/about/webp/${toWebp("company.jpg")}`)}
+                                    type="image/webp"
+                                />
+                                <img
+                                    src={withBasePath("/about/company.jpg")}
+                                    alt={locale === "fr" ? "Atelier Well With Waves" : "Well With Waves workshop"}
+                                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                                    sizes="(min-width: 1024px) 420px, 100vw"
+                                    loading="lazy"
+                                />
+                            </picture>
 
                             {/* voile premium */}
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -179,14 +185,19 @@ export default function AboutClient({
                         {TEAM.map((m) => (
                             <div key={m.role} className="card-premium overflow-hidden">
                                 <div className="relative aspect-[4/3]">
-                                    <Image
-                                        src={withBasePath(m.imageSrc)}
-                                        alt={m.name}
-                                        fill
-                                        className="object-cover"
-                                        sizes="(min-width: 768px) 33vw, 100vw"
-                                        unoptimized
-                                    />
+                                    <picture className="absolute inset-0 h-full w-full">
+                                        <source
+                                            srcSet={withBasePath(`/team/webp/${toWebp(m.imageSrc.split("/").pop() || "")}`)}
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            src={withBasePath(m.imageSrc)}
+                                            alt={m.name}
+                                            className="h-full w-full object-cover"
+                                            sizes="(min-width: 768px) 33vw, 100vw"
+                                            loading="lazy"
+                                        />
+                                    </picture>
                                 </div>
                                 <div className="p-6">
                                     <div className="font-serif text-lg font-semibold text-brandNavy">

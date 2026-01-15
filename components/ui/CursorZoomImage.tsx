@@ -1,7 +1,6 @@
-"use client";
+﻿"use client";
 
 import { withBasePath } from "@/lib/withBasePath";
-import Image from "next/image";
 import { useMemo, useRef, useState } from "react";
 
 type CursorZoomImageProps = {
@@ -11,6 +10,14 @@ type CursorZoomImageProps = {
   zoom?: number; // ex: 1.8
   className?: string;
   priority?: boolean;
+};
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
+
+const toProductsWebp = (src: string) => {
+  if (!src.startsWith("/products/")) return null;
+  const trimmed = src.replace(/^\/products\//, "");
+  return `/products/webp/${toWebp(trimmed)}`;
 };
 
 export default function CursorZoomImage({
@@ -44,7 +51,7 @@ export default function CursorZoomImage({
     const dx = (pos.x - 0.5) * 2; // -1..1
     const dy = (pos.y - 0.5) * 2; // -1..1
 
-    // plus zoom est grand, plus on peut “pan” pour rester dans le cadre
+    // plus zoom est grand, plus on peut â€œpanâ€ pour rester dans le cadre
     const max = (zoom - 1) * 50;
 
     const tx = -dx * max;
@@ -72,23 +79,28 @@ export default function CursorZoomImage({
         className="absolute inset-0 will-change-transform transition-transform duration-150 ease-out"
         style={{ transform }}
       >
-        <Image
-          src={withBasePath(src)}
-          alt={alt}
-          fill
-          priority={priority}
-          sizes={sizes}
-          className="object-cover"
-          draggable={false}
-          unoptimized
-        />
+        <picture className="absolute inset-0 h-full w-full">
+          {toProductsWebp(src) ? (
+            <source srcSet={withBasePath(toProductsWebp(src) as string)} type="image/webp" />
+          ) : null}
+          <img
+            src={withBasePath(src)}
+            alt={alt}
+            sizes={sizes}
+            className="h-full w-full object-cover"
+            draggable={false}
+            loading={priority ? "eager" : "lazy"}
+          />
+        </picture>
       </div>
 
-      {/* voile léger au hover (optionnel) */}
+      {/* voile lÃ©ger au hover (optionnel) */}
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 ease-out hover:opacity-100 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
 
-      {/* liseré */}
+      {/* liserÃ© */}
       <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
     </div>
   );
 }
+
+

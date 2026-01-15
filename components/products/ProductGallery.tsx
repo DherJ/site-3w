@@ -1,6 +1,5 @@
-"use client";
+﻿"use client";
 
-import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import HoverRevealImage from "@/components/ui/HoverRevealImage";
 import CursorZoomImage from "@/components/ui/CursorZoomImage";
@@ -10,6 +9,14 @@ export type GalleryImage = {
   src: string;
   alt: string;
   hoverSrc?: string;
+};
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
+
+const toProductsWebp = (src: string) => {
+  if (!src.startsWith("/products/")) return null;
+  const trimmed = src.replace(/^\/products\//, "");
+  return `/products/webp/${toWebp(trimmed)}`;
 };
 
 export default function ProductGallery({
@@ -95,17 +102,24 @@ export default function ProductGallery({
               aria-label={`Voir image ${idx + 1}`}
             >
               <div className="relative aspect-square w-[88px]">
-                <Image
-                  src={withBasePath(img.src)}
-                  alt={img.alt}
-                  fill
-                  className={[
-                    "object-cover transition-transform duration-500",
-                    isActive ? "scale-[1.02]" : "hover:scale-[1.04]",
-                  ].join(" ")}
-                  sizes="88px"
-                  unoptimized
-                />
+                <picture className="absolute inset-0 h-full w-full">
+                  {toProductsWebp(img.src) ? (
+                    <source
+                      srcSet={withBasePath(toProductsWebp(img.src) as string)}
+                      type="image/webp"
+                    />
+                  ) : null}
+                  <img
+                    src={withBasePath(img.src)}
+                    alt={img.alt}
+                    className={[
+                      "h-full w-full object-cover transition-transform duration-500",
+                      isActive ? "scale-[1.02]" : "hover:scale-[1.04]",
+                    ].join(" ")}
+                    sizes="88px"
+                    loading="lazy"
+                  />
+                </picture>
                 <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
               </div>
             </button>
@@ -133,16 +147,22 @@ export default function ProductGallery({
                 key={`${img.src}-slide-${idx}`}
                 className="relative aspect-square w-[86%] shrink-0 snap-center overflow-hidden rounded-3xl bg-white ring-1 ring-black/5"
               >
-                {/* Sur mobile: pas de split (trop “gadget”), on affiche base */}
-                <Image
-                  src={withBasePath(img.src)}
-                  alt={img.alt}
-                  fill
-                  className="object-cover"
-                  sizes="100vw"
-                  priority={idx === 0}
-                  unoptimized
-                />
+                {/* Sur mobile: pas de split (trop â€œgadgetâ€), on affiche base */}
+                <picture className="absolute inset-0 h-full w-full">
+                  {toProductsWebp(img.src) ? (
+                    <source
+                      srcSet={withBasePath(toProductsWebp(img.src) as string)}
+                      type="image/webp"
+                    />
+                  ) : null}
+                  <img
+                    src={withBasePath(img.src)}
+                    alt={img.alt}
+                    className="h-full w-full object-cover"
+                    sizes="100vw"
+                    loading={idx === 0 ? "eager" : "lazy"}
+                  />
+                </picture>
               </div>
             ))}
           </div>
@@ -154,7 +174,7 @@ export default function ProductGallery({
                 key={`dot-${idx}`}
                 type="button"
                 onClick={() => goTo(idx)}
-                aria-label={`Aller à l’image ${idx + 1}`}
+                aria-label={`Aller Ã  lâ€™image ${idx + 1}`}
                 className={[
                   "h-2 w-2 rounded-full transition-all duration-300",
                   idx === activeIndex ? "bg-brandChampagne w-6" : "bg-brandLine",
@@ -204,3 +224,5 @@ export default function ProductGallery({
     </div>
   );
 }
+
+

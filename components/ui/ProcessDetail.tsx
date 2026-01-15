@@ -56,7 +56,7 @@ function getIcon(icon?: IconKey) {
   return ICONS[icon] ?? ArrowRight;
 }
 
-export default function ProcessWow({
+export default function ProcessDetail({
   title,
   steps,
   subtitle,
@@ -167,7 +167,7 @@ export default function ProcessWow({
                       : "bg-white text-brandNavy ring-brandLine",
                   ].join(" ")}
                 >
-                  <span className="opacity-90">Étape</span>
+                  <span className="opacity-90">{t('step')}</span>
                   <span>{s.i + 1}</span>
                 </div>
               </div>
@@ -264,7 +264,7 @@ export default function ProcessWow({
 
               <div className="flex items-center justify-between">
                 <div className="inline-flex items-center gap-2 rounded-2xl bg-brandNavy/95 px-3 py-1.5 text-xs font-extrabold text-white ring-1 ring-white/10">
-                  Étape {s.i + 1}
+                  {t('step')} {s.i + 1}
                 </div>
                 <s.Icon className="h-5 w-5 text-brandNavy/70" />
               </div>

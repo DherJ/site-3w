@@ -1,7 +1,6 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
@@ -9,11 +8,13 @@ import { Users, Mail, BookOpen, Handshake, X, Menu, ChevronDown } from "lucide-r
 
 import HeaderProductsDropdown from "@/components/layout/HeaderProductsDropdown";
 import HeaderServicesDropdown from "./layout/HeaderServicesDropdown";
-import { NavIcon } from "./ui/NavBarServicesIcon";
+import { NavIcon } from "./ui/NavIcon";
 
 import { PRODUCT_CATEGORY_MENU } from "@/data/productCategoryMenu";
 import { SERVICES } from "@/data/services";
 import { withBasePath } from "@/lib/withBasePath";
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
 /* -----------------------------
    Utils
@@ -95,7 +96,7 @@ export function SiteHeader() {
   const [openMenu, setOpenMenu] = useState<OpenMenu>(null);
   const closeTimer = useRef<number | null>(null);
 
-  // ✅ Mobile drawer
+  // âœ… Mobile drawer
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAcc, setMobileAcc] = useState<{ products: boolean; services: boolean }>({
     products: false,
@@ -120,7 +121,7 @@ export function SiteHeader() {
     { key: "contact", Icon: Mail, href: `/${locale}/contact`, label: t("contact") },
   ] as const;
 
-  // ✅ lock scroll + ESC close
+  // âœ… lock scroll + ESC close
   useEffect(() => {
     if (!mobileOpen) return;
 
@@ -138,7 +139,7 @@ export function SiteHeader() {
     };
   }, [mobileOpen]);
 
-  // ✅ close mobile when route changes
+  // âœ… close mobile when route changes
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
@@ -158,25 +159,30 @@ export function SiteHeader() {
           ].join(" ")}
         >
           <div className="relative z-[100] bg-brandNavy/90 backdrop-blur-xl ring-1 ring-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.18)] overflow-visible">
-            {/* ✅ MOBILE HEIGHT DOWN: 64px */}
+            {/* âœ… MOBILE HEIGHT DOWN: 64px */}
             <div className="flex h-[64px] md:h-[96px] items-stretch">
-              {/* LEFT: Logo block (✅ slimmer on mobile) */}
+              {/* LEFT: Logo block (âœ… slimmer on mobile) */}
               <div className="flex items-stretch pl-0 shrink-0">
                 <Link href={`/${locale}`} className="relative flex items-stretch">
                   <div className="relative flex items-center bg-white px-3 md:px-6 h-[64px] md:h-[96px] shrink-0">
-                    {/* ✅ Smaller logo in mobile */}
-                    <div className="relative h-[30px] w-[104px] md:h-[52px] md:w-[170px] 2xl:h-[65px] 2xl:w-[190px]">
-                      <Image
-                        src={withBasePath("/logo.png")}
-                        alt="Well With Waves"
-                        fill
-                        priority
-                        className="object-contain"
-                        sizes="(max-width: 768px) 104px, 170px"
-                      />
+                    {/* âœ… Smaller logo in mobile */}
+                                                                                <div className="relative h-[30px] w-[104px] md:h-[52px] md:w-[170px] 2xl:h-[65px] 2xl:w-[190px]">
+                      <picture className="absolute inset-0 h-full w-full">
+                        <source
+                          srcSet={withBasePath(toWebp("/logo.png"))}
+                          type="image/webp"
+                        />
+                        <img
+                          src={withBasePath("/logo.png")}
+                          alt="Well With Waves"
+                          className="h-full w-full object-contain"
+                          sizes="(max-width: 768px) 104px, 170px"
+                          loading="eager"
+                        />
+                      </picture>
                     </div>
 
-                    {/* ✅ Smaller wedge in mobile */}
+                    {/* âœ… Smaller wedge in mobile */}
                     <span
                       aria-hidden
                       className="absolute right-[-22px] md:right-[-54px] top-0 h-full w-9 md:w-20 bg-white"
@@ -294,7 +300,7 @@ export function SiteHeader() {
                   {t("quote")}
                 </Link>
 
-                {/* ✅ Burger always visible in mobile */}
+                {/* âœ… Burger always visible in mobile */}
                 <button
                   type="button"
                   onClick={() => setMobileOpen(true)}
@@ -309,7 +315,7 @@ export function SiteHeader() {
           </div>
         </div>
 
-        {/* ✅ Spacer matches navbar height */}
+        {/* âœ… Spacer matches navbar height */}
         <div className="h-[64px] md:h-[96px]" />
 
         {/* ============ MOBILE DRAWER ============ */}
@@ -326,19 +332,42 @@ export function SiteHeader() {
             {/* panel */}
             <div className="absolute inset-x-0 top-0 h-[100svh] bg-brandNavy text-white shadow-2xl overflow-y-auto">
               {/* top bar */}
-              <div className="flex items-center justify-between px-4 py-4 ring-1 ring-white/10">
-                <div className="relative h-8 w-28">
-                  <Image src={withBasePath("/logo.png")} alt="Well With Waves" fill className="object-contain" sizes="112px" />
-                </div>
+              <div className="flex items-stretch justify-between ring-1 ring-white/10">
+                <Link href={`/${locale}`} className="relative flex items-stretch">
+                  <div className="relative flex items-center bg-white px-3 h-[64px] shrink-0">
+                                                            <div className="relative h-8 w-28">
+                      <picture className="absolute inset-0 h-full w-full">
+                        <source
+                          srcSet={withBasePath(toWebp("/logo.png"))}
+                          type="image/webp"
+                        />
+                        <img
+                          src={withBasePath("/logo.png")}
+                          alt="Well With Waves"
+                          className="h-full w-full object-contain"
+                          sizes="112px"
+                          loading="eager"
+                        />
+                      </picture>
+                    </div>
+                    <span
+                      aria-hidden
+                      className="absolute right-[-22px] top-0 h-full w-9 bg-white"
+                      style={{ clipPath: "polygon(0 0, 100% 0, 70% 100%, 0 100%)" }}
+                    />
+                  </div>
+                </Link>
 
-                <button
-                  type="button"
-                  onClick={() => setMobileOpen(false)}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15 hover:bg-white/15 transition"
-                  aria-label="Close menu"
-                >
-                  <X className="h-5 w-5" />
-                </button>
+                <div className="flex items-center px-4">
+                  <button
+                    type="button"
+                    onClick={() => setMobileOpen(false)}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15 hover:bg-white/15 transition"
+                    aria-label="Close menu"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
               </div>
 
               {/* content */}
@@ -391,7 +420,19 @@ export function SiteHeader() {
                               className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-white/90 hover:bg-white/10"
                             >
                               <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/15 bg-white/5">
-                                <Image src={withBasePath(item.imageSrc)} alt="" fill className="object-cover" sizes="36px" />
+                                                                <picture className="absolute inset-0 h-full w-full">
+                                  <source
+                                    srcSet={withBasePath(`/categories/webp/${toWebp(item.imageSrc.split("/").pop() || "")}`)}
+                                    type="image/webp"
+                                  />
+                                  <img
+                                    src={withBasePath(item.imageSrc)}
+                                    alt=""
+                                    className="h-full w-full object-cover"
+                                    sizes="36px"
+                                    loading="lazy"
+                                  />
+                                </picture>
                               </span>
                               <span className="min-w-0 truncate">{label}</span>
                             </Link>
@@ -440,7 +481,19 @@ export function SiteHeader() {
                               className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-white/90 hover:bg-white/10"
                             >
                               <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/15 bg-white/5">
-                                <Image src={withBasePath(s.imageSrc)} alt="" fill className="object-contain p-1.5" sizes="36px" />
+                                                                <picture className="absolute inset-0 h-full w-full">
+                                  <source
+                                    srcSet={withBasePath(`/services/webp/${toWebp(s.imageSrc.split("/").pop() || "")}`)}
+                                    type="image/webp"
+                                  />
+                                  <img
+                                    src={withBasePath(s.imageSrc)}
+                                    alt=""
+                                    className="h-full w-full object-contain p-1.5"
+                                    sizes="36px"
+                                    loading="lazy"
+                                  />
+                                </picture>
                               </span>
                               <span className="min-w-0 truncate">{label}</span>
                             </Link>
@@ -492,3 +545,7 @@ export function SiteHeader() {
     </header>
   );
 }
+
+
+
+

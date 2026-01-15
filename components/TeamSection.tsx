@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import SectionTitle from "./ui/SectionTitle";
 import SecondaryButton from "./ui/SecondaryButton";
@@ -10,6 +9,7 @@ import { TEAM } from "@/data/team";
 import { withBasePath } from "@/lib/withBasePath";
 
 export default function TeamSection() {
+    const toWebp = (imageSrc: string) => imageSrc.replace(/\.(png|jpe?g)$/i, ".webp");
 
     const t = useTranslations("team");
     const locale = useLocale();
@@ -30,14 +30,19 @@ export default function TeamSection() {
                         {TEAM.map((m) => (
                             <div key={m.role} className="card-premium overflow-hidden">
                                 <div className="relative aspect-[4/3]">
-                                    <Image
-                                        src={withBasePath(m.imageSrc)}
-                                        alt={m.name}
-                                        fill
-                                        className="object-cover"
-                                        sizes="(min-width: 768px) 33vw, 100vw"
-                                        unoptimized
-                                    />
+                                    <picture className="absolute inset-0 h-full w-full">
+                                        <source
+                                            srcSet={withBasePath(`/team/webp/${toWebp(m.imageSrc.split("/").pop() || "")}`)}
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            src={withBasePath(m.imageSrc)}
+                                            alt={m.name}
+                                            className="h-full w-full object-cover"
+                                            sizes="(min-width: 768px) 33vw, 100vw"
+                                            loading="lazy"
+                                        />
+                                    </picture>
                                 </div>
                                 <div className="p-6">
                                     <div className="font-serif text-lg font-semibold text-brandNavy">

@@ -1,13 +1,12 @@
 // app/[locale]/services/[slug]/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
 import SignatureLine from "@/components/ui/SignatureLine";
 import { JsonLd } from "@/components/seo/JsonLd";
-import ProcessWow, { type ProcessStep } from "@/components/ui/ProcessWow";
+import ProcessDetail, { type ProcessStep } from "@/components/ui/ProcessDetail";
 
 import { SERVICES } from "@/data/services";
 import { withBasePath } from "@/lib/withBasePath";
@@ -19,6 +18,10 @@ type Props = {
 
 function getHeroImage(slug: string) {
   return SERVICES.find((s) => s.slug === slug)?.imageSrc ?? "/services/default.png";
+}
+
+function toWebp(imageSrc: string) {
+  return imageSrc.replace(/\.(png|jpe?g)$/i, ".webp");
 }
 
 function isKnownSlug(slug: string) {
@@ -183,14 +186,19 @@ export default async function ServiceDetailPage({ params }: Props) {
             {/* Illustration */}
             <div className="relative overflow-hidden rounded-3xl ring-1 ring-brandLine bg-white/60">
               <div className="relative h-52 w-full md:h-64">
-                <Image
-                  src={withBasePath(heroImage)}
-                  alt=""
-                  fill
-                  className="object-contain p-6"
-                  sizes="(min-width: 768px) 320px, 100vw"
-                  priority
-                />
+                <picture className="absolute inset-0 h-full w-full">
+                  <source
+                    srcSet={withBasePath(`/services/webp/${toWebp(heroImage.split("/").pop() || "")}`)}
+                    type="image/webp"
+                  />
+                  <img
+                    src={withBasePath(heroImage)}
+                    alt=""
+                    className="h-full w-full object-contain p-6"
+                    sizes="(min-width: 768px) 320px, 100vw"
+                    loading="eager"
+                  />
+                </picture>
               </div>
             </div>
           </div>
@@ -262,7 +270,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
         {/* Process */}
         <div id="process" className="mt-8">
-          <ProcessWow
+          <ProcessDetail
             title={processTitle}
             steps={steps}
             subtitle={t(`${slug}.process.subtitle`, { default: "" })}

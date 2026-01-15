@@ -1,12 +1,13 @@
-"use client";
+﻿"use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/Button";
 import { useLocale, useTranslations } from "next-intl";
 import SectionTitle from "./ui/SectionTitle";
 import { withBasePath } from "@/lib/withBasePath";
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
 export default function ManufactureAndQualitySection() {
 
@@ -16,19 +17,24 @@ export default function ManufactureAndQualitySection() {
 
     return (
         <div>
-            {/* 4) FABRICATION & QUALITÉ */}
+            {/* 4) FABRICATION & QUALITE */}
             <section className="bg-white py-20 md:py-28">
                 <div className="mx-auto max-w-6xl px-4 grid gap-12 md:grid-cols-2 items-center">
 
                     {/* Image atelier */}
                     <div className="relative aspect-[4/3] overflow-hidden rounded-xl ring-1 ring-brandLine">
-                        <Image
-                            src={withBasePath("/manufactureAndQuality/workshop.jpg")}
-                            alt="Atelier de fabrication Well With Waves"
-                            fill
-                            className="object-cover"
-                            unoptimized
-                        />
+                        <picture className="absolute inset-0 h-full w-full">
+                            <source
+                                srcSet={withBasePath(`/manufactureAndQuality/webp/${toWebp("workshop.jpg")}`)}
+                                type="image/webp"
+                            />
+                            <img
+                                src={withBasePath("/manufactureAndQuality/workshop.jpg")}
+                                alt="Atelier de fabrication Well With Waves"
+                                className="h-full w-full object-cover"
+                                loading="lazy"
+                            />
+                        </picture>
                     </div>
 
                     {/* Texte */}

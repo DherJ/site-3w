@@ -1,11 +1,12 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { SERVICES } from "@/data/services";
 import { useDragScroll } from "../hooks/useDragScroll";
 import { withBasePath } from "@/lib/withBasePath";
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
 export default function HeaderServicesDropdown({
   locale,
@@ -30,7 +31,7 @@ export default function HeaderServicesDropdown({
                 {t("kicker", { defaultValue: "SERVICES" })}
               </div>
               <div className="mt-2 font-serif text-xl font-semibold text-brandNavy">
-                {t('ourServices', { defaultValue: "Nos prestations" })}
+                {t("ourServices", { defaultValue: "Nos prestations" })}
               </div>
             </div>
             <Link
@@ -38,14 +39,14 @@ export default function HeaderServicesDropdown({
               onClick={onNavigate}
               className="hidden sm:inline-flex text-xs font-extrabold tracking-[0.18em] text-brandNavy/70 hover:text-brandNavy"
             >
-              {t('seeServices', { defaultValue: "Voir les services" })} →
+              {t("seeServices", { defaultValue: "Voir les services" })} →
             </Link>
           </div>
         </div>
 
         <div className="h-px bg-brandLine/70" />
 
-        {/* ✅ horizontal scroll */}
+        {/* horizontal scroll */}
         <div className="mx-auto max-w-6xl px-4 pb-5">
           <div
             ref={scrollerRef}
@@ -69,14 +70,19 @@ export default function HeaderServicesDropdown({
                   ].join(" ")}
                 >
                   <div className="relative h-10 w-12 shrink-0 overflow-hidden rounded-xl bg-white ring-1 ring-brandLine">
-                    <Image
-                      src={withBasePath(s.imageSrc)}
-                      alt={s.fallback}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                      sizes="48px"
-                      unoptimized
-                    />
+                    <picture className="absolute inset-0 h-full w-full">
+                      <source
+                        srcSet={withBasePath(`/services/webp/${toWebp(s.imageSrc.split("/").pop() || "")}`)}
+                        type="image/webp"
+                      />
+                      <img
+                        src={withBasePath(s.imageSrc)}
+                        alt={s.fallback}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                        sizes="48px"
+                        loading="lazy"
+                      />
+                    </picture>
                   </div>
 
                   <div className="min-w-0">
@@ -84,7 +90,7 @@ export default function HeaderServicesDropdown({
                       {t(`${s.i18nKey}.title` as any, { defaultValue: s.fallback })}
                     </div>
                     <div className="mt-0.5 text-[11px] text-brandMuted">
-                      {t('seeService', { defaultValue: "Voir le service" })}
+                      {t("seeService", { defaultValue: "Voir le service" })}
                     </div>
                   </div>
 
@@ -97,7 +103,7 @@ export default function HeaderServicesDropdown({
           </div>
 
           <div className="mt-1 text-xs text-brandMuted">
-            {t('tips.horizontalScroll', { defaultValue: "Astuce : scrolle horizontalement." })}
+            {t("tips.horizontalScroll", { defaultValue: "Astuce : scrolle horizontalement." })}
           </div>
         </div>
       </div>

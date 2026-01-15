@@ -1,9 +1,9 @@
-// components/about/AwardsTimeline.tsx
 "use client";
 
 import { useEffect, useMemo, useRef } from "react";
 import SignatureLine from "@/components/ui/SignatureLine";
 import { useDragScroll } from "@/components/hooks/useDragScroll";
+import { useTranslations } from "next-intl";
 
 type AwardItem = { label: string; year?: string };
 
@@ -20,6 +20,8 @@ export default function AwardsTimeline({
 }) {
   if (!items?.length) return null;
 
+  const t = useTranslations("about");
+  
   const awards: AwardItem[] = useMemo(
     () => items.map((label) => ({ label, year: "2025" })),
     [items]
@@ -78,7 +80,6 @@ export default function AwardsTimeline({
             "cursor-grab active:cursor-grabbing",
             "select-none",
             "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-            // petit confort : scroll plus doux au trackpad
             "scroll-smooth",
           ].join(" ")}
         >
@@ -116,7 +117,7 @@ export default function AwardsTimeline({
                   </div>
 
                   <div className="text-[11px] font-extrabold tracking-[0.22em] text-brandNavy/60">
-                    DISTINCTION
+                    {kicker}
                   </div>
 
                   <div className="mt-3 pr-12 text-sm font-semibold text-brandNavy leading-snug">
@@ -129,11 +130,7 @@ export default function AwardsTimeline({
         </div>
 
         <div className="mt-3 text-xs text-brandMuted md:hidden">
-          Glisse horizontalement pour voir toutes les distinctions.
-        </div>
-
-        <div className="mt-2 hidden md:block text-xs text-brandMuted">
-          Astuce : maintiens et glisse à la souris pour parcourir la timeline.
+          {t("tips.horizontalScroll")}
         </div>
       </div>
     </section>

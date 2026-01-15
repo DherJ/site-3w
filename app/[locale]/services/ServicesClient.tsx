@@ -1,6 +1,5 @@
-"use client";
+﻿"use client";
 
-import Image from "next/image";
 import SignatureLine from "@/components/ui/SignatureLine";
 import { useRevealOnScroll } from "@/components/hooks/useRevealOnScroll";
 import { useTranslations } from "next-intl";
@@ -28,6 +27,8 @@ function ServiceRow({
   processTitle: string;
   processSteps: string[];
 }) {
+  const toWebp = (imageSrc: string) => imageSrc.replace(/\.(png|jpe?g)$/i, ".webp");
+
   return (
     <section
       id={slug}
@@ -42,12 +43,12 @@ function ServiceRow({
         className={[
           "grid gap-0",
           reverse
-            ? "lg:grid-cols-[1.25fr_0.75fr]" // ✅ image à droite => plus étroite
-            : "lg:grid-cols-[0.85fr_1.15fr]", // image à gauche => normal
+            ? "lg:grid-cols-[1.25fr_0.75fr]" // âœ… image Ã  droite => plus Ã©troite
+            : "lg:grid-cols-[0.85fr_1.15fr]", // image Ã  gauche => normal
           reverse ? "lg:[&>*:first-child]:order-2" : "",
         ].join(" ")}
       >
-        {/* IMAGE — Frame constant pour uniformiser */}
+        {/* IMAGE â€” Frame constant pour uniformiser */}
         <div className="bg-white">
           <div
             className={[
@@ -57,17 +58,22 @@ function ServiceRow({
               "flex items-center justify-center",
             ].join(" ")}
           >
-            {/* ✅ “frame” intérieur pour calmer les images trop grandes */}
+            {/* âœ… â€œframeâ€ intÃ©rieur pour calmer les images trop grandes */}
             <div className="relative h-full w-full p-8 md:p-10 lg:p-12">
               <div className="relative h-full w-full">
-                <Image
-                  src={withBasePath(imageSrc)}
-                  alt={title}
-                  fill
-                  className="object-contain [transform:scale(0.92)]"
-                  sizes="(min-width: 1024px) 520px, 100vw"
-                  unoptimized
-                />
+                <picture className="absolute inset-0 h-full w-full">
+                  <source
+                    srcSet={withBasePath(`/services/webp/${toWebp(imageSrc.split("/").pop() || "")}`)}
+                    type="image/webp"
+                  />
+                  <img
+                    src={withBasePath(imageSrc)}
+                    alt={title}
+                    className="h-full w-full object-contain [transform:scale(0.92)]"
+                    sizes="(min-width: 1024px) 520px, 100vw"
+                    loading="lazy"
+                  />
+                </picture>
               </div>
             </div>
 
@@ -123,10 +129,10 @@ function ServiceRow({
                       {step}
                     </div>
                     <div className="mt-1 text-xs text-brandMuted">
-                      {i === 0 ? "Cadrage" : i === 1 ? "Mise en œuvre" : "Validation"}
+                      {i === 0 ? "Cadrage" : i === 1 ? "Mise en Å“uvre" : "Validation"}
                     </div>
 
-                    {/* séparateur fin sauf dernier */}
+                    {/* sÃ©parateur fin sauf dernier */}
                     {i < 2 ? (
                       <div className="mt-4 h-px w-full bg-brandLine/60" />
                     ) : null}
@@ -172,3 +178,4 @@ export default function ServicesClient({ services }: { services: Service[] }) {
     </div>
   );
 }
+

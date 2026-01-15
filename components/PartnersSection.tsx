@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import SectionTitle from "./ui/SectionTitle";
 import { withBasePath } from "@/lib/withBasePath";
@@ -9,6 +8,8 @@ type Partner = {
   name: string;
   logo: string;
 };
+
+const toWebp = (logoPath: string) => logoPath.replace(/\.png$/i, ".webp");
 
 function PartnersMarquee({
   items,
@@ -32,7 +33,7 @@ function PartnersMarquee({
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-brandNavy to-transparent z-10" />
 
       <div
-        className="group flex w-max items-center gap-8 sm:gap-12 will-change-transform"
+        className="group flex w-max items-center gap-6 sm:gap-10 will-change-transform"
         style={{
           animation: `partners-marquee ${speed}s linear infinite`,
         }}
@@ -43,27 +44,31 @@ function PartnersMarquee({
             className="
               flex items-center justify-center
               h-12 sm:h-16
-              px-4 sm:px-8
+              px-3 sm:px-6
               rounded-xl
               transition-all duration-300
               hover:bg-white/5
               hover:ring-1 hover:ring-brandChampagne/30
             "
           >
-            <div className="relative h-7 w-[120px] overflow-hidden sm:h-10 sm:w-[160px] md:h-12 md:w-[200px]">
-              <Image
-                src={withBasePath(p.logo)}
-                alt={p.name}
-                fill
-                sizes="(max-width: 640px) 120px, (max-width: 768px) 160px, 200px"
-                className="
-                  object-contain
-                  scale-[1.18] origin-center
-                  opacity-90 transition-all duration-300
-                  hover:opacity-100
-                "
-                unoptimized
-              />
+            <div className="relative h-7 w-[100px] overflow-hidden sm:h-10 sm:w-[160px] md:h-12 md:w-[200px]">
+              <picture className="block h-full w-full">
+                <source
+                  srcSet={withBasePath(`/partners/webp/${toWebp(p.logo.split("/").pop() || "")}`)}
+                  type="image/webp"
+                />
+                <img
+                  src={withBasePath(p.logo)}
+                  alt={p.name}
+                  className="
+                    h-full w-full object-contain
+                    scale-[1.18] origin-center
+                    opacity-90 transition-all duration-300
+                    hover:opacity-100
+                  "
+                  loading="lazy"
+                />
+              </picture>
             </div>
           </div>
         ))}

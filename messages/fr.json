@@ -97,7 +97,8 @@
       "faqTitle": "FAQ",
       "ctaTitle": "Parlons de votre besoin",
       "ctaText": "Décrivez votre contexte (durée, quantités, contraintes). Nous vous proposons une solution adaptée.",
-      "ctaButton": "Demander un devis"
+      "ctaButton": "Demander un devis",
+      "step": "Étape"
     },
     "rental": {
       "title": "Location d’équipements de radioprotection",
@@ -477,6 +478,9 @@
       "h1": "La radioprotection premium, conçue avec exigence — et prouvée.",
       "p": "Well With Waves (3W) conçoit et fabrique des équipements de radioprotection à destination des environnements médicaux exigeants. De la sélection à la maintenance, notre promesse est simple : confort, durabilité, conformité.",
       "cta2": "Découvrir nos services"
+    },
+    "tips": {
+      "horizontalScroll": "Astuce : scrollez horizontalement pour voir tous les éléments."
     },
     "company": {
       "kicker": "L’ENTREPRISE",

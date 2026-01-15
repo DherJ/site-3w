@@ -1,11 +1,12 @@
-"use client";
+﻿"use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/Button";
 import Link from "next/link";
 import { withBasePath } from "@/lib/withBasePath";
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
 export default function ProofSection() {
 
@@ -17,21 +18,25 @@ export default function ProofSection() {
         <div>
             {/* 1) HERO FULLSCREEN */}
             <section className="relative z-0 h-[100svh] w-full -mt-[64px] md:-mt-[96px] overflow-hidden">
-                <Image
-                    src={withBasePath("/hero/hero-full.png")}
-                    alt="Well With Waves â€“ Radioprotection"
-                    fill
-                    priority
-                    className={[
-                        "object-cover",
-                        // âœ… cadrage mobile (plus bas/centre selon ton visuel)
-                        "object-[75%_20%] sm:object-[55%_12%]",
-                        // âœ… cadrage desktop
-                        "md:object-[50%_8%]",
-                    ].join(" ")}
-                    sizes="100vw"
-                    unoptimized
-                />
+                <picture className="absolute inset-0 h-full w-full">
+                    <source
+                        srcSet={withBasePath(`/hero/webp/${toWebp("hero-full.png")}`)}
+                        type="image/webp"
+                    />
+                    <img
+                        src={withBasePath("/hero/hero-full.png")}
+                        alt="Well With Waves - Radioprotection"
+                        className={[
+                            "h-full w-full object-cover",
+                            // cadrage mobile (plus bas/centre selon ton visuel)
+                            "object-[75%_20%] sm:object-[55%_12%]",
+                            // cadrage desktop
+                            "md:object-[50%_8%]",
+                        ].join(" ")}
+                        sizes="100vw"
+                        loading="eager"
+                    />
+                </picture>
                 {/* overlay premium */}
                 <div className="absolute inset-0 bg-brandNavy/35" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
