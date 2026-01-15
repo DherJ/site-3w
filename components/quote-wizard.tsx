@@ -29,6 +29,7 @@ import {
   Eye,
 } from "lucide-react";
 import Link from "next/link";
+import { absoluteUrl } from "@/lib/utils";
 
 type NeedKey = "purchase" | "rental" | "quality" | "cleaning" | "mix";
 
@@ -680,7 +681,7 @@ export function QuoteWizard({ locale, copy }: { locale: string; copy: Copy }) {
               <p className="text-xs text-brandMuted">
                 {copy.privatePolicy.notice}{" "}
                 <a
-                  href={`/${locale}/legal/privacy-policy`}
+                  href={absoluteUrl(`/${locale}/legal/privacy-policy`)}
                   className="underline font-semibold"
                   target="_blank"
                   rel="noopener"

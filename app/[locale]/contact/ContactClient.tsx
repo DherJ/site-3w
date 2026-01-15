@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import AddressMapLink from "@/components/ui/AddressMapLink";
 import Link from "next/link";
+import { absoluteUrl } from "@/lib/utils";
 
 export default function ContactClient({
   locale,
@@ -96,7 +97,7 @@ export default function ContactClient({
             default:
               "Les informations transmises via ce formulaire sont utilisées uniquement pour répondre à votre demande. Merci de ne pas transmettre de données médicales. Pour en savoir plus :"
           })}{" "}
-          <Link href={`/${locale}/legal/privacy-policy`} className="underline font-semibold">
+          <Link href={absoluteUrl(`/${locale}/legal/privacy-policy`)} className="underline font-semibold">
             {g("privatePolicy.link", { default: "Politique de confidentialité" })}
           </Link>
           .
