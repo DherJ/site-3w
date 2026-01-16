@@ -31,6 +31,42 @@
     "pageSubtitle": "Informations légales relatives au site WellWithWaves.",
     "fields": {
       "company": "Société"
+    },
+    "toc": {
+      "editor": "Editeur du site",
+      "hosting": "Hebergement",
+      "ip": "Propriete intellectuelle",
+      "liability": "Responsabilite",
+      "contact": "Contact"
+    },
+    "sections": {
+      "editor": {
+        "title": "Editeur du site",
+        "companyLabel": "Societe :",
+        "companyValue": "Jerome Dhersin - jd-pixel-works",
+        "addressLabel": "Adresse :",
+        "addressValue": "154 rue du violon d'or, 59190 Hazebrouck, France",
+        "emailLabel": "Email :",
+        "emailValue": "j.dhersin@hotmail.fr",
+        "phoneLabel": "Telephone :",
+        "phoneValue": "+33 6 47656433"
+      },
+      "hosting": {
+        "title": "Hebergement",
+        "text": "OVH : 2 rue Kellermann, 59100 Roubaix, France."
+      },
+      "ip": {
+        "title": "Propriete intellectuelle",
+        "text": "L'ensemble des contenus (textes, images, marques, logos) est protege. Toute reproduction est interdite sans autorisation ecrite prealable."
+      },
+      "liability": {
+        "title": "Responsabilite",
+        "text": "Nous nous efforcons d'assurer l'exactitude des informations, sans garantie d'exhaustivite. L'utilisation du site se fait sous la responsabilite de l'utilisateur."
+      },
+      "contact": {
+        "title": "Contact",
+        "text": "Pour toute question, ecrivez-nous a"
+      }
     }
   },
   "privacy": {

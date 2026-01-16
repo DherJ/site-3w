@@ -29,6 +29,9 @@
     "kicker": "INFORMATION",
     "pageTitle": "Legal notice",
     "pageSubtitle": "Legal information related to the WellWithWaves website.",
+    "fields": {
+      "company": "Society"
+    },
     "toc": {
       "editor": "Website publisher",
       "hosting": "Hosting",
