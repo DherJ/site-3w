@@ -1,0 +1,15 @@
+{
+  "kicker": "PARTNERS",
+  "title": "A trusted ecosystem.",
+  "subtitle": "They support the project and contribute to its growth.",
+  "support": {
+    "kicker": "SUPPORT PARTNERS",
+    "title": "Partners supporting the project.",
+    "subtitle": "Incubation, networking, expertise and strategic guidance."
+  },
+  "funding": {
+    "kicker": "FINANCIAL PARTNERS",
+    "title": "Partners funding the project.",
+    "subtitle": "Financial support, innovation and industrial development."
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "seo": {
+    "title": "Request a Quote",
+    "description": "Request a quote in just a few steps. Fast response tailored to your needs."
+  },
+  "title": "Request a Quote",
+  "wizard": {
+    "kicker": "ONLINE QUOTE",
+    "heading": "Quick request"
+  },
+  "steps": {
+    "need": "1 Need",
+    "details": "2 Details",
+    "logistics": "3 Logistics",
+    "company": "4 Company",
+    "review": "5 Review"
+  },
+  "needs": {
+    "purchase": {
+      "label": "Purchase",
+      "desc": "Pricing & availability request."
+    },
+    "rental": {
+      "label": "Rental",
+      "desc": "Short-term need / event."
+    },
+    "quality": {
+      "label": "Quality & shielding",
+      "desc": "Compliance, protection, options."
+    },
+    "cleaning": {
+      "label": "Specialized cleaning",
+      "desc": "Process & frequency."
+    },
+    "mix": {
+      "label": "Mixed",
+      "desc": "Multiple needs at once."
+    }
+  },
+  "sections": {
+    "need": {
+      "title": "Request type",
+      "subtitle": "Select one or more needs."
+    },
+    "details": {
+      "title": "Details"
+    },
+    "logistics": {
+      "title": "Logistics"
+    },
+    "company": {
+      "title": "Company"
+    },
+    "review": {
+      "title": "Summary",
+      "subtitle": "Check your details before sending."
+    }
+  },
+  "fields": {
+    "quantity": {
+      "label": "QUANTITY (OPTIONAL)"
+    },
+    "deadline": {
+      "label": "TIMEFRAME (OPTIONAL)",
+      "placeholder": "e.g., 2 weeks"
+    },
+    "notes": {
+      "label": "COMMENT"
+    },
+    "address": {
+      "label": "ADDRESS (OPTIONAL)"
+    },
+    "company": {
+      "label": "FACILITY / ORGANIZATION"
+    },
+    "contact": {
+      "label": "CONTACT PERSON"
+    },
+    "email": {
+      "label": "EMAIL"
+    },
+    "phone": {
+      "label": "PHONE (OPTIONAL)"
+    }
+  },
+  "buttons": {
+    "back": "← Back",
+    "next": "Continue →",
+    "submit": "Send request",
+    "submitting": "Sending...",
+    "reset": "Reset"
+  },
+  "progress": {
+    "title": "PROGRESS",
+    "selection": "SELECTION",
+    "todoTitle": "Next",
+    "todo": [
+      "Choose your request type, then continue.",
+      "Add details (quantity / timeframe) if needed.",
+      "Add an address if you have a logistics constraint.",
+      "Enter your contact details so we can get back to you.",
+      "Do a final check before sending."
+    ],
+    "eta": "Estimated time: ~2 min",
+    "stepLabel": "Step",
+    "finalCheckTitle": "Final review",
+    "finalCheckText": "Once submitted, we will get back to you shortly with a tailored proposal."
+  },
+  "alerts": {
+    "sent": "Request sent ✅",
+    "error": "Error sending request"
+  },
+  "validation": {
+    "needsMin": "Please select at least one need",
+    "companyRequired": "Facility name is required",
+    "contactRequired": "Contact name is required",
+    "emailInvalid": "Invalid email"
+  }
+}

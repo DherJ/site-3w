@@ -1,0 +1,119 @@
+{
+  "seo": {
+    "title": "Demander un devis",
+    "description": "Demandez un devis en quelques étapes. Réponse rapide et adaptée à vos besoins."
+  },
+  "title": "Demander un devis",
+  "wizard": {
+    "kicker": "DEVIS EN LIGNE",
+    "heading": "Demande rapide"
+  },
+  "steps": {
+    "need": "1 Besoin",
+    "details": "2 Détails",
+    "logistics": "3 Logistique",
+    "company": "4 Entreprise",
+    "review": "5 Récap"
+  },
+  "needs": {
+    "purchase": {
+      "label": "Achat",
+      "desc": "Demande de prix & disponibilité."
+    },
+    "rental": {
+      "label": "Location",
+      "desc": "Besoin ponctuel / événement."
+    },
+    "quality": {
+      "label": "Contrôle & blindage",
+      "desc": "Conformité, protections, options."
+    },
+    "cleaning": {
+      "label": "Nettoyage",
+      "desc": "Procédure & fréquence."
+    },
+    "mix": {
+      "label": "Mix",
+      "desc": "Plusieurs besoins à la fois."
+    }
+  },
+  "sections": {
+    "need": {
+      "title": "Type de demande",
+      "subtitle": "Choisis un ou plusieurs besoins."
+    },
+    "details": {
+      "title": "Détails"
+    },
+    "logistics": {
+      "title": "Logistique"
+    },
+    "company": {
+      "title": "Entreprise"
+    },
+    "review": {
+      "title": "Récapitulatif",
+      "subtitle": "Vérifie tes infos avant l’envoi."
+    }
+  },
+  "fields": {
+    "quantity": {
+      "label": "QUANTITÉ (OPTIONNEL)"
+    },
+    "deadline": {
+      "label": "DÉLAI (OPTIONNEL)",
+      "placeholder": "ex : 2 semaines"
+    },
+    "notes": {
+      "label": "COMMENTAIRE"
+    },
+    "address": {
+      "label": "ADRESSE (OPTIONNEL)"
+    },
+    "company": {
+      "label": "ÉTABLISSEMENT"
+    },
+    "contact": {
+      "label": "CONTACT"
+    },
+    "email": {
+      "label": "EMAIL"
+    },
+    "phone": {
+      "label": "TÉLÉPHONE (OPTIONNEL)"
+    }
+  },
+  "buttons": {
+    "back": "← Retour",
+    "next": "Continuer →",
+    "submit": "Envoyer le devis",
+    "submitting": "Envoi...",
+    "reset": "Réinitialiser"
+  },
+  "progress": {
+    "title": "PROGRESSION",
+    "selection": "SÉLECTION",
+    "todoTitle": "À faire",
+    "todo": [
+      "Choisis ton type de demande, puis continue.",
+      "Ajoute les détails (quantité / délai) si nécessaire.",
+      "Renseigne l’adresse si tu as une contrainte logistique.",
+      "Indique tes coordonnées pour qu’on te recontacte.",
+      "Vérifie une dernière fois avant l’envoi."
+    ],
+    "eta": "Temps estimé : ~2 min",
+    "stepLabel": "Étape",
+    "finalCheckTitle": "Vérification finale",
+    "finalCheckText": "Après validation, nous vous recontacterons rapidement avec une proposition adaptée à vos besoins."
+  },
+  "alerts": {
+    "sent": "Devis envoyé ✅",
+    "error": "Erreur envoi devis"
+  },
+  "validation": {
+    "needsMin": "Choisis au moins un besoin",
+    "companyRequired": "Nom établissement requis",
+    "contactRequired": "Nom contact requis",
+    "emailInvalid": "Email invalide"
+  }
+}

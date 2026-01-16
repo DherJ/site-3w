@@ -1,0 +1,51 @@
+{
+  "kicker": "SERVICES",
+  "title": "Services – Protection & Blindage Radiologique",
+  "subtitle": "Audit, blindage, contrôle et maintenance : un accompagnement complet, orienté terrain.",
+  "seeServices": "Voir les services",
+  "seeService": "Voir le service",
+  "ourServices": "Nos prestations",
+  "seo": {
+    "title": "Services de radioprotection",
+    "description": "Découvrez nos services de vente, location, contrôles qualité et maintenance d'équipements de radioprotection conçus pour les environnements médicaux exigeants.",
+    "h1": "Services de radioprotection – Vente, location, contrôles qualité et maintenance",
+    "h2": "Accompagnement complet pour vos besoins en radioprotection",
+    "serviceName": "Services de radioprotection"
+  },
+  "rental": {
+    "kicker": "SERVICE",
+    "title": "Location d’équipements",
+    "desc": "Solutions flexibles pour besoins temporaires ou spécifiques.",
+    "process": {
+      "title": "Process en 3 étapes",
+      "step1": "Définition du besoin",
+      "step2": "Mise à disposition rapide",
+      "step3": "Retour & contrôle"
+    }
+  },
+  "qualityChecks": {
+    "kicker": "SERVICE",
+    "title": "Contrôles qualité",
+    "desc": "Vérification rigoureuse pour garantir performance et sécurité.",
+    "process": {
+      "title": "Process en 3 étapes",
+      "step1": "Inspection",
+      "step2": "Tests de performance",
+      "step3": "Rapport & recommandations"
+    }
+  },
+  "cleaning": {
+    "kicker": "SERVICE",
+    "title": "Nettoyage spécialisé",
+    "desc": "Entretien professionnel pour une durabilité optimale.",
+    "process": {
+      "title": "Process en 3 étapes",
+      "step1": "Collecte / réception",
+      "step2": "Nettoyage spécialisé",
+      "step3": "Contrôle final"
+    }
+  },
+  "tips": {
+    "horizontalScroll": "Astuce : scrollez horizontalement pour voir tous les services."
+  }
+}

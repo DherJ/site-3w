@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "products": "Products",
+    "services": "Services",
+    "quote": "Get a quote",
+    "partners": "Partners",
+    "about": "About",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "global": {
+    "legal": {
+      "termsOfService": "Terms of Service",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "viewProduct": "View the product",
+    "discoverManufacture": "Discover our expertise",
+    "quote": "Quote",
+    "legalNotice": "Legal Notice",
+    "requestQuote": "Request a quote",
+    "contactUs": "Contact us",
+    "discoverCatalog": "Discover the catalog",
+    "download": "Download",
+    "home": "Home",
+    "products": "Products",
+    "siteName": "WellWithWaves",
+    "summary": "Summary",
+    "openMaps": "Open in Google Maps",
+    "services": "Services",
+    "privatePolicy": {
+      "notice": "Les informations transmises via ce formulaire sont utilisées uniquement pour répondre à votre demande. Merci de ne pas transmettre de données médicales. Pour en savoir plus :",
+      "link": "Politique de confidentialité"
+    }
+  }
+}

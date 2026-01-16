@@ -1,0 +1,24 @@
+{
+  "kicker": "CONTACT",
+  "title": "Contact",
+  "subtitle": "Une question, un besoin, un devis ? Écrivez-nous et nous vous répondons rapidement.",
+  "seo": {
+    "title": "Contact – WellWithWaves",
+    "description": "Contactez WellWithWaves : demande d’information, devis, vente/location, maintenance et contrôles qualité."
+  },
+  "info": {
+    "kicker": "COORDONNÉES"
+  },
+  "form": {
+    "name": "Nom",
+    "company": "Établissement",
+    "email": "Email",
+    "phone": "Téléphone",
+    "message": "Message",
+    "placeholder": "Dites-nous ce dont vous avez besoin…",
+    "send": "Envoyer",
+    "sending": "Envoi…",
+    "success": "Message envoyé ✅ On revient vers vous rapidement.",
+    "error": "Erreur d’envoi. Réessayez ou contactez-nous par email."
+  }
+}

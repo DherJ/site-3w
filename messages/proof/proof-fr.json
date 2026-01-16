@@ -1,0 +1,20 @@
+{
+  "title": "Preuve de notre savoir-faire",
+  "subtitle": "Nos engagements envers la qualité et la conformité.",
+  "checkBadge": {
+    "title": "Fabriqué en France",
+    "desc": "Confection interne, finitions premium."
+  },
+  "shieldBadge": {
+    "title": "Conformité",
+    "desc": "Contrôles qualité & traçabilité."
+  },
+  "sparkleBadge": {
+    "title": "Entretien",
+    "desc": "Nettoyage et maintenance spécialisés."
+  },
+  "factoryBadge": {
+    "title": "Fabrication interne",
+    "desc": "Atelier en France, savoir-faire maîtrisé."
+  }
+}

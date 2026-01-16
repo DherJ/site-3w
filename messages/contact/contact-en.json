@@ -1,0 +1,24 @@
+{
+  "kicker": "CONTACT",
+  "title": "Contact",
+  "subtitle": "A question, a specific need, or a quote request? Get in touch and we’ll get back to you shortly.",
+  "seo": {
+    "title": "Contact – WellWithWaves",
+    "description": "Contact WellWithWaves for information, quotes, sales or rental of radiation protection equipment, maintenance and quality control services."
+  },
+  "info": {
+    "kicker": "CONTACT DETAILS"
+  },
+  "form": {
+    "name": "Name",
+    "company": "Organization",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "placeholder": "Tell us about your needs…",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Message sent successfully ✅ We’ll get back to you shortly.",
+    "error": "Sending failed. Please try again or contact us by email."
+  }
+}

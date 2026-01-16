@@ -1,0 +1,20 @@
+{
+  "title": "Proof of our expertise",
+  "subtitle": "Our commitments to quality and compliance.",
+  "checkBadge": {
+    "title": "Made in France",
+    "desc": "In-house manufacturing, premium finishes."
+  },
+  "shieldBadge": {
+    "title": "Compliance",
+    "desc": "Quality controls & traceability."
+  },
+  "sparkleBadge": {
+    "title": "Maintenance",
+    "desc": "Specialized cleaning and maintenance."
+  },
+  "factoryBadge": {
+    "title": "In-house manufacturing",
+    "desc": "Workshop in France, mastered expertise."
+  }
+}

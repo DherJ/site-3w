@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "products": "Produits",
+    "services": "Services",
+    "quote": "Devis",
+    "partners": "Partenaires",
+    "about": "À propos",
+    "contact": "Contact",
+    "language": "Langue"
+  },
+  "global": {
+    "legal": {
+      "termsOfService": "Conditions d'utilisation",
+      "privacyPolicy": "Politique de confidentialité"
+    },
+    "legalNotice": "Mentions légales",
+    "viewProduct": "Voir le produit",
+    "discoverManufacture": "Découvrir notre savoir-faire",
+    "requestQuote": "Demander un devis",
+    "quote": "Devis",
+    "contactUs": "Contactez nous",
+    "discoverCatalog": "Découvrir le catalogue",
+    "download": "Télécharger",
+    "home": "Accueil",
+    "products": "Produits",
+    "siteName": "WellWithWaves",
+    "summary": "Sommaire",
+    "openMaps": "Ouvrir dans Google Maps",
+    "services": "Services",
+    "privatePolicy": {
+      "notice": "Les informations transmises via ce formulaire sont utilisées uniquement pour répondre à votre demande. Merci de ne pas transmettre de données médicales. Pour en savoir plus :",
+      "link": "Politique de confidentialité"
+    }
+  }
+}

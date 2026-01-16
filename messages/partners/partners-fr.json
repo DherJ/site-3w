@@ -1,0 +1,15 @@
+{
+  "kicker": "PARTENAIRES",
+  "title": "Un écosystème de confiance.",
+  "subtitle": "Ils soutiennent le projet et contribuent à son développement.",
+  "support": {
+    "kicker": "PARTENAIRES ACCOMPAGNEMENT",
+    "title": "Les partenaires qui accompagnent le projet.",
+    "subtitle": "Incubation, réseau, expertise et accompagnement stratégique."
+  },
+  "funding": {
+    "kicker": "PARTENAIRES FINANCIERS",
+    "title": "Les partenaires qui financent le projet.",
+    "subtitle": "Soutien financier, innovation et développement industriel."
+  }
+}

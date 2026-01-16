@@ -1,0 +1,50 @@
+{
+  "kicker": "CATALOGUE",
+  "title": "Équipements de radioprotection",
+  "subtitle": "Une sélection pensée pour les environnements médicaux exigeants : confort, durabilité et finition premium.",
+  "seo": {
+    "title": "Catalogue d’équipements de radioprotection",
+    "description": "Découvrez notre catalogue d’équipements de radioprotection : tabliers plombés, protège-thyroïde, vestes et jupes. Solutions professionnelles certifiées, confort et performance, devis rapide."
+  },
+  "filters": {
+    "kicker": "FILTRES",
+    "all": "Tous",
+    "reset": "Réinitialiser",
+    "results": "produits affichés",
+    "category": "Catégories",
+    "size": "Tailles",
+    "sizeHint": "Astuce : le filtre taille nécessite que tes produits déclarent un champ sizes.",
+    "tags": "Tags",
+    "sort": "Tri"
+  },
+  "sort": {
+    "featured": "Sélection",
+    "name": "Nom",
+    "category": "Catégorie"
+  },
+  "empty": "Aucun produit ne correspond à cette catégorie.",
+  "categories": {
+    "tabliers": "Tabliers",
+    "chasubles": "Chasubles",
+    "protegeThyroide": "Protège-thyroïde",
+    "vestes": "Vestes",
+    "jupes": "Jupes",
+    "pediatrique": "Pédiatrique",
+    "autres": "Autres"
+  },
+  "seeCategory": "Voir la catégorie",
+  "seeCatalogue": "Voir le catalogue",
+  "backCatalogue": "Retour au catalogue",
+  "technicalFile": "Fiche technique",
+  "downloadPdf": "Télécharger le Pdf",
+  "openPdf": "Ouvrir le Pdf",
+  "technicalTitle": "Spécifications, entretien, options et recommandations d’usage.",
+  "relatedProducts": {
+    "title": "SÉLECTION",
+    "subtitle": "Produits similaires"
+  },
+  "specification": "SPÉCIFICATIONS",
+  "tips": {
+    "horizontalScroll": "Astuce : scrollez horizontalement pour voir toutes les catégories."
+  }
+}

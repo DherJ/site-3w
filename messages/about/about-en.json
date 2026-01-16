@@ -1,0 +1,50 @@
+{
+  "kicker": "ABOUT",
+  "title": "About",
+  "hero": {
+    "h1": "Premium radiation protection — with proof to back it up.",
+    "p": "Well With Waves (3W) designs and manufactures radiation protection equipment for demanding healthcare environments. From selection to maintenance, our promise is simple: comfort, durability and compliance.",
+    "cta2": "Explore our services"
+  },
+  "tips": {
+    "horizontalScroll": "Tip: scroll horizontally to see all items."
+  },
+  "company": {
+    "kicker": "THE COMPANY",
+    "h2": "An in-house workshop at our headquarters to control quality.",
+    "p1": "Our workshop is located at the company’s headquarters, enabling tight control over finishing, quality checks and traceability, while staying responsive for healthcare facilities.",
+    "p2": "We take a field-driven approach: listen to care teams, recommend the right protection, and provide clear long-term support (checks, cleaning, maintenance).",
+    "addressLabel": "Workshop & HQ",
+    "address": "110 Rue du Smetz PePSO, 62120 Campagne-lès-Wardrecques, France",
+    "features": [
+      "Integrated design & manufacturing",
+      "Quality checks & traceability",
+      "Sales, rental, checks and maintenance",
+      "Solutions tailored to departments"
+    ]
+  },
+  "recognition": {
+    "kicker": "RECOGNITION",
+    "h2": "Awards that validate the approach.",
+    "intro": "Our work is supported and recognized by leading programs and juries at the intersection of innovation, care and real-world impact.",
+    "items": [
+      "HIIT Program 2025 – Laureate",
+      "Fondation Mines-Télécom – IMT Numérique Fund – Laureate",
+      "Mission Entreprendre 2025 – Jury’s Favorite – Finalist",
+      "Innovative Companies Awards – Finalist",
+      "French Hospital Federation (FHF) Innovation Awards – “Improving Caregiver Experience” – Laureate",
+      "3W is Bpifrance Deeptech-labeled"
+    ]
+  },
+  "team": {
+    "kicker": "THE TEAM",
+    "h2": "Facility-focused: advisory, quality, follow-up.",
+    "intro": "We combine product rigor with operational support: scoping, recommendations, rollout and ongoing assistance.",
+    "ctaTitle": "Let’s talk about your needs",
+    "ctaDesc": "We’ll get back to you quickly with a proposal tailored to your constraints and teams."
+  },
+  "seo": {
+    "title": "About – Well With Waves",
+    "description": "Discover Well With Waves (3W): in-house workshop at HQ, quality commitments, awards (HIIT 2025, IMT Numérique Fund, FHF…), and Bpifrance Deeptech label."
+  }
+}

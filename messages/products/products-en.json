@@ -1,0 +1,50 @@
+{
+  "kicker": "CATALOGUE",
+  "title": "Radiation Protection Equipment",
+  "subtitle": "A selection designed for demanding medical environments: comfort, durability and premium finish.",
+  "seo": {
+    "title": "Radiation Protection Equipment Catalog",
+    "description": "Explore our catalog of radiation protection equipment: lead aprons, thyroid shields, protective vests and skirts. Certified professional solutions designed for comfort, safety and performance. Fast quotation."
+  },
+  "filters": {
+    "kicker": "FILTERS",
+    "all": "All",
+    "reset": "Reset",
+    "results": "products displayed",
+    "category": "Categories",
+    "size": "Sizes",
+    "sizeHint": "Hint: the size filter requires your products to declare a sizes field.",
+    "tags": "Tags",
+    "sort": "Sort"
+  },
+  "sort": {
+    "featured": "Featured",
+    "name": "Name",
+    "category": "Category"
+  },
+  "seeCatalogue": "See the catalogue",
+  "SeeCategory": "See category",
+  "empty": "No products match this category.",
+  "categories": {
+    "tabliers": "Protective aprons",
+    "chasubles": "Protective chasubles",
+    "protege-thyroide": "Thyroid protectors",
+    "vestes": "Protective jackets",
+    "jupes": "Protective skirts",
+    "pediatrique": "Pédiatrique",
+    "autres": "Other equipment"
+  },
+  "backCatalogue": "Back to catalogue",
+  "technicalFile": "Technical file",
+  "downloadPdf": "Download Pdf",
+  "openPdf": "Ouvrir le Pdf",
+  "technicalTitle": "Specifications, cleaning, options and usage recommandations.",
+  "relatedProducts": {
+    "title": "SELECTION",
+    "subtitle": "Similary products"
+  },
+  "specification": "SPECIFICATIONS",
+  "tips": {
+    "horizontalScroll": "Tip: swipe horizontally to see all categories."
+  }
+}
